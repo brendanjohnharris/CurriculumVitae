@@ -4,7 +4,7 @@
 \usepackage{lipsum}  
 \usepackage{biblatex-cv}
 \highlightname{Harris}{Harris}{}{}
-\addbibresource{biblatex-cv.bib}
+\addbibresource{./CurriculumVitae.bib}
 
 % ---------------------------------------------------------------------------- %
 %                                  Major fields                                %
@@ -39,8 +39,7 @@
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.3\textwidth} % 20% of the page width for the first row of icons
-	\vspace{-\baselineskip} % Required for vertically aligning minipages
-	\\
+	\vspace{-\baselineskip}\\ % Required for vertically aligning minipages
 	% The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
 	\icon{Globe}{11}{\href{https://\website}{\website}}\\ 
     \icon{Envelope}{11}{\href{mailto:\email}{\email}}\\
@@ -48,8 +47,7 @@
 	
 \end{minipage}
 \begin{minipage}[t]{0.2\textwidth} % 27% of the page width for the second row of icons
-	\vspace{-\baselineskip} % Required for vertically aligning minipages
-	\\
+	\vspace{-\baselineskip}\\ % Required for vertically aligning minipages
     \icon{Github}{11}{\href{https://github.com/\github}{\github}}\\
     \icon{Twitter}{11}{\href{https://www.twitter.com/\twitter}{\twitter}}\\    
 	\icon{Phone}{11}{\phone}\\
@@ -203,7 +201,7 @@
 \nocite{*}
 \section*{Education}
 \printbibliography[env = unnumbered, resetnumbers =
- true, check = Education]
+ true, check = Teaching]
 
 
 \end{document}
