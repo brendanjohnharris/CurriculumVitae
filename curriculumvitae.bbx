@@ -1,0 +1,633 @@
+% \ProvidesFile{curriculumvitae.bbx}[v0.01 curriculumvitae bibliography style]
+
+\def\chain#1#2{{\thefield{#1}\iffieldundef{#1}{#2}{\\#2}}}
+\def\chainit#1#2{{\textit{\thefield{#1}}\iffieldundef{#1}{#2}{\\#2}}}
+
+% Define new bibmacros
+% \newbibmacro{advisor}{%
+% 	\ifnameundef{advisor}{}{%
+% 		\ifnumgreater{\value{advisor}}{1}{%
+% 			\bibstring{advisors}%
+% 		}{%
+% 			\bibstring{advisor}%
+% 		}%
+% 		\addcolon\addspace%
+% 		\printnames[given-family]{advisor}%
+% 	}%
+% }
+
+\renewbibmacro{bibliometrics}{%
+	\ifboolexpr{%
+		( test {\iffieldundef{numcites}} or test {\iffieldequalstr{numcites}{0}} ) and%
+		test {\iffieldundef{note}}%
+	}{}{%
+		% \printtext[brackets]{%
+			\iffieldundef{numcites}{}{%
+				\iffieldequalstr{numcites}{0}{}{%
+					\bibstring{numCites}\addcolon\addnbspace\printfield{numcites}%
+				}%
+			}%
+			\newunit\setunit{\bullet \ \ \addspace}%
+			\iffieldundef{note}{}{\printfield[sentencecase]{note}}%
+		% }%
+	}%
+}
+
+% \newbibmacro{class}{%
+% 	\mkdaterangelong{}%
+% 	\setunit{\addcomma\addspace}%
+% 	\printfield{role}%
+% 	\setunit{\addcomma\addspace}%
+% 	\iffieldundef{numlectures}{}{%
+% 		\iffieldequalstr{numlectures}{1}{%
+% 			\printfield{numlectures}\addnbspace\bibstring{lecture}%
+% 		}{%
+% 			\printfield{numlectures}\addnbspace\bibstring{lectures}%
+% 		}%
+% 	}%
+% 	\setunit{\addcomma\addspace}%
+% 	\iffieldundef{numstudents}{}{\printfield{numstudents}\addnbspace\bibstring{students}}%
+% 	\setunit{\adddot\addpar}\newblock%
+% }
+
+% \newbibmacro{classes}{%
+% 	\iffieldundef{classes}{%
+% 		\setunit{\adddot\addpar}\newblock%
+% 		\usebibmacro{class}%
+% 	}{%
+% 		\def\do##1{%
+% 			\entrydata*{##1}{%
+% 				\setunit{\adddot\addpar}\newblock%
+% 				\usebibmacro{class}%
+% 			}%
+% 		}%
+% 		\docsvfield{classes}%
+% 	}%
+% }
+
+% \newbibmacro{committee}{%
+% 	\ifnameundef{committee}{}{%
+% 		\bibstring{committee}\addcolon\addspace%
+% 		\printnames[given-family]{committee}%
+% 	}%
+% }
+
+\renewbibmacro{degrees}{%
+	\def\do##1{%
+		\entrydata*{##1}{%
+			\item\usedriver{}{degree}%
+		}%
+	}%
+	\list{}{}%@blx@sublist}%
+		\docsvfield{degreelist}%
+	\endlist%
+}
+
+\newbibmacro{adegree}{%
+\printfield{degree}%
+}
+
+\renewbibmacro{degree+major}{%
+	\printfield{degree}%
+		\ifboolexpr{%
+			test {\iffieldundef{degree}} or%
+			test {\iffieldundef{major}}%
+		}{}{\addspace\bibstring{in}\addspace}%
+		\printfield{major}%
+}
+
+% \newbibmacro{department+institution+location}{%
+% 	\iffieldundef{saveddepartment}{%
+% 		\printfield{department}%
+% 		\setunit{\addcomma\addspace}%
+% 	}{}%
+% 	\iflistundef{savedinstitution}{%
+% 		\printlist{institution}%
+% 		\setunit{\addcomma\addspace}%
+% 	}{}%
+% 	\iflistundef{savedlocation}{%
+% 		\printlist{location}%
+% 	}{}%
+% }
+
+% \newbibmacro{duration}{%
+% 	\ifundef{\cv@blx@months}{}{%
+% 		\printtext{\cv@blx@months\addnbspace}%
+% 		\ifnumgreater{\cv@blx@months}{1}{%
+% 			\bibstring{months}%
+% 		}{%
+% 			\bibstring{month}%
+% 		}%
+% 	}%
+% }
+
+% \newbibmacro{duration+amount+status}{%
+% 	\cv@blx@calculate@months%
+% 	\ifboolexpr{
+% 		test {\iffieldundef{amount}} and
+% 		test {\ifundef{\cv@blx@months}} and
+% 		(
+% 			test {\iffieldundef{status}} or
+% 			not test {\iftoggle{cv@blx:funding:status}} or
+% 		) and
+% 		(
+% 			test {\iffieldundef{role}} or
+% 			not test {\iftoggle{cv@blx:funding:role}} or
+% 			(
+% 				test {\iftoggle{cv@blx:funding:hidePI}} and
+% 				test {\iffieldequalstr{role}{PI}}
+% 			)
+% 		)
+% 	}{}{%
+% 		\printtext[parens]{%
+% 			\usebibmacro{duration}%
+% 			\setunit{\addcomma\addspace}%
+% 			\printfield{amount}%
+% 			\setunit{\addcomma\addspace}%
+% 			\iftoggle{cv@blx:funding:status}{%
+% 				\printfield{status}%
+% 				\setunit{\addcomma\addspace}%
+% 			}{}%
+% 			\iftoggle{cv@blx:funding:role}{%
+% 				\iftoggle{cv@blx:funding:hidePI}{%
+% 					\iffieldequalstr{role}{PI}{\printfield{role}}{}%
+% 				}{%
+% 					\printfield{role}%
+% 				}%
+% 			}{}%
+% 		}%
+% 	}%
+% }
+
+% \newbibmacro{role}{%
+% 	\iffieldundef{role}{}{%
+% 		\printtext[brackets]{%
+% 			\printfield{role}%
+% 		}%
+% 	}%
+% }
+
+% There is some sort of bug with the loop and the seasons not getting updated correctly
+% \newbibmacro{semesters}{%
+% 	\iffieldundef{semesters}{%
+% 		\mkdaterangelong{}%
+% 		\setunit{\addspace}%
+% 		\iffieldundef{role}{}{\printtext[brackets]{\printfield{role}}}%
+% 		\setunit{\addcomma\addspace}%
+% 	}{%
+% 		\def\do##1{%
+% 			\entrydata*{##1}{%
+% 				\mkdaterangelong{}%
+% 				\setunit{\addspace}%
+% 				\iffieldundef{role}{}{%
+% 					\printtext[brackets]{\printfield{role}}%
+% 				}%
+% 				\setunit{\addcomma\addspace}%
+% 			}%
+% 		}%
+% 		\docsvfield{semesters}%
+% 	}%
+% }
+
+% \renewbibmacro{type+presenter}{%
+% 	\ifboolexpr{
+% 		(
+% 			test {\iftoggle{cv@blx:presentation:type}} and
+% 			(
+% 				test {\iffieldequalstr{presentationtype}{keynote}} or
+% 				test {\iffieldequalstr{presentationtype}{invited}}
+% 			)
+% 		) or (
+% 			test {\iftoggle{cv@blx:presentation:subtype}} and
+% 			not test {\iffieldundef{entrysubtype}}
+% 		) or (
+% 			not test {\ifnameundef{presenter}}
+% 		)
+% 	}{%
+% 		% \printtext[brackets]{%
+% 			\ifboolexpr{
+% 				test {\iftoggle{cv@blx:presentation:type}} and
+% 				(
+% 					test {\iffieldequalstr{presentationtype}{keynote}} or
+% 					test {\iffieldequalstr{presentationtype}{invited}}
+% 				)
+% 			}{%
+% 				\printfield[key]{presentationtype}%
+% 				\setunit{\addspace}%
+% 			}{}%
+% 			\iftoggle{cv@blx:presentation:subtype}{%
+% 				\printfield[key]{entrysubtype}%
+% 				\setunit{\addspace}%
+% 			}{}%
+% 			\ifnameundef{presenter}{}{%
+% 				\bibstring{presented}\addspace%
+% 				\printnames{presenter}%
+% 			}%
+% 		% }%
+% 	}{}%
+% }
+
+\renewbibmacro{yearrange}{%
+	\printfield{year}%
+	\ifboolexpr{%
+		test {\iffieldundef{endyear}} or%
+		test {\iffieldsequal{year}{endyear}}%
+	}{}{\ \bibrangedash\ \printfield{endyear}}%
+}
+
+\renewbibmacro{yearrange+dash}{%
+	\printfield{year}%
+	\iffieldundef{endyear}{%
+		\bibrangedash%
+	}{%
+		\iffieldsequal{year}{endyear}{}{\bibrangedash\printfield{endyear}}%
+	}%
+}
+
+% The biblatex-cv style allows for custom entry types that do not have bibliography drivers defined in standard.bbx.
+
+% ABSTRACT
+% The abstract bibliography driver is a modified version of the article bibliography driver.
+% \csletcs{blx@bbx@abstract}{blx@bbx@article}
+% \DeclareFieldFormat[abstract]{citetitle}{\mkbibquote{#1\isdot}}
+% \DeclareFieldFormat[abstract]{number}{#1}
+% \DeclareFieldFormat[abstract]{series}{%
+% 	\ifinteger{#1}{%
+% 		\mkbibordseries{#1}~\bibstring{jourser}%
+% 	}{%
+% 		\ifbibstring{#1}{\bibstring{#1}}{#1}%
+% 	}%
+% }
+% \DeclareFieldFormat[abstract]{title}{\mkbibquote{#1\isdot}}
+% \DeclareFieldFormat[abstract]{volume}{#1}
+% \xpatchbibdriver{abstract}{\usebibmacro{doi+eprint+url}}{%
+% 	\usebibmacro{type+presenter}%
+% 	\newunit\newblock%
+% 	\usebibmacro{doi+eprint+url}%
+% }{}{}
+
+% COMMITTEE
+% \DeclareBibliographyDriver{committee}{%
+% 	\usebibmacro{bibindex}%
+% 	\usebibmacro{begentry}%
+% 	\usebibmacro{semesters}%
+% 	\printfield{title}%
+% 	\setunit{\addcomma\addspace}%
+% 	\usebibmacro{department+institution+location}%
+% 	\newunit\newblock%
+% 	\usebibmacro{doi+eprint+url}%
+% 	\newunit\newblock%
+% 	\usebibmacro{addendum+pubstate}%
+% 	\newunit\newblock%
+% 	\usebibmacro{bibliometrics}%
+% 	\setunit{\bibpagerefpunct}\newblock%
+% 	\usebibmacro{pageref}%
+% 	\newunit\newblock%
+% 	\iftoggle{bbx:related}{%
+% 		\usebibmacro{related:init}%
+% 		\usebibmacro{related}%
+% 	}{}%
+% 	\usebibmacro{finentry}%
+% }
+
+% EDUCATION
+% \DeclareBibliographyDriver{school}{%
+% 	\usebibmacro{bibindex}%
+% 	\usebibmacro{begentry}%
+% 	\usebibmacro{department+institution+location}%
+% 	\setunit{\addcomma\addspace}%
+% 	\iftoggle{cv@blx:school:years}{%
+% 		\usebibmacro{yearrange}%
+% 	}{}%
+% 	\newblockpunct{\addperiod\addpar}%
+% 	\iftoggle{cv@blx:education:gpa}{%
+% 		\iffieldundef{gpa}{}{%
+% 			\printfield{gpa}%
+% 			\newblockpunct{\addpar}%
+% 		}%
+% 	}{}%
+% 	\iftoggle{cv@blx:education:honors}{%
+% 		\iflistundef{honors}{}{%
+% 			\bibstring{honors}\addcolon\addspace%
+% 			\printlist{honors}%
+% 		}
+% 		\newblockpunct{\addpar}%
+% 	}{}%
+% 	\usebibmacro{degrees}%
+% 	\usebibmacro{doi+eprint+url}%
+% 	\newunit\newblock%
+% 	\usebibmacro{addendum+pubstate}%
+% 	\newunit\newblock%
+% 	\usebibmacro{bibliometrics}%
+% 	\setunit{\bibpagerefpunct}\newblock%
+% 	\usebibmacro{pageref}%
+% 	\newunit\newblock%
+% 	\iftoggle{bbx:related}{%
+% 		\usebibmacro{related:init}%
+% 		\usebibmacro{related}%
+% 	}{}%
+% 	\begingroup%
+% 		\renewcommand{\finentrypunct}{}%
+% 		\usebibmacro{finentry}%
+% 	\endgroup%
+% }
+
+\DeclareBibliographyDriver{degree}{%
+\usebibmacro{bibindex}%
+\usebibmacro{begentry}%
+\vspace{-2em}
+	\begin{entrylist}
+	\entry
+	{\usebibmacro{yearrange}}
+	{\printfield{degree}}
+	{\printlist{institution}}
+	{
+		\chain{concentration}{\textit{\thefield{title}}}
+	}\\
+	\end{entrylist}
+	% \setunit{\addcomma\addspace}%
+	% \setunit{\addcomma\addspace}%
+	% \newblockpunct{\addperiod\addpar}%
+	% \iftoggle{cv@blx:education:title}{%
+	% 	\printfield{title}%
+	% 	\newblockpunct{\addpar}%
+	% }{}%
+	% \iftoggle{cv@blx:education:advisor}{%
+	% 	\usebibmacro{advisor}%
+	% 	\newblockpunct{\addpar}%
+	% }{}%
+	% \iftoggle{cv@blx:education:committee}{%
+	% 	\usebibmacro{committee}%
+	% 	\newblockpunct{\addpar}%
+	% }{}%
+	% \iftoggle{cv@blx:education:minor}{%
+	% 	\iflistundef{minor}{}{%
+	% 		\bibstring{minor}\addcolon\addspace%
+	% 		\printlist{minor}%
+	% 	}%
+	% 	\newblockpunct{\addpar}%
+	% 	\iflistundef{concentration}{}{%
+	% 		\bibstring{concentration}\addcolon\addspace%
+	% 		\printlist{concentration}%
+	% 	}%
+	% 	\newblockpunct{\addpar}%
+	% }{}%
+	% \iftoggle{cv@blx:education:gpa}{%
+	% 	\printfield{gpa}%
+	% 	\newblockpunct{\addpar}%
+	% }{}%
+	% \iftoggle{cv@blx:education:honors}{%
+	% 	\iflistundef{honors}{}{%
+	% 		\printlist{honors}%
+	% 	}
+	% 	\newblockpunct{\addpar}%
+	% }{}%
+	% \usebibmacro{doi+eprint+url}%
+	% \newunit\newblock%
+	% \usebibmacro{addendum+pubstate}%
+	% \newunit\newblock%
+	% \usebibmacro{bibliometrics}%
+	% \setunit{\bibpagerefpunct}\newblock%
+	% \usebibmacro{pageref}%
+	% \newunit\newblock%
+	% \iftoggle{bbx:related}{%
+	% 	\usebibmacro{related:init}%
+	% 	\usebibmacro{related}%
+	% }{}%
+
+
+	% \begingroup%
+	% 	\renewcommand{\finentrypunct}{}%
+	% 	\usebibmacro{finentry}%
+	% \endgroup%
+}
+
+% FUNDING
+\DeclareBibliographyDriver{funding}{%
+\usebibmacro{bibindex}%
+\usebibmacro{begentry}%
+\vspace{-2em}
+	\begin{entrylist}
+	\entry
+	{\printdate}
+	{\thefield{title}}
+	{\printfield{type}}
+	{
+		\chainit{funder}{
+		\chain{note}{\thefield{amount} \thefield{currency}}}
+	}\\
+	\end{entrylist}
+}
+
+% Software
+\newcommand{\vcenteredinclude}[2]{\begingroup
+\setbox0=\hbox{\includegraphics[#1]{#2}}%
+\parbox{\wd0}{\box0}\endgroup}
+\def\languagelogo#1{
+\iffieldequalstr{#1}{Julia}{\includegraphics[trim=0 1cm 0 -1cm, height=1.4em]{julia-logo-color.pdf}}{}
+\iffieldequalstr{#1}{MATLAB}{\raisebox{-1em}{\includegraphics[trim=0 1cm 0 -1cm, height=3em]{matlab-logo-color.png}}}{}
+}
+\DeclareBibliographyDriver{software}{%
+\usebibmacro{bibindex}%
+\usebibmacro{begentry}%
+\vspace{-2em}
+	\begin{entrylist}
+	\entry
+	{\languagelogo{eprint}}
+	{\thefield{title}}
+	{\printlist{publisher}}
+	{
+		\printfield{abstract}
+	}\\
+	\end{entrylist}
+}
+
+% \DeclareBibliographyDriver{funding}{%
+% 	\usebibmacro{bibindex}%
+% 	\usebibmacro{begentry}%
+% 	\usebibmacro{yearrange}%
+% 	\setunit{\addspace}%
+% 	\usebibmacro{duration+amount+status}%
+% 	\setunit{\addcolon\addspace}%
+% 	\printfield{funder}%
+% 	\setunit{\addcomma\addspace}%
+% 	\printfield{type}%
+% 	\setunit{\addspace}%
+% 	\printfield[parens]{number}%
+% 	\newunit\newblock%
+% 	\usebibmacro{title}%
+% 	\newunit\newblock%
+% 	\usebibmacro{doi+eprint+url}%
+% 	\newunit\newblock%
+% 	\usebibmacro{addendum+pubstate}%
+% 	\newunit\newblock%
+% 	\usebibmacro{bibliometrics}%
+% 	\setunit{\bibpagerefpunct}\newblock%
+% 	\usebibmacro{pageref}%
+% 	\newunit\newblock%
+% 	\iftoggle{bbx:related}{%
+% 		\usebibmacro{related:init}%
+% 		\usebibmacro{related}%
+% 	}{}%
+% 	\usebibmacro{finentry}%
+% }
+
+\DeclareBibliographyDriver{presentation}{%
+\usebibmacro{bibindex}%
+\usebibmacro{begentry}%
+\vspace{-2em}
+	\begin{entrylist}
+	\entry
+	{\printdate}
+	{\printlist{institution}}
+	{\printfield{presentationtype}}
+	{
+		\chainit{title}{\thefield{note}}
+	}\\
+	\end{entrylist}
+}
+
+% STUDENT
+% \DeclareBibliographyDriver{student}{%
+% 	\usebibmacro{bibindex}%
+% 	\usebibmacro{begentry}%
+% 	\printnames{name}%
+% 	\setunit{\addcomma\addspace}%
+% 	\iftoggle{cv@blx:student:type}{%
+% 		\printfield{entrysubtype}%
+% 		\setunit{\addcomma\addspace}%
+% 	}{}%
+% 	\usebibmacro{yearrange}%
+% 	\setunit{\addcomma\addspace}%
+% 	\iftoggle{cv@blx:student:department}{%
+% 		\printfield{department}%
+% 		\setunit{\addcomma\addspace}%
+% 	}{}%
+% 	\iftoggle{cv@blx:student:institution}{%
+% 		\printlist{institution}%
+% 		\setunit{\addcomma\addspace}%
+% 	}{}%
+% 	\iftoggle{cv@blx:student:location}{%
+% 		\printlist{location}%
+% 		\setunit{\addcomma\addspace}%
+% 	}{}%
+% 	\newunit\newblock%
+% 	\usebibmacro{role}%
+% 	\newunit\newblock%
+% 	\usebibmacro{doi+eprint+url}%
+% 	\newunit\newblock%
+% 	\usebibmacro{addendum+pubstate}%
+% 	\newunit\newblock%
+% 	\usebibmacro{bibliometrics}%
+% 	\setunit{\bibpagerefpunct}\newblock%
+% 	\usebibmacro{pageref}%
+% 	\newunit\newblock%
+% 	\iftoggle{bbx:related}{%
+% 		\usebibmacro{related:init}%
+% 		\usebibmacro{related}%
+% 	}{}%
+% 	\usebibmacro{finentry}%
+% }
+
+% TEACHING
+% \DeclareBibliographyDriver{teaching}{%
+% 	\usebibmacro{bibindex}%
+% 	\usebibmacro{begentry}%
+% 	\printfield{title}%
+% 	\setunit{\addspace}%
+% 	\printfield[parens]{number}%
+% 	\setunit{\addcomma\addspace}%
+% 	\iftoggle{cv@blx:teaching:department}{%
+% 		\printfield{department}%
+% 		\setunit{\addcomma\addspace}%
+% 	}{}%
+% 	\iftoggle{cv@blx:teaching:institution}{%
+% 		\printlist{institution}%
+% 		\setunit{\addcomma\addspace}%
+% 	}{}%
+% 	\iftoggle{cv@blx:teaching:location}{%
+% 		\printlist{location}%
+% 		\setunit{\addcomma\addspace}%
+% 	}{}%
+% 	\newunit\newblock%
+% 	\usebibmacro{doi+eprint+url}%
+% 	\newunit\newblock%
+% 	\usebibmacro{addendum+pubstate}%
+% 	\newunit\newblock%
+% 	\usebibmacro{bibliometrics}%
+% 	\setunit{\bibpagerefpunct}\newblock%
+% 	\usebibmacro{pageref}%
+% 	\newunit\newblock%
+% 	% \iftoggle{cv@blx:verbose:teaching}{%
+% 	% 	\usebibmacro{classes}%
+% 	% }{%
+% 		\setunit{\adddot\addspace}\newblock%
+% 		\usebibmacro{class}%
+% 	% }%
+% 	\iftoggle{bbx:related}{%
+% 		\usebibmacro{related:init}%
+% 		\usebibmacro{related}%
+% 	}{}%
+% 	\usebibmacro{finentry}%
+% }
+
+% Define new field formats
+
+% Allow key datatypes to access localization strings
+% \DeclareFieldFormat{key}{\ifbibstring{#1}{\bibstring{#1}}{#1}}
+% \DeclareFieldFormat{role}{\ifbibstring{#1}{\bibstring{#1}}{#1}}
+% \DeclareFieldFormat{status}{\ifbibstring{#1}{\bibstring{#1}}{#1}}
+
+% \DeclareFieldFormat[committee]{title}{#1}
+
+% \DeclareFieldFormat[degree]{degree}{#1\isdot}
+% \DeclareFieldFormat[degree]{title}{\bibstring{title}\addcolon\addspace#1}
+% \DeclareFieldFormat[school, degree]{gpa}{\bibstring{gpa}\addcolon\addspace#1}
+
+% \DeclareFieldFormat[funding]{amount}{\printfield{currency}#1}
+
+% \DeclareFieldFormat[teaching]{title}{#1}
+
+% \DeclareFieldFormat[student]{entrysubtype}{\ifbibstring{#1}{\bibstring{#1}}{#1}}
+
+% \DeclareFieldFormat[course]{related}{\mkbibparens{#1}}
+
+% % The date label from the authoryear style includes "no date" which is not needed in a CV
+% \DeclareLabeldate{%
+% 	\field{date}
+% 	\field{year}
+% 	\field{eventdate}
+% 	\field{origdate}
+% 	\field{urldate}
+% }
+
+% % Redefine ydnt sorting to sort by endyear. Taken from biblatex.def
+% \DeclareSortingTemplate{ydnt}{
+% 	\sort{
+% 		\field{presort}
+% 	}
+% 	\sort[final]{
+% 		\field{sortkey}
+% 	}
+% 	\sort[final, direction=descending]{
+% 		\field{sortyear}
+% 		\field[padwidth = 4, padchar = 9]{endyear}
+% 	}
+% 	\sort[direction=descending]{
+% 		\field{sortyear}
+% 		\field{year}
+% 		\literal{9999}
+% 	}
+% 	\sort{
+% 		\field{sortname}
+% 		\field{author}
+% 		\field{editor}
+% 		\field{translator}
+% 		\field{sorttitle}
+% 		\field{title}
+% 	}
+% 	\sort{
+% 		\field{sorttitle}
+% 		\field{title}
+% 	}
+% }

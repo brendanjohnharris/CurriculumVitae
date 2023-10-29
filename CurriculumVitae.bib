@@ -201,17 +201,9 @@
   Role                     = {},
 }
 
-@School{School:Degree,
-  Date                     = {2010-23/2019-21},
-  Institution              = {My Institution},
-  Location                 = {My City},
-  GPA                      = {3.5},
-  Honors                   = {Institution Honors},
-  DegreeList               = {Degree:MS, Degree:PhD},
-}
 
 @Degree{Degree:PhD,
-  Date                     = {2019-21},
+  Date                     = {2010/2019-21},
   Department               = {My PhD Department},
   Degree                   = {PhD},
   GPA                      = {4.0},
@@ -220,7 +212,6 @@
   Advisor                  = {Jones, Alice},
   Committee                = {Jones, Alice and Smith, Bob},
   Title                    = {My PhD Title},
-  crossref                 = {School:Degree},
 }
 
 @Degree{Degree:MS,
@@ -231,7 +222,6 @@
   Advisor                  = {Smith, Bob},
   Committee                = {Jones, Alice and Smith, Bob},
   Title                    = {My MS Title},
-  crossref                 = {School:Degree},
 }
 
 @School{School:NoDegree,

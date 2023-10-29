@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Check if the bibliography file exists at the specified path
+if [ ! -f "/home/brendan/Notebook/Papers/theBibliography.bib" ]; then
+    echo "Bibliography file not found. Exiting."
+    exit 1
+fi
+
+# Copy the bibliography file to the current directory
+cp "/home/brendan/Notebook/Papers/theBibliography.bib" "./theBibliography.bib"
+
+# Filter biblatex entries based on the 'group' field, replace 'journaltitle' with 'journal', and remove 'eprint' and 'language'
+awk -v group="$1" '
+BEGIN { print_entry=0; }
+{
+    if ($0 ~ /^@/) {
+        if (print_entry == 1) {
+            print entry;
+        }
+        print_entry=0;
+        entry=$0"\n";
+    } else {
+        if ($0 ~ /language\s*=\s*{[^}]*}/) {
+            next;
+        }
+        entry=entry$0"\n";
+        if ($0 ~ /groups\s*=\s*{[^}]*}/) {
+            split($0, arr, "{|}");
+            split(arr[2], groups, ", ");
+            for (i in groups) {
+                if (groups[i] == group) {
+                    print_entry=1;
+                    break;
+                }
+            }
+        }
+        if ($0 ~ /journaltitle\s*=\s*{[^}]*}/) {
+            sub(/journaltitle/, "journal", $0);
+            entry=entry$0"\n";
+        }
+    }
+}
+END {
+    if (print_entry == 1) {
+        print entry;
+    }
+}' "./theBibliography.bib" > "./filtered_theBibliography.bib"
+
+# Replace the original file with the filtered file
+mv "./filtered_theBibliography.bib" "./theBibliography.bib"
+
+echo "Bibliography file processed."

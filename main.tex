@@ -1,10 +1,11 @@
 \documentclass[10pt]{developercv}
 \usepackage{multicol}
+\graphicspath{{./logos/}}
 \setlength{\columnsep}{0mm}
 \usepackage{lipsum}  
 \usepackage{biblatex-cv}
-\highlightname{Harris}{Harris}{}{}
-\addbibresource{./CurriculumVitae.bib}
+\input{curriculumvitae.bbx}
+\addbibresource{./theBibliography.bib}
 
 % ---------------------------------------------------------------------------- %
 %                                  Major fields                                %
@@ -18,9 +19,8 @@
 \def\phone{+61 466956165}
 \def\twitter{@brendanjharris}
 \def\github{brendanjohnharris}
-\def\software{...}
-\def\hardware{...}
-
+\def\software{Julia, Matlab, Python, \LaTeX, Shell scripts, CAD, COMSOL, C/C++, Javascript, HTML/CSS, Illustrator/Inkscape}
+\def\hardware{EEG headsets, oscilloscopes, RF signal generators, microcontrollers/FPGA, digital sensors, electronics breadboarding, optical assembly}
 
 %----------------------------------------------------------------------------------------
 %	TITLE AND CONTACT INFORMATION
@@ -123,82 +123,60 @@
 \end{entrylist}
 
 %----------------------------------------------------------------------------------------
-%	EDUCATION
+%	Education
 %----------------------------------------------------------------------------------------
-\vspace{-10 pt}
+\vspace{-2em}
 \cvsect{Education}
-\begin{entrylist}
-    \entry
-		{3/2023 - x/2023}
-		{\lipsum[1][1] }
-		{School}
-		{Enrolled, part time program for development}
-    \entry
-		{x/2023 - x/2023}
-		{Professional Certificate}
-		{School}
-		{\lipsum[1][1]}
-	\entry
-		{x/2023 - x/2023}
-		{Certificate}
-		{School}
-		{\lipsum[1][2]}
-	\entry
-		{x/2023 - x/2023}
-		{Engineer}
-		{School}
-		{\lipsum[1][2]}
-\end{entrylist}
-
-\printbibliography[env = unnumbered, resetnumbers =
- true, check = Teaching]
+\printbibliography[env = unnumbered, resetnumbers = true, check = Education]
 
 %----------------------------------------------------------------------------------------
-%	EXPERIENCE
+%	Presentations
 %----------------------------------------------------------------------------------------
-\vspace{-10 pt}
-\cvsect{Experience}
-\begin{entrylist}
-	\entry
-        {x/2023 -- x/2023}
-		{\lipsum[1][1]}
-		{Company}
-		{\vspace{-10pt}
-        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=-1pt]
-            \item \lipsum[1][1-2]
-            \item \lipsum[1][3-4]
-        \end{itemize} 
-        \texttt{SQL} \slashsep \texttt{Excel}}
-	\entry
-		{x/2023 -- x/2023}
-		{\lipsum[1][1]}
-		{Company}
-		{\vspace{-10pt}
-        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=-1pt]
-            \item \lipsum[1][1-2]
-            \item \lipsum[1][3-4]
-        \end{itemize} 
-        \texttt{SQL} \slashsep \texttt{Excel}}
-	\entry
-		{x/2023 -- x/2023 \\\footnotesize{scholarship holder}}
-		{\lipsum[1][1]}
-		{Company}
-		{\vspace{-10pt}
-        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=-1pt]
-            \item \lipsum[1][1-2]
-            \item \lipsum[1][3-4]
-        \end{itemize} 
-        \texttt{SQL} \slashsep \texttt{Excel}}
-\end{entrylist}
+% ! Add links where possible
+\vspace{-2em}
+\cvsect{Conferences, workshops, and talks}
+\printbibliography[env = unnumbered, resetnumbers = true, check = Presentation]
+
 
 %----------------------------------------------------------------------------------------
-%	LANGUAGES
+%	Awards
 %----------------------------------------------------------------------------------------
-\vspace{-10 pt}
-	\cvsect{Languages}
-    \vspace{-6pt}
+\vspace{-3 em}
+\cvsect{Awards}
+\printbibliography[env = unnumbered, resetnumbers = true, keyword = Award]
+
+%----------------------------------------------------------------------------------------
+%	Research experience
+%----------------------------------------------------------------------------------------
+\vspace{-3 em}
+\cvsect{Research experience}
+\printbibliography[env = unnumbered, resetnumbers = true, keyword = Research]
+
+%----------------------------------------------------------------------------------------
+%	Industry experience
+%----------------------------------------------------------------------------------------
+\vspace{-3 em}
+\cvsect{Industry experience}
+\printbibliography[env = unnumbered, resetnumbers = true, keyword = Industry]
+
+
+%----------------------------------------------------------------------------------------
+%	Software packages
+%----------------------------------------------------------------------------------------
+\vspace{-3 em}
+\cvsect{Software packages}
+\printbibliography[env = unnumbered, resetnumbers = true, type = software]
+
+
+
+% %----------------------------------------------------------------------------------------
+% %	LANGUAGES
+% %----------------------------------------------------------------------------------------
+% \vspace{-10 pt}
+% 	\cvsect{Languages}
+%     \vspace{-6pt}
     
-    \hspace{26mm} \textbf{English} - B2+, \textbf{ Spanish} - native
+%     \hspace{26mm} \textbf{English} - B2+, \textbf{ Spanish} - native
 
 %----------------------------------------------------------------------------------------
 
