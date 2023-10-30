@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Developer CV
+% CurriculumVitae
 % LaTeX Class
 % Version 2.0 (12/10/23)
 %
@@ -7,7 +7,8 @@
 % http://www.LaTeXTemplates.com
 %
 % Authors:
-% Omar Roldan
+% Brendan Harris
+% Based on a template by Omar Roldan
 % Based on a template by  Jan Vorisek (jan@vorisek.me)
 % Based on a template by Jan Küster (info@jankuester.com)
 % Modified for LaTeX Templates by Vel (vel@LaTeXTemplates.com)
@@ -22,7 +23,7 @@
 %----------------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{developercv}[2023/10/12 Developer CV class v2.0]
+\ProvidesClass{developercv}[2023/10/12 CurriculumVitae class v2.0]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{extarticle}} % Pass through any options to the base class
 \ProcessOptions\relax % Process given options

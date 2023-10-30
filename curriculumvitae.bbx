@@ -420,9 +420,6 @@
 }
 
 % Software
-\newcommand{\vcenteredinclude}[2]{\begingroup
-\setbox0=\hbox{\includegraphics[#1]{#2}}%
-\parbox{\wd0}{\box0}\endgroup}
 \def\languagelogo#1{
 \iffieldequalstr{#1}{Julia}{\includegraphics[trim=0 1cm 0 -1cm, height=1.4em]{julia-logo-color.pdf}}{}
 \iffieldequalstr{#1}{MATLAB}{\raisebox{-1em}{\includegraphics[trim=0 1cm 0 -1cm, height=3em]{matlab-logo-color.png}}}{}
@@ -435,7 +432,7 @@
 	\entry
 	{\languagelogo{eprint}}
 	{\thefield{title}}
-	{\printlist{publisher}}
+	{\textcolor{blue}{\href{\thefield{url}}{\printlist{publisher}}}}
 	{
 		\printfield{abstract}
 	}\\

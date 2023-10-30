@@ -1,9 +1,10 @@
-\documentclass[10pt]{developercv}
+\documentclass[10pt]{curriculumvitae}
 \usepackage{multicol}
 \graphicspath{{./logos/}}
 \setlength{\columnsep}{0mm}
 \usepackage{lipsum}  
 \usepackage{biblatex-cv}
+\usepackage{xcolor}
 \input{curriculumvitae.bbx}
 \addbibresource{./theBibliography.bib}
 
@@ -12,7 +13,7 @@
 % ---------------------------------------------------------------------------- %
 \def\me{Brendan Harris}
 \highlightname{Harris}{Brendan}{}{}
-\def\job{PhD student}
+\def\job{PhD Student}
 \def\email{bhar9988@uni.sydney.edu.au}
 \def\website{brendanjohnharris.github.io}
 \def\location{Sydney, Australia}
@@ -92,40 +93,8 @@
 \end{minipage}
 
 %----------------------------------------------------------------------------------------
-%	Projects
-%----------------------------------------------------------------------------------------
-\cvsect{Projects}
-\begin{entrylist}
-    \entry
-		{Technology}
-		{My project 1}
-		{github.com link}
-		{%Dummy text 
-        \lipsum[1][1-3]}
-    \entry
-		{Technology}
-		{My project 2}
-		{github.com link}
-		{%Dummy text 
-        \lipsum[1][1-3]}
-	\entry
-		{Technology}
-		{My project 3}
-		{github.com link}
-		{%Dummy text 
-        \lipsum[1][1-3]}
-    \entry
-		{Technology}
-		{My project 4}
-		{github.com link}
-		{%Dummy text 
-        \lipsum[1][1-3]}
-\end{entrylist}
-
-%----------------------------------------------------------------------------------------
 %	Education
 %----------------------------------------------------------------------------------------
-\vspace{-2em}
 \cvsect{Education}
 \printbibliography[env = unnumbered, resetnumbers = true, check = Education]
 
@@ -148,17 +117,16 @@
 %----------------------------------------------------------------------------------------
 %	Research experience
 %----------------------------------------------------------------------------------------
-\vspace{-3 em}
-\cvsect{Research experience}
-\printbibliography[env = unnumbered, resetnumbers = true, keyword = Research]
+% \vspace{-3 em}
+% \cvsect{Research experience}
+% \printbibliography[env = unnumbered, resetnumbers = true, keyword = Research]
 
 %----------------------------------------------------------------------------------------
 %	Industry experience
 %----------------------------------------------------------------------------------------
-\vspace{-3 em}
-\cvsect{Industry experience}
-\printbibliography[env = unnumbered, resetnumbers = true, keyword = Industry]
-
+% \vspace{-3 em}
+% \cvsect{Industry experience}
+% \printbibliography[env = unnumbered, resetnumbers = true, keyword = Industry]
 
 %----------------------------------------------------------------------------------------
 %	Software packages
