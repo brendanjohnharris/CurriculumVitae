@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CurriculumVitae
 % LaTeX Class
 % Version 2.0 (12/10/23)
@@ -23,7 +23,7 @@
 %----------------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{developercv}[2023/10/12 CurriculumVitae class v2.0]
+\ProvidesClass{curriculumvitae}[2023/10/12 CurriculumVitae class v2.0]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{extarticle}} % Pass through any options to the base class
 \ProcessOptions\relax % Process given options
@@ -132,11 +132,14 @@
 	\parbox[t]{0.15\textwidth}{% 17.5% of the text width of the page
 	   \small #1 % Leftmost entry date(s) text
 	}%
-	&\parbox[t]{0.85\textwidth}{% 82.5% of the text width of the page
+	&\parbox[t]{0.65\textwidth}{% 82.5% of the text width of the page
 		\textbf{#2}% Entry heading text
-		\hfill% Horizontal whitespace
-		{\footnotesize \textbf{\textcolor{black}{#3}}}\\% Right-aligned entry qualifier text
+		\hfill\\% Horizontal whitespace
 		#4 % Entry description text
+	}%
+	\parbox[t]{0.2\textwidth}{%
+	\hfill% Horizontal whitespace
+	{\footnotesize \textbf{\textcolor{black}{#3}}}\\% Right-aligned entry qualifier text
 	}\\\\}
 
 % Command to output a separator slash between lists, e.g. '  /  '

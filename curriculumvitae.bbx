@@ -1,7 +1,17 @@
-% \ProvidesFile{curriculumvitae.bbx}[v0.01 curriculumvitae bibliography style]
+\togglefalse{cv@blx:delete:author}
+\togglefalse{cv@blx:delete:presenter}
 
-\def\chain#1#2{{\thefield{#1}\iffieldundef{#1}{#2}{\\#2}}}
-\def\chainit#1#2{{\textit{\thefield{#1}}\iffieldundef{#1}{#2}{\\#2}}}
+% \ProvidesFile{curriculumvitae.bbx}[v0.01 curriculumvitae bibliography style]
+\def\OA{\includegraphics[trim=0 4.7cm 0 0cm, height=1.1em]{open-access-logo-color.pdf}}
+\def\logo#1{%
+\iffieldequalstr{#1}{Julia}{\includegraphics[trim=0 1cm 0 -1cm, height=1.2em]{julia-logo-color.pdf}}{}
+\iffieldequalstr{#1}{MATLAB}{\raisebox{-1em}{\includegraphics[trim=0 1cm 0 -1cm, height=2.6em]{matlab-logo-color.png}}}{}
+}
+
+\def\chain#1#2{{\thefield{#1}\iffieldundef{#1}{#2}{}}}
+\def\chainit#1#2{{\textit{\thefield{#1}}\iffieldundef{#1}{#2}{%
+	\ifthenelse{\equal{#2}{}}{}{\\#2}
+}}}
 
 % Define new bibmacros
 % \newbibmacro{advisor}{%
@@ -15,6 +25,30 @@
 % 		\printnames[given-family]{advisor}%
 % 	}%
 % }
+
+\DeclareSortingScheme{nmy}{%
+  \sort{%
+    \field{presort}
+  }
+  \sort[final]{%
+    \field{sortkey}
+  }
+  \sort[direction=descending]{%
+    \field{sortyear}
+    \field{year}
+  }
+  \sort[direction=descending]{%
+    \field{month}
+  }
+  \sort{%
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+}
 
 \renewbibmacro{bibliometrics}{%
 	\ifboolexpr{%
@@ -123,7 +157,7 @@
 
 % \newbibmacro{duration+amount+status}{%
 % 	\cv@blx@calculate@months%
-% 	\ifboolexpr{
+% 	\ifboolexpr{%
 % 		test {\iffieldundef{amount}} and
 % 		test {\ifundef{\cv@blx@months}} and
 % 		(
@@ -190,7 +224,7 @@
 % }
 
 % \renewbibmacro{type+presenter}{%
-% 	\ifboolexpr{
+% 	\ifboolexpr{%
 % 		(
 % 			test {\iftoggle{cv@blx:presentation:type}} and
 % 			(
@@ -205,7 +239,7 @@
 % 		)
 % 	}{%
 % 		% \printtext[brackets]{%
-% 			\ifboolexpr{
+% 			\ifboolexpr{%
 % 				test {\iftoggle{cv@blx:presentation:type}} and
 % 				(
 % 					test {\iffieldequalstr{presentationtype}{keynote}} or
@@ -227,21 +261,38 @@
 % 	}{}%
 % }
 
-\renewbibmacro{yearrange}{%
-	\printfield{year}%
-	\ifboolexpr{%
-		test {\iffieldundef{endyear}} or%
-		test {\iffieldsequal{year}{endyear}}%
-	}{}{\ \bibrangedash\ \printfield{endyear}}%
+\newcommand{\NumToMonth}[1]{%
+  \ifcase#1 % case 0, which should not occur
+  \or Jan.% 1
+  \or Feb.% 2
+  \or Mar.% 3
+  \or Apr.% 4
+  \or May % 5
+  \or Jun.% 6
+  \or Jul.% 7
+  \or Aug.% 8
+  \or Sep.% 9
+  \or Oct.% 10
+  \or Nov.% 11
+  \or Dec.% 12
+  \else Invalid% other input
+  \fi
 }
 
-\renewbibmacro{yearrange+dash}{%
-	\printfield{year}%
-	\iffieldundef{endyear}{%
-		\bibrangedash%
-	}{%
-		\iffieldsequal{year}{endyear}{}{\bibrangedash\printfield{endyear}}%
-	}%
+\renewbibmacro{yearrange}{%
+	\iffieldsequal{year}{endyear}{%
+		\iffieldundef{month}{}{\NumToMonth{\thefield{month}}}
+		\iffieldundef{endmonth}{%
+			\printfield{year}%
+		}{\bibrangedash\ \iffieldundef{endmonth}{}{\NumToMonth{\thefield{endmonth}}\ }\printfield{year}}
+	}
+	{%
+		\iffieldundef{month}{}{\NumToMonth{\thefield{month}}\ }\printfield{year}%
+		\ifboolexpr{%
+			test {\iffieldundef{endyear}} or%
+			test {\iffieldsequal{year}{endyear}}%
+		}{}{\ \bibrangedash\ \iffieldundef{endmonth}{}{\\\NumToMonth{\thefield{endmonth}}\ }\printfield{endyear}}%
+	}
 }
 
 % The biblatex-cv style allows for custom entry types that do not have bibliography drivers defined in standard.bbx.
@@ -332,6 +383,51 @@
 % 	\endgroup%
 % }
 
+% ? Articles
+\DeclareBibliographyDriver{article}{%
+\usebibmacro{bibindex}%
+\usebibmacro{begentry}%
+\vspace{-2em}
+\begin{entrylist}
+	\entry
+	{\usebibmacro{yearrange}}
+	{\thefield{title}
+		\iffieldundef{url}{}{\quad \href{\thefield{url}}{\OA}}
+		\iffieldundef{note}{}{\ \href{\thefield{note}}{\large \faicon{github}}}
+	}
+	{\begin{minipage}[t]{0.15\textwidth}
+		\iffieldundef{doi}{\thefield{journaltitle}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\thefield{journaltitle}}}}
+		\iffieldundef{journaltitle}{}{\\\bibstring{volume}\ \thefield{volume}, \bibstring{number} \thefield{number}}
+	\end{minipage}
+	}
+	{\textit{\printnames{author}}
+	}\\
+	\end{entrylist}
+}
+
+% ? Abstracts
+\DeclareBibliographyDriver{inproceedings}{%
+\usebibmacro{bibindex}%
+\usebibmacro{begentry}%
+\vspace{-2em}
+\begin{entrylist}
+	\entry
+	{\usebibmacro{yearrange}}
+	{\thefield{booktitle}
+		\iffieldundef{journaltitle}{}{\\\bibstring{volume}\ \thefield{volume}, \bibstring{number} \thefield{number}}
+		\iffieldundef{url}{}{\quad \href{\thefield{url}}{\OA}}
+		% \iffieldundef{note}{}{\ \href{\thefield{note}}{\large \faicon{github}}}
+	}
+	{\iffieldundef{doi}{\thefield{note}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\thefield{note}}}} % The type of paper
+	}{%
+	\iffieldundef{pages}{}{\thefield{pages}:\ }\chainit{title}{\printnames{author}}
+	}\\
+	\end{entrylist}
+}
+
+
+
+
 \DeclareBibliographyDriver{degree}{%
 \usebibmacro{bibindex}%
 \usebibmacro{begentry}%
@@ -341,7 +437,7 @@
 	{\usebibmacro{yearrange}}
 	{\printfield{degree}}
 	{\printlist{institution}}
-	{
+	{%
 		\chain{concentration}{\textit{\thefield{title}}}
 	}\\
 	\end{entrylist}
@@ -408,21 +504,75 @@
 \usebibmacro{begentry}%
 \vspace{-2em}
 	\begin{entrylist}
-	\entry
-	{\printdate}
-	{\thefield{title}}
-	{\printfield{type}}
-	{
-		\chainit{funder}{
-		\chain{note}{\thefield{amount} \thefield{currency}}}
-	}\\
+		% ? Awards
+		\IfSubStr{\thefield{keywords}}{Award}{%
+			\entry
+			{\usebibmacro{yearrange}}
+			{\thefield{title}}
+			{\printfield{type}}
+			{%
+				\chainit{funder}{\thefield{note}}%{\thefield{amount}\thefield{currency}}}
+			}
+		}
+
+		% ? Research projects
+		\IfSubStr{\thefield{keywords}}{Research}{%
+			\entry
+			{\usebibmacro{yearrange}}
+			{\thefield{title}
+			\iffieldundef{eprint}{}{\quad \href{\thefield{eprint}}{\OA}}
+			\iffieldundef{doi}{}{\quad \href{https://doi.org/\thefield{doi}}{\OA}}
+			\iffieldundef{url}{}{\ \href{\thefield{url}}{\large \faicon{github}}
+			}}
+			{\printfield{role}}
+			{%
+				\chainit{funder}{%
+				\iffieldundef{amount}{\thefield{note}}{
+				\chain{note}{\\\thefield{amount} \thefield{currency}}}
+				}
+			}
+		}
+
+		% ? Industry projects
+		\IfSubStr{\thefield{keywords}}{Industry}{%
+			\entry
+			{\usebibmacro{yearrange}}
+			{\thefield{title}
+			\iffieldundef{crossref}{}{\quad \href{\thefield{url}}{\OA}}
+			\iffieldundef{eprint}{}{\ \href{\thefield{eprint}}{\large \faicon{github}}}
+			}
+			{\printfield{role}}
+			{%
+				\chainit{funder}{%
+				\chain{note}{\\\thefield{amount} \thefield{currency}}}
+			}
+		}
+
+		% ? Teaching
+		\IfSubStr{\thefield{keywords}}{Teaching}{%
+			\entry
+			{\usebibmacro{yearrange}}
+			{\thefield{title}
+			\iffieldundef{crossref}{}{\quad \href{\thefield{url}}{\OA}}
+			\iffieldundef{eprint}{}{\ \href{\thefield{eprint}}{\large \faicon{github}}}
+			}
+			{\printfield{type}}
+			{%
+				\chainit{funder}{\thefield{note}}
+			}
+		}
+	~\\
 	\end{entrylist}
 }
 
 % Software
-\def\languagelogo#1{
-\iffieldequalstr{#1}{Julia}{\includegraphics[trim=0 1cm 0 -1cm, height=1.2em]{julia-logo-color.pdf}}{}
-\iffieldequalstr{#1}{MATLAB}{\raisebox{-1em}{\includegraphics[trim=0 1cm 0 -1cm, height=2.6em]{matlab-logo-color.png}}}{}
+\def\githubstars#1{%
+	% \newcommand{\stargazers}{}
+	% \stargazers{}
+	\def\stars{\input{|curl \-\-silent https://api.github.com/repos/\thefield{title} -H 'Accept: application/vnd.github.preview' | jq '.stargazers_count'}}
+	\IfInteger{\string \stars}{%
+		~\\{\tiny \faicon{star}\ \ }{\stars}
+	}{}
 }
 \DeclareBibliographyDriver{software}{%
 \usebibmacro{bibindex}%
@@ -430,10 +580,18 @@
 \vspace{-2em}
 	\begin{entrylist}
 	\entry
-	{\languagelogo{eprint}}
-	{\thefield{title}}
-	{\textcolor{blue}{\href{\thefield{url}}{\printlist{publisher}}}}
-	{
+	{\logo{eprint}}
+	{%
+		\thefield{title}
+		\iffieldundef{url}{}{\quad \href{\thefield{url}}{\large \faicon{github}}}
+	}
+	{\begin{minipage}{0.1\textwidth}
+		\begin{flushright}
+			\printlist{publisher}
+			\githubstars{\thefield{title}}
+		\end{flushright}
+	\end{minipage}}
+	{%
 		\printfield{abstract}
 	}\\
 	\end{entrylist}
@@ -475,10 +633,12 @@
 \vspace{-2em}
 	\begin{entrylist}
 	\entry
-	{\printdate}
-	{\printlist{institution}}
-	{\printfield{presentationtype}}
-	{
+	{\usebibmacro{yearrange}}
+	{\printlist{institution} 
+		\iffieldundef{url}{}{\quad \href{\thefield{url}}{\OA}}
+	}
+	{\iffieldundef{doi}{\printfield{presentationtype}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\printfield{presentationtype}}}}}
+	{%
 		\chainit{title}{\thefield{note}}
 	}\\
 	\end{entrylist}
@@ -599,23 +759,23 @@
 % }
 
 % % Redefine ydnt sorting to sort by endyear. Taken from biblatex.def
-% \DeclareSortingTemplate{ydnt}{
-% 	\sort{
+% \DeclareSortingTemplate{ydnt}{%
+% 	\sort{%
 % 		\field{presort}
 % 	}
-% 	\sort[final]{
+% 	\sort[final]{%
 % 		\field{sortkey}
 % 	}
-% 	\sort[final, direction=descending]{
+% 	\sort[final, direction=descending]{%
 % 		\field{sortyear}
 % 		\field[padwidth = 4, padchar = 9]{endyear}
 % 	}
-% 	\sort[direction=descending]{
+% 	\sort[direction=descending]{%
 % 		\field{sortyear}
 % 		\field{year}
 % 		\literal{9999}
 % 	}
-% 	\sort{
+% 	\sort{%
 % 		\field{sortname}
 % 		\field{author}
 % 		\field{editor}
@@ -623,7 +783,7 @@
 % 		\field{sorttitle}
 % 		\field{title}
 % 	}
-% 	\sort{
+% 	\sort{%
 % 		\field{sorttitle}
 % 		\field{title}
 % 	}

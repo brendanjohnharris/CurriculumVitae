@@ -1,46 +1,137 @@
-@Software{Harris2023a,
+@Funding{Harris2018b,
+  author           = {Brendan Harris},
+  date             = {2018-08/2021-08},
+  funder           = {Dr. Ben Fulcher, Complex Systems Group, The University of Sydney},
+  note             = {Searched for time-series features that best predict the distance to criticality in noisy dynamical systems; this involved numerical simulation and time-series analysis (hctsa) in Matlab and with the School of Physics HPC cluster.},
+  role             = {Undergraduate project},
+  title            = {Tracking the distance to criticality in systems with unknown noise},
+  creationdate     = {2023-10-31T11:55:00},
+  doi              = {10.48550/arXiv.2310.14791},
+  groups           = {CurriculumVitae},
+  keywords         = {Research},
+  modificationdate = {2023-11-05T19:29:38},
+  url              = {https://github.com/brendanjohnharris/Criticality},
+}
+
+
+@InProceedings{Jain2020,
+  author           = {Jain, Deepak and George, Mark and Harris, Brendan and Fleming, Simon},
+  booktitle        = {Frontiers in {Optics} / {Laser} {Science} (2020)},
+  title            = {Approximate normalized frequency ({V}-parameter) and modal cut-off wavelengths of {M}-type optical fibers},
+  note             = {Oral presentation},
+  pages            = {FM4D.2},
+  publisher        = {Optical Society of America},
+  abstract         = {We report an easy-to-calculate approximate expression for predicting the modal cut-off wavelengths of M-type fibers, for the first time. This will accelerate the potential of the M-type fibers for novel applications.},
+  copyright        = {© 2020 The Author(s)},
+  date             = {2020-09},
+  doi              = {10.1364/FIO.2020.FM4D.2},
+  file             = {:NoSync/Jain2020.pdf:PDF},
+  groups           = {Mine, CurriculumVitae},
+  keywords         = {Effective refractive index, High power fiber lasers, Optical fibers, Photonic crystal fibers, Refractive index, Step index fibers},
+  modificationdate = {2023-11-01T12:56:18},
+  urldate          = {2021-11-21},
+}
+
+
+@Article{Jain2021,
+  author           = {Jain, Deepak and George, Mark A and Harris, Brendan and Fleming, Simon},
+  journaltitle     = {Journal of Lightwave Technology},
+  journal     = {Journal of Lightwave Technology},
+  title            = {Approximate {Modal} {Cut}-{Off} {Wavelengths} and the {V}-{Parameter} for {M}-type {Optical} {Fibers} and {Its} {Novel} {Applications}},
+  issn             = {1558-2213},
+  number           = {13},
+  pages            = {4478--4488},
+  volume           = {39},
+  abstract         = {We develop an intuitive understanding for the various properties and guiding mechanism of M-type fibers. We also report the approximate expression for the V-parameter (normalized frequency) to predict the modal-cutoffs for the M-type fibers, for the first time. This work demonstrates the potential of the M-type fibers for novel applications such as tailoring the transmission spectrum of photonic bandgap fibers, bend-induced effective area reduction for non-linear applications, and all-fiberized filters.},
+  date             = {2021-07},
+  doi              = {10.1109/JLT.2021.3072504},
+  groups           = {Mine, CurriculumVitae},
+  keywords         = {Optical fiber dispersion, Refractive index, Optical fibers, Optical fiber communication, Indexes, Depression, Electric fields, Depressed-core fiber, design and numerical modelling, hybrid fiber and m-type fiber, specialty optical fibers},
+  modificationdate = {2023-10-31T18:41:50},
+}
+
+
+@InProceedings{Harris2022,
+  author           = {Brendan Harris and Ben Fulcher},
+  booktitle        = {28th Annual Meeting of the Organization for Human Brain Mapping},
+  title            = {Summarizing non-stationarity in spatio-temporal neural data},
+  note             = {Virtual Poster},
+  organization     = {Organization for Human Brain Mapping},
+  publisher        = {Organization for Human Brain Mapping},
+  abstract         = {Uncovering the patterns buried in high-dimensional spatio-temporal data is vital for investigating how environmental parameters translate to complex neuronal activity. Standard methods of dimensionality reduction excel at finding global low-dimensional structure, but do not provide crucial fine-grained information about how the dynamics of individual neural elements change over time. Univariate time-series features can measure the dynamical properties of local neural elements, but most assume stationary data in which dynamical properties are constant. We present a new method that combines time-series features with dimensionality reduction to: i) produce interpretable, time-resolved summaries of non-stationary data; then ii) infer the parametric variation undboierlying non-stationarity in complex neural dynamics. As a case study, we investigated neural responses to visual stimuli using the Allen Neuropixels dataset, a spatio-temporal set of electrophysiological recordings from the mouse brain. Our method automatically reveals channels that transition between states with distinct patterns of activity as a visual stimulus changes over time. In a single subject, we temporally resolve the dynamical regimes of regions such as the primary visual cortex and lateral posterior nucleus, which include slow, periodic theta oscillations and higher-frequency broadband fluctuations, without aggregating local readings over imposed anatomical divisions. Unlike conventional approaches to dimensionality reduction, our new method: i) does not require phase-synchronized time series; ii) produces an informative low-dimensional representation of complex dynamics, resolved over space and time; and iii) can be directly interpreted in terms of the dynamical properties encapsulated by each feature, without needing to identify a model for the underlying system. Our approach can be applied to many forms of spatio-temporal neural data to understand how the dynamics of neural components respond to changes in the environment.},
+  creationdate     = {2022-06-18T14:21:53},
+  date             = {2022-07},
+  file             = {:NoSync/Harris2022.svg:},
+  groups           = {Conferences, Mine, CurriculumVitae},
+  modificationdate = {2023-11-02T19:38:56},
+}
+
+
+@InProceedings{Harris2022a,
+  author           = {Brendan Harris and Ben Fulcher},
+  booktitle        = {31st Annual Computational Neuroscience Meeting: CNS*2022},
+  title            = {Summarizing non-stationarity in spatio-temporal neural data},
+  note             = {Poster},
+  organization     = {Organization for Computational Neuroscience},
+  pages            = {P36},
+  publisher        = {Organization for Computational Neuroscience},
+  abstract         = {Uncovering the patterns buried in high-dimensional spatio-temporal data is vital for investigating how environmental parameters translate to complex neuronal activity. Standard methods of dimensionality reduction excel at finding global low-dimensional structure, but do not provide crucial fine-grained information about how the dynamics of individual neural elements change over time. As an alternative, univariate time-series features measure the dynamical properties of local neural elements, but most assume stationary data in which dynamical properties are constant. We present a new method that combines time-series features with dimensionality reduction to produce interpretable, time-resolved summaries of non-stationary data. By exploiting the correspondence between parameters and dynamics [1], we are then able to infer the parametric variation underlying non-stationarity in complex neural dynamics.
+Our method (Fig. 1) first applies feature extraction [2] to windows of a time series, yielding a feature matrix that measures dynamical properties across time. We then infer parametric variation by applying dimensionality reduction to the feature matrix, extracting the trajectory of local time-series windows through a low-dimensional feature space. To ensure our feature-space embedding is unbiased with respect to feature–feature dependencies, we also developed an extension to PCA that generates orthonormal features by examining the dependency structure of a controlled, baseline, dataset. We verified our methods are able to accurately track non-stationarity and the underlying variation in ground-truth parameters using an extensive variety of simulated dynamical systems (correlations from 0.9 to 1.0).
+We then investigated neural responses to visual stimuli by applying our method to the Allen Neuropixels dataset, a spatio-temporal set of electrophysiological recordings from the mouse brain [3]. As a visual stimulus changes over time, our method automatically reveals channels that transition between states with distinct patterns of activity. In a single subject, we are able to temporally resolve the dynamical regimes of regions such as the primary visual cortex and lateral posterior nucleus, which include slow, periodic theta oscillations and higher-frequency broadband fluctuations, without aggregating local readings over imposed anatomical divisions (as required by most conventional methods).
+Our new method has further advantages over conventional approaches to dimensionality reduction: i) it does not require phase-synchronized time series; ii) it produces an informative low-dimensional representation of complex dynamics, resolved over space and time; and iii) it can be directly interpreted in terms of the dynamical properties encapsulated by each feature, without the need to identify a model for the underlying system. Our approach can be applied to many forms of spatio-temporal neural data to understand how the dynamics of neural components respond to changes in the environment.
+References
+
+[1]    Güttler S, Kantz H, and Olbrich E. Reconstruction of the parameter spaces of dynamical systems. Phys Rev E. 2001, 63, 056215.
+[2]    Fulcher BD, Little MA, and Jones NS. Highly comparative time-series analysis: the empirical structure of time series and their methods, J R Soc Interface. 2013, 10, 20130048.
+[3]    Siegle JH, Jia X, Durand S, et al. Survey of spiking in the mouse visual system reveals functional hierarchy, Nature. 2021, 592, pp. 86–92.},
+  creationdate     = {2022-08-23T16:02:09},
+  date             = {2022-07},
+  doi              = {10.1007/s10827-022-00841-9},
+  file             = {:NoSync/Harris2022a.svg:;:NoSync/Harris2022a.pdf:PDF},
+  groups           = {Conferences, Mine, CurriculumVitae},
+  modificationdate = {2023-11-01T13:03:29},
+}
+
+'
+
+@Software{Harrisa,
   abstract         = {..............add abstract............},
   author           = {Brendan Harris},
   creationdate     = {2023-10-25T17:03:35},
   doi              = {10.5281/zenodo.10039292},
   eprint           = {Julia},
   groups           = {Mine, CurriculumVitae},
-  modificationdate = {2023-10-30T00:45:38},
+  modificationdate = {2023-11-06T13:44:51},
   month            = oct,
   publisher        = {Zenodo},
   title            = {brendanjohnharris/TimeseriesFeatures.jl},
   url              = {https://doi.org/10.5281/zenodo.10039292},
-  year             = {2023},
 }
 
 
 @Software{Harris2023b,
   author           = {Brendan Harris},
   creationdate     = {2023-10-25T17:07:20},
+  date             = {2023-07},
   doi              = {10.5281/zenodo.8185428},
   eprint           = {MATLAB},
   groups           = {Mine, CurriculumVitae},
-  modificationdate = {2023-10-30T01:11:00},
-  month            = jul,
+  modificationdate = {2023-10-31T17:01:24},
   publisher        = {Zenodo},
   title            = {brendanjohnharris/Criticality},
-  url              = {https://doi.org/10.5281/zenodo.8185428},
-  year             = {2023},
 }
 
 
 @Software{Harris2023c,
   author           = {Brendan Harris},
   creationdate     = {2023-10-25T17:15:15},
+  date             = {2023-10},
   doi              = {10.5281/zenodo.4702673},
   eprint           = {Julia},
   groups           = {Mine, CurriculumVitae},
-  modificationdate = {2023-10-30T01:21:58},
-  month            = oct,
+  modificationdate = {2023-10-31T17:01:01},
   publisher        = {Zenodo},
   title            = {brendanjohnharris/Catch22.jl},
-  url              = {https://doi.org/10.5281/zenodo.4702673},
-  year             = {2023},
 }
 
 
@@ -52,7 +143,7 @@
   institution      = {The University of Sydney},
   creationdate     = {2023-10-28T19:11:26},
   groups           = {CurriculumVitae},
-  modificationdate = {2023-10-29T17:11:30},
+  modificationdate = {2023-10-31T11:44:13},
 }
 
 
@@ -64,35 +155,169 @@
   title            = {Inferring parametric variation across non-stationary time series},
   creationdate     = {2023-10-29T17:09:27},
   groups           = {CurriculumVitae},
-  modificationdate = {2023-10-29T17:26:35},
+  modificationdate = {2023-11-01T12:38:09},
   school           = {The University of Sydney},
 }
 
 
 @Degree{Harris2021c,
   author           = {Brendan Harris},
-  date             = {2022},
+  date             = {2022/},
   degree           = {Current PhD Student},
   institution      = {The University of Sydney},
-  title            = {.............},
+  title            = {Mechanistic explanations of behaviour from distributed dynamic computation},
   creationdate     = {2023-10-29T17:26:52},
   groups           = {CurriculumVitae},
-  modificationdate = {2023-10-29T17:28:02},
+  modificationdate = {2023-10-31T11:52:50},
   school           = {The University of Sydney},
-  year             = {2021},
 }
 
 
 @Presentation{Harris2021d,
-  author           = {Brendan Harris},
+  author           = {Brendan Harris and Ben Fulcher},
   date             = {2021-12},
   institution      = {Neuromatch 4.0},
-  presentationtype = {Flash Talk},
+  presentationtype = {Flash talk},
   presenter        = {Brendan Harris},
   title            = {Summarizing non-stationarity in spatio-temporal neural data},
+  abstract         = {From single-cell neural recordings to waveforms of magnetic fields in the solar wind, non-stationarity in high-dimensional time series often signifies change in the physical parameters of a system. How can we construct intuitive descriptions of arbitrary non-stationarity in time-series data, then use this summary to infer changes in a system’s underlying parameters? In this talk I will present our new method for quantifying non-stationary variation in terms of low-dimensional time-series features, which allows us to understand how the dynamics of a complex system change over time and space. Our method accurately tracks a broad variety of non-stationarities in a range of simulated test systems, where non-stationarity was controlled by ground-truth parameter values. I will also show how we analyse high-dimensional, spatio-temporal Neuropixels recordings to automatically uncover regions of the brain that transition between distinct dynamical states as environmental parameters change over time. Our feature-based approach to dimensionality reduction provides a comprehensive but interpretable summary of non-stationarity that captures meaningful changes in the dynamical properties as well as the underlying parameters of time-varying systems.},
   creationdate     = {2023-10-29T23:08:30},
   groups           = {CurriculumVitae},
-  modificationdate = {2023-10-29T23:22:35},
+  modificationdate = {2023-11-06T13:45:33},
+  url              = {https://youtu.be/mtneuromatch 4.0_T8WhJmWM?si=r2jBpmmWaWjzZEim},
+}
+
+
+@Funding{Harris2017,
+  author           = {Brendan Harris},
+  date             = {2017},
+  entrysubtype     = {Award},
+  funder           = {The University of Sydney},
+  note             = {For academic results in the higher school certificate},
+  title            = {Sydney Scholars Award},
+  type             = {Scholarship},
+  creationdate     = {2023-10-29T23:27:03},
+  groups           = {CurriculumVitae},
+  keywords         = {Award},
+  modificationdate = {2023-11-06T13:44:30},
+}
+
+
+@Article{Harris2023d,
+  author           = {Brendan Harris and Leonardo L. Gollo and Ben D. Fulcher},
+  title            = {Tracking the distance to criticality in systems with unknown noise},
+  note             = {https://github.com/brendanjohnharris/Criticality},
+  creationdate     = {2023-10-31T13:24:44},
+  date             = {2023},
+  doi              = {arXiv.2310.14791},
+  eprintclass      = {physics.data-an},
+  eprinttype       = {arXiv},
+  groups           = {CurriculumVitae, Mine},
+  modificationdate = {2023-10-31T17:06:06},
+  url              = {https://doi.org/10.48550/arXiv.2310.14791},
+}
+
+
+@Presentation{Harrisb,
+  author           = {Brendan Harris and Ben Fulcher},
+  institution      = {31st Annual Computational Neuroscience Meeting: CNS*2022},
+  note             = {In workshop 'Highly comparative analysis of neural dynamics'},
+  presentationtype = {Workshop talk},
+  presenter        = {Brendan Harris},
+  title            = {Inferring parametric variation across non-stationary neural time series},
+  abstract         = {From single-cell neural recordings to waveforms of magnetic fields in the solar wind, non-stationarity in high-dimensional time series often signifies change in the physical parameters of a system. How can we construct intuitive descriptions of arbitrary non-stationarity in time-series data, then use this summary to infer changes in a system’s underlying parameters? In this talk I will present our new method for quantifying non-stationary variation in terms of low-dimensional time-series features, which allows us to understand how the dynamics of a complex system change over time and space. Our method accurately tracks a broad variety of non-stationarities in a range of simulated test systems, where non-stationarity was controlled by ground-truth parameter values. I will also show how we analyse high-dimensional, spatio-temporal Neuropixels recordings to automatically uncover regions of the brain that transition between distinct dynamical states as environmental parameters change over time. Our feature-based approach to dimensionality reduction provides a comprehensive but interpretable summary of non-stationarity that captures meaningful changes in the dynamical properties as well as the underlying parameters of time-varying systems.},
+  booktitle        = {31st Annual Computational Neuroscience Meeting: CNS*2022},
+  creationdate     = {2023-11-01T13:05:04},
+  groups           = {Conferences, Mine, CurriculumVitae},
+  modificationdate = {2023-11-06T13:44:54},
+  month            = jul,
+  organization     = {Organization for Computational Neuroscience},
+  pages            = {P36},
+  publisher        = {Organization for Computational Neuroscience},
+}
+
+
+@Presentation{Harris2022d,
+  author           = {Brendan Harris and Pulin Gong},
+  date             = {2023-01},
+  institution      = {Complexity, Criticality and Computation Symposium: C3-2023},
+  location         = {Heron Island},
+  note             = {Symposium on Heron Island, QLD, held by the Centre for Complex Systems (The University of Sydney)},
+  presentationtype = {Workshop talk},
+  presenter        = {Brendan Harris},
+  title            = {Burst-based inter-areal neural communication},
+  creationdate     = {2023-11-01T13:13:43},
+  groups           = {CurriculumVitae},
+  modificationdate = {2023-11-02T19:35:44},
+}
+
+
+@Presentation{Harris2022e,
+  author           = {Brendan Harris and Ben Fulcher},
+  date             = {2022-08},
+  institution      = {Emerging Aspirations in Complex Systems},
+  location         = {The University of Sydney},
+  presentationtype = {Workshop talk},
+  presenter        = {Brendan Harris},
+  title            = {Inferring parametric variation across non-stationary neural time series},
+  creationdate     = {2023-11-01T13:17:04},
+  groups           = {CurriculumVitae},
+  modificationdate = {2023-11-01T13:18:46},
+}
+
+
+@Presentation{Harris2022f,
+  author           = {Brendan Harris},
+  date             = {2022-10},
+  institution      = {OpenScope NeuroDataReHack Hackathon},
+  note             = {Workshop on re-analyzing open-source neural data, hosted by the Allen Institute (Seattle, USA)},
+  presentationtype = {Workshop attendee},
+  presenter        = {Brendan Harris},
+  creationdate     = {2023-11-01T13:24:51},
+  groups           = {CurriculumVitae},
+  modificationdate = {2023-11-02T19:39:48},
+}
+
+
+@Presentation{Harris2022g,
+  author           = {Brendan Harris},
+  date             = {2022-11},
+  institution      = {BrainHack Australia 2022},
+  note             = {Contributed to a project aiming to synthesize music from neural signals using deep neural networks},
+  presentationtype = {Workshop attendee},
+  presenter        = {Brendan Harris},
+  title            = {Brainharmonic},
+  creationdate     = {2023-11-01T13:42:15},
+  groups           = {CurriculumVitae},
+  modificationdate = {2023-11-02T19:39:54},
+  url              = {https://github.com/marianocabezas/brainharmonic},
+}
+
+
+@Presentation{Harris2022h,
+  author           = {Brendan Harris},
+  date             = {2022-10},
+  institution      = {Yale Medical School},
+  note             = {Invited by Dr. Evelyn Lake to present the results of my projects involving time-series features to a journal club},
+  presentationtype = {Talk},
+  presenter        = {Brendan Harris},
+  title            = {Feature-based analysis of neural time series},
+  creationdate     = {2023-11-01T13:44:48},
+  groups           = {CurriculumVitae},
+  modificationdate = {2023-11-01T13:46:07},
+}
+
+
+@Funding{Harris2018c,
+  author           = {Brendan Harris},
+  date             = {2018-08/2018-11},
+  funder           = {The University of Sydney},
+  title            = {Science Dalyell Showcase student mentor},
+  type             = {Mentor},
+  creationdate     = {2023-11-01T13:59:35},
+  groups           = {CurriculumVitae},
+  keywords         = {Teaching},
+  modificationdate = {2023-11-01T14:08:43},
 }
 
 
@@ -101,13 +326,244 @@
   date             = {2018},
   entrysubtype     = {Award},
   funder           = {The University of Sydney},
-  note             = {Awarded for academic results in the higher school certificate},
-  title            = {Sydney Scholars Award},
-  type             = {Scholarship},
-  creationdate     = {2023-10-29T23:27:03},
+  note             = {For academic performance in my 1st year of undergraduate study},
+  title            = {Dean’s List of Excellence in Academic Performance},
+  type             = {Recognition},
+  creationdate     = {2023-11-02T19:40:52},
   groups           = {CurriculumVitae},
   keywords         = {Award},
-  modificationdate = {2023-10-30T00:35:07},
+  modificationdate = {2023-11-06T13:44:33},
+}
+
+
+@Funding{Harris2019c,
+  author           = {Brendan Harris},
+  date             = {2019},
+  funder           = {The University of Sydney},
+  note             = {To fund a 6-week summer research project with the Quantum Control Laboratory (The University of Sydney)},
+  title            = {Denison Research Scholarship and Denison Relocation Scholarship},
+  type             = {Scholarship},
+  creationdate     = {2023-11-02T19:49:30},
+  groups           = {CurriculumVitae},
+  keywords         = {Award},
+  modificationdate = {2023-11-06T13:45:00},
+}
+
+
+@Funding{Harris2021g,
+  author           = {Brendan Harris},
+  date             = {2021},
+  funder           = {The University of Sydney},
+  note             = {For academic performance in 3rd year undergraduate Physics},
+  title            = {The University of Sydney Physics Foundation Scholarship No III},
+  type             = {Scholarship},
+  creationdate     = {2023-11-02T19:52:45},
+  groups           = {CurriculumVitae},
+  keywords         = {Award},
+  modificationdate = {2023-11-06T13:45:02},
+}
+
+
+@Funding{Harris2018g,
+  author           = {Brendan Harris},
+  date             = {2022},
+  funder           = {The University of Sydney},
+  note             = {For academic performance during my Honours year},
+  title            = {Dean’s List of Excellence in Academic Performance},
+  type             = {Recognition},
+  creationdate     = {2023-11-02T19:54:27},
+  groups           = {CurriculumVitae},
+  keywords         = {Award},
+  modificationdate = {2023-11-06T13:42:08},
+}
+
+
+@Funding{Harris2021f,
+  author           = {Brendan Harris},
+  date             = {2021},
+  funder           = {The University of Sydney},
+  note             = {For academic performance during my Honours year},
+  title            = {University of Sydney Academic Merit Prize},
+  type             = {Scholarship},
+  creationdate     = {2023-11-02T19:56:07},
+  groups           = {CurriculumVitae},
+  keywords         = {Award},
+  modificationdate = {2023-11-06T13:44:57},
+}
+
+
+@Funding{Harris2018i,
+  author           = {Brendan Harris},
+  date             = {2022},
+  entrysubtype     = {Award},
+  funder           = {The University of Sydney},
+  note             = {For academic and research performance during my Honours year},
+  title            = {Honours Class I and the University Medal},
+  type             = {Recognition},
+  creationdate     = {2023-11-02T20:02:13},
+  groups           = {CurriculumVitae},
+  keywords         = {Award},
+  modificationdate = {2023-11-06T13:42:02},
+}
+
+
+@Funding{Harris2022c,
+  author           = {Brendan Harris},
+  date             = {2022},
+  entrysubtype     = {Award},
+  funder           = {The University of Sydney},
+  note             = {To fund my PhD studies},
+  title            = {Research Training Program (fee offset and stipend)},
+  type             = {Scholarship},
+  creationdate     = {2023-11-02T20:04:48},
+  groups           = {CurriculumVitae},
+  keywords         = {Award},
+  modificationdate = {2023-11-06T13:45:06},
+}
+
+
+@Funding{Harris2022j,
+  author           = {Brendan Harris},
+  date             = {2022},
+  entrysubtype     = {Award},
+  funder           = {The University of Sydney},
+  note             = {To fund accommodation for the C3 symposium},
+  title            = {Emerging Aspirations in Complex Systems Award},
+  type             = {Scholarship},
+  creationdate     = {2023-11-02T20:06:16},
+  groups           = {CurriculumVitae},
+  keywords         = {Award},
+  modificationdate = {2023-11-06T13:45:08},
+}
+
+
+@Funding{Harris2023e,
+  author           = {Brendan Harris},
+  date             = {2023},
+  entrysubtype     = {Award},
+  funder           = {The University of Sydney},
+  note             = {To fund travel and accommodation for the IBRO2023 conference (Granada, Spain)},
+  title            = {Postgraduate Research Support Scheme},
+  type             = {Scholarship},
+  creationdate     = {2023-11-02T20:08:39},
+  groups           = {CurriculumVitae},
+  keywords         = {Award},
+  modificationdate = {2023-11-06T13:44:21},
+}
+
+
+@Funding{Harris2019b,
+  author           = {Brendan Harris},
+  date             = {2019-03/2019-06},
+  funder           = {Dr. Deepak Jain, School of Physics, The University of Sydney},
+  note             = {Modelled M-type optical fibres in COMSOL and formulated expressions describing their unique properties, cut-off wavelengths, anticrossings, and mode profiles.},
+  role             = {Undergraduate project},
+  title            = {Numerical analysis of M-type optical fibers},
+  creationdate     = {2023-11-05T19:11:36},
+  doi              = {10.1109/JLT.2021.3072504},
+  groups           = {CurriculumVitae},
+  keywords         = {Research},
+  modificationdate = {2023-11-06T13:44:46},
+}
+
+
+@Funding{Harris2019a,
+  author           = {Brendan Harris},
+  date             = {2019-07/2019-08},
+  funder           = {Dr. Ben Fulcher, Complex Systems Group, The University of Sydney},
+  note             = {Investigated the relationship between interneuron subtypes and brain dynamics by analysing fMRI time-series features (\textit{hctsa}) and interneuron density datasets in Matlab and Python.},
+  role             = {Casual lab assistant},
+  title            = {Interneuron densities and intrinsic timescales in the mouse brain},
+  creationdate     = {2023-11-05T19:22:05},
+  groups           = {CurriculumVitae},
+  keywords         = {Research},
+  modificationdate = {2023-11-06T13:44:16},
+}
+
+
+@Funding{Harris2019,
+  author           = {Brendan Harris},
+  date             = {2019-08/2019-11},
+  funder           = {Dr. Ben Fulcher, Complex Systems Group, The University of Sydney},
+  note             = {I used machine-learning algorithms and time-series features to classify time series from monostable and bistable regions of dynamical systems.},
+  role             = {Undergraduate project},
+  title            = {Classifying the stability of near-critical systems},
+  creationdate     = {2023-11-05T19:30:49},
+  groups           = {CurriculumVitae},
+  keywords         = {Research},
+  modificationdate = {2023-11-06T13:44:11},
+  url              = {https://github.com/brendanjohnharris/Criticality},
+}
+
+
+@Funding{Harris2020a,
+  author           = {Brendan Harris},
+  date             = {2020-08/2020-11},
+  funder           = {Dr. Ben Fulcher, Complex Systems Group, The University of Sydney},
+  note             = {Tested for a correspondence between the BOLD dynamics associated with neuronal excitability and neuronal densities by combining datasets of fMRI signals, DREADD activation and neuron counts across the mouse brain with feature-based representations of time series (using \href{https://github.com/benfulcher/hctsa}{\textit{hctsa}}) as well as various machine-learning classifiers (Matlab)},
+  role             = {Dalyell project},
+  title            = {Relating BOLD dynamics, interneuron densities, and DREADD activation},
+  creationdate     = {2023-11-05T19:57:14},
+  groups           = {CurriculumVitae},
+  keywords         = {Research},
+  modificationdate = {2023-11-06T13:43:57},
+}
+
+
+@Funding{Harris2020,
+  author           = {Brendan Harris},
+  date             = {2020-01/2020-03},
+  funder           = {Dr. Cornelius Hempel, School of Physics, The University of Sydney},
+  note             = {Completed various lab-based projects involving optics, instrument control, and programming in Python/Julia/C++. This included assembling and testing an interferometer for measuring the vibrations of an ion trap, surveying the frequency stability of signal generators, as well as constructing and programming Arduino-based sensors.},
+  role             = {Denison project},
+  title            = {Quantum Control Laboratory},
+  creationdate     = {2023-11-06T10:26:44},
+  groups           = {CurriculumVitae},
+  keywords         = {Research},
+  modificationdate = {2023-11-06T13:43:51},
+}
+
+
+@Funding{Harris2021e,
+  author           = {Brendan Harris},
+  date             = {2021-03/2021-11},
+  funder           = {Dr. Ben Fulcher, Complex Systems Group, The University of Sydney},
+  note             = {Developed and tested a new method for summarising non-stationary dynamics using time-series features and dimensionality reduction. I also devised a new solution to the problem of feature--feature redundancy that involves principal component analysis relative to baseline datasets before applying these methods to the Allen Institutes Neuropixels Visual Coding dataset. This involved writing code in Julia for simulating non-stationary systems, calling \href{https://github.com/chlubba/catch22}{\textit{catch22}}, dimensionality reduction, accessing the Neuropixels dataset via the \href{https://github.com/AllenInstitute/AllenSDK}{AllenSDK}, processing LFP data, and submitting jobs to the School of Physics computing cluster.},
+  role             = {Honours research},
+  title            = {Inferring parametric variation across non-stationary time series},
+  creationdate     = {2023-11-06T10:36:17},
+  groups           = {CurriculumVitae},
+  keywords         = {Research},
+  modificationdate = {2023-11-06T13:44:18},
+}
+
+
+@Funding{Harris2022i,
+  author           = {Brendan Harris},
+  date             = {2022},
+  funder           = {Dr. Pulin Gong, Complex Systems Group, The University of Sydney},
+  note             = {In my current project I aim to understand the spatiotemporal nature of computation in the brain. To approach this problem, I am investigating the mechanistic relationship between behaviour, the coherent spatiotemporal patterns that traverse the cortex, and dynamical communication between neurons in different brain regions. I am developing tools for pattern detection, feature-based time-series analysis, and studying the Allen Neuropixels dataset using Julia, Python, and Matlab.In my current project I aim to understand the spatiotemporal nature of computation in the brain. To approach this problem, I am investigating the mechanistic relationship between behaviour, the coherent spatiotemporal patterns that traverse the cortex, and dynamical communication between neurons in different brain regions. I am developing tools for pattern detection, feature-based time-series analysis, and studying the Allen Neuropixels dataset using Julia, Python, and Matlab.},
+  role             = {PhD research},
+  title            = {Mechanistic explanations of behaviour from spatio-temporal neural patterns},
+  creationdate     = {2023-11-06T10:40:16},
+  groups           = {CurriculumVitae},
+  keywords         = {Research},
+  modificationdate = {2023-11-06T13:44:22},
+}
+
+
+@Funding{Harris,
+  author           = {Brendan Harris},
+  date             = {2023-03/},
+  funder           = {Dr. Cameron Higgins},
+  note             = {Worked on a casual basis writing Matlab code to interface with EEG headsets, infer the activation of brain networks, and implement neurofeedback for the monitoring and treatment of depression},
+  role             = {Software developer},
+  title            = {Resonait Medical Technologies},
+  creationdate     = {2023-11-06T13:34:53},
+  doi              = {10.1109/JLT.2021.3072504},
+  groups           = {CurriculumVitae},
+  keywords         = {Industry},
+  modificationdate = {2023-11-06T13:48:57},
 }
 
 
