@@ -401,7 +401,7 @@
 	\end{minipage}
 	}
 	{\textit{\printnames{author}}
-	}
+	}\\
 	\end{entrylist}
 }
 
@@ -421,7 +421,7 @@
 	{\iffieldundef{doi}{\thefield{note}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\thefield{note}}}} % The type of paper
 	}{%
 	\iffieldundef{pages}{}{\thefield{pages}:\ }\chainit{title}{\printnames{author}}
-	}
+	}\\
 	\end{entrylist}
 }
 
@@ -441,7 +441,7 @@
 		\iflistundef{concentration}{\iffieldundef{title}{}{\textit{\thefield{title}}}}{
 			\printlist{concentration}
 			\iffieldundef{title}{}{\\\textit{\thefield{title}}}}
-	}
+	}\\
 	\end{entrylist}
 	% \setunit{\addcomma\addspace}%
 	% \setunit{\addcomma\addspace}%
@@ -562,8 +562,7 @@
 			{%
 				\chainit{funder}{\thefield{role}}
 			}
-		}
-	~
+		}\\
 	\end{entrylist}
 }
 
@@ -597,7 +596,7 @@
 	\end{minipage}}
 	{%
 		\printfield{abstract}
-	}
+	}\\
 	\end{entrylist}
 }
 
@@ -644,7 +643,7 @@
 	{\iffieldundef{doi}{\printfield{presentationtype}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\printfield{presentationtype}}}}}
 	{%
 		\chainit{title}{\thefield{note}}
-	}
+	}\\
 	\end{entrylist}
 }
 
