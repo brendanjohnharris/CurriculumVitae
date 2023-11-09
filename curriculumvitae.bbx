@@ -441,7 +441,7 @@
 		\iflistundef{concentration}{\iffieldundef{title}{}{\textit{\thefield{title}}}}{%
 			\printlist{concentration}%
 			\iffieldundef{title}{}{\\\textit{\thefield{title}}}}
-	}%
+	}\\
 	\end{entrylist}
 	% \setunit{\addcomma\addspace}%
 	% \setunit{\addcomma\addspace}%
@@ -560,7 +560,7 @@
 			}
 			{\printfield{type}}
 			{%
-				\chainit{funder}{\thefield{role}}
+				\chainit{funder}{\thefield{role}}\\
 			}
 		}\\
 	\end{entrylist}
@@ -643,7 +643,7 @@
 	{\iffieldundef{doi}{\printfield{presentationtype}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\printfield{presentationtype}}}}}
 	{%
 		\chainit{title}{\thefield{note}}
-	}
+	}\\
 	\end{entrylist}
 }
 
