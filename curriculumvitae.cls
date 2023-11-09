@@ -105,10 +105,17 @@
 %----------------------------------------------------------------------------------------
 \def\Vhrulefill{\leavevmode\leaders\hrule height 0.7ex depth \dimexpr0.4pt-0.7ex\hfill\kern0pt}
 
+\usepackage[toc]{multitoc}
+\renewcommand*{\multicolumntoc}{2}
+% \setlength{\columnseprule}{0.5pt}
+\setcounter{secnumdepth}{0}
+\def\contentsname{\textcolor{black}{\normalsize \MakeUppercase{\textbf{Contents}}} \hspace{4pt} \Vhrulefill}
+
 % Command to output section title headings
 \newcommand{\cvsect}[1]{% The only parameter is the section text
 	\vspace{\baselineskip} % Whitespace before the section title
-	{\nullfont \section*{#1}}
+	{\section[#1]{}}
+	\vspace{-3em}
 	\textcolor{black}{ \MakeUppercase{\textbf{#1}}} \hspace{4pt} \Vhrulefill \\% Section title
 }
 
