@@ -38,7 +38,7 @@
 
 \usepackage[hidelinks]{hyperref} % Required for links but hide the default boxes around links
 
-\pagestyle{empty} % No headers or footers
+% \pagestyle{empty} % No headers or footers
 
 \usepackage{moresize} % Provides more font size commands (\HUGE and \ssmall)
 \usepackage{enumitem}
@@ -108,6 +108,7 @@
 % Command to output section title headings
 \newcommand{\cvsect}[1]{% The only parameter is the section text
 	\vspace{\baselineskip} % Whitespace before the section title
+	{\nullfont \section*{#1}}
 	\textcolor{black}{ \MakeUppercase{\textbf{#1}}} \hspace{4pt} \Vhrulefill \\% Section title
 }
 

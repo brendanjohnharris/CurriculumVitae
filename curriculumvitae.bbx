@@ -438,7 +438,9 @@
 	{\printfield{degree}}
 	{\printlist{institution}}
 	{%
-		\chain{concentration}{\textit{\thefield{title}}}
+		\iflistundef{concentration}{\iffieldundef{title}{}{\textit{\thefield{title}}}}{
+			\printlist{concentration}
+			\iffieldundef{title}{}{\\\textit{\thefield{title}}}}
 	}\\
 	\end{entrylist}
 	% \setunit{\addcomma\addspace}%
@@ -558,7 +560,7 @@
 			}
 			{\printfield{type}}
 			{%
-				\chainit{funder}{\thefield{note}}
+				\chainit{funder}{\thefield{role}}
 			}
 		}
 	~\\
@@ -587,7 +589,9 @@
 	}
 	{\begin{minipage}{0.1\textwidth}
 		\begin{flushright}
-			\printlist{publisher}
+			\iffieldundef{doi}{\printlist{publisher}}{%
+				\textcolor{blue}{\href{https://doi.org/\thefield{doi}}{\printlist{publisher}}}%
+			}%
 			\githubstars{\thefield{title}}
 		\end{flushright}
 	\end{minipage}}
