@@ -116,7 +116,7 @@
 	\vspace{\baselineskip} % Whitespace before the section title
 	{\section[#1]{}}
 	\vspace{-3em}
-	\textcolor{black}{ \MakeUppercase{\textbf{#1}}} \hspace{4pt} \Vhrulefill \\% Section title
+	\textcolor{black}{ \MakeUppercase{\textbf{#1}}} \hspace{4pt} \Vhrulefill \vspace{2em}% Section title
 }
 
 %----------------------------------------------------------------------------------------
