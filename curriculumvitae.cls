@@ -109,7 +109,7 @@
 \renewcommand*{\multicolumntoc}{2}
 % \setlength{\columnseprule}{0.5pt}
 \setcounter{secnumdepth}{0}
-\def\contentsname{\textcolor{black}{\normalsize \MakeUppercase{\textbf{Contents}}} \hspace{4pt} \Vhrulefill}
+\def\contentsname{\textcolor{black}{\normalsize \MakeUppercase{\textbf{Contents}}} \hspace{4pt} \Vhrulefill\vspace{0.5em}}
 
 % Command to output section title headings
 \newcommand{\cvsect}[1]{% The only parameter is the section text
