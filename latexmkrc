@@ -3,7 +3,7 @@
 #
 # The xr package ("a system for eXternal References") is used by a document
 # to make references to sections, equations, etc in other external
-# documents. 
+# documents.
 # The definitions in this file enable latexmk to apply latexmk to
 # automatically update an external document whenever its .tex file changes,
 # so that the references in the main document stay up to date.
@@ -12,7 +12,7 @@
 #    1. This version is defined to put the files from the compilations of
 #       the external documents into a defined subdirectory, to segregate
 #       potentially many generated files from the main document
-#       directories. 
+#       directories.
 #    2. But for latexmk's custom dependency mechanism to be used, as here,
 #       the aux file from compilation of a subdocument must be generated in
 #       the same directory as the corresponding source .tex file.  So the
@@ -29,7 +29,7 @@
 #       latexmk from the Perl packages File::Copy and File::Basename.
 #    6. It also uses some not-yet-documented features of latexmk: an array
 #       variable @file_not_found and subroutines popd, pushd, and
-#       rdb_add_generated. 
+#       rdb_add_generated.
 
 # Load local bibliography, if present
 system("./processbib CurriculumVitae");
@@ -44,7 +44,7 @@ $sub_doc_output = 'output-subdoc';
 # Options to supply to latexmk for compilation of external documents:
 @sub_doc_options = ();
 
-push @sub_doc_options, '-pdf'; # Use pdflatex for compilation of external documents.
+push @sub_doc_options, '-pdflua'; # Use pdflatex for compilation of external documents.
 # Replace '-pdf' by '-pdfdvi', 'pdfxe', or 'pdflua' if needed.
 
 #--------------------

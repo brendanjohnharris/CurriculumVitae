@@ -65,29 +65,40 @@
 %----------------------------------------------------------------------------------------
 
 \usepackage[utf8]{inputenc} % Required for inputting international characters
-\usepackage[T1]{fontenc} % Output font encoding for international characters
 
 % \usepackage[default]{raleway}
 % \usepackage[defaultsans]{droidsans}
 % \usepackage{cmbright}
-\usepackage{mathptmx}
+% \usepackage{mathptmx}
+\usepackage{tgpagella,eulervm}
 
 % \renewcommand*\familydefault{\sfdefault} % Force the sans-serif version of any font used
 
 %------------------------------------------------
 
-\usepackage{fontawesome} % Required for FontAwesome icons
+% \usepackage{fontawesome} % Required for FontAwesome icons
+\usepackage{fontspec}
+\newfontfamily{\fabrands}[Path=./logos/]{Font Awesome 6 Brands-Regular-400}
+\newfontfamily{\fafree}[Path=./logos/]{Font Awesome 6 Free-Regular-400}
+\newfontfamily{\fasolid}[Path=./logos/]{Font Awesome 6 Free-Solid-900}
 
 % Command to output an icon in a black square box with text to the right
-\newcommand{\icon}[3]{% The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
-	\vcenteredhbox{\colorbox{white}{\makebox(#2, #2){\textcolor{black}{\Large\csname fa#1\endcsname}}}}% Icon and box
-	\hspace{0.1cm}% Whitespace
-	\vcenteredhbox{\textcolor{black}{#3}}% Text
+\newcommand{\icon}[3]{%
+	\vcenteredhbox{\colorbox{white}{\makebox(#2, #2){\textcolor{black}{\large #1}}}}%
+	\vcenteredhbox{\textcolor{black}{\ #3}}%
 }
+
+% Font awesome icon list
+\def\faglobe{\selectfont \fasolid \char"F0AC}
+\def\faenvelope{\selectfont \fasolid \char"F0E0}
+\def\famapmarker{\selectfont \fasolid \char"F3C5}
+\def\fabluesky{\selectfont \fabrands \char"E671}
+\def\faphone{\selectfont \fasolid \char"F095}
+\def\fagithub{\selectfont \fabrands \char"F09B}
 
 %----------------------------------------------------------------------------------------
 %	GRAPHICS DEFINITIONS
-%---------------------------------------------------------------------------------------- 
+%----------------------------------------------------------------------------------------
 
 \usepackage{tikz} % Required for creating the plots
 \usetikzlibrary{shapes, backgrounds}

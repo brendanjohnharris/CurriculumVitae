@@ -11,7 +11,7 @@
 \ProcessOptions\relax
 
 \PassOptionsToPackage{
-	labelnumber = true, defernumbers = true, backend = biber, 
+	labelnumber = true, defernumbers = true, backend = biber,
 	style = biblatex-cv, sorting = ydnt, maxnames = 999
 }{biblatex}
 \RequirePackage{biblatex}
@@ -19,6 +19,7 @@
 \RequirePackage{expl3, xparse}
 \RequirePackage{totcount}
 \RequirePackage{xpatch}
+\RequirePackage{luacode}            % needed for \luaescapestring
 
 % Document layout
 \setlength{\biblabelsep}{0.5em}
@@ -561,37 +562,39 @@
 	\iffieldequalstr{entrysubtype}{undergraduate}{}{\skipentry}%
 }
 
-% Create a biblatex/biber MD5 hash from the parts of a name and store the hashes so that the name can be emphasized and/or deleted throughout the CV. If seems like \zap@space and ExplSyntax do not play nice together. There is probably a much cleaner way of doing this. Basically, the \highlightname macro concatenates the name parts, strips any spaces, calculates the hash, and then converts the hash to all lower case letters. The code does not handle periods in the name the same way that biblatex/biber does and therefore the input to \highlightname should probably not have periods.
-\newcommand{\highlightname}[4]{% family, given, prefix, suffix
-	\edef\cv@blx@highlightname@hash{\zap@space #1#2#3#4 \@empty}%
-	\ifxetex%
-		\expandafter\edef\expandafter\cv@blx@highlightname@hash\expandafter{%
-			\expandafter\mdfivesum\expandafter{%
-				\cv@blx@highlightname@hash%
-			}%
-		}%
-	\else%
-		\expandafter\edef\expandafter\cv@blx@highlightname@hash\expandafter{%
-			\expandafter\pdfmdfivesum\expandafter{%
-				\cv@blx@highlightname@hash%
-			}%
-		}%
-	\fi%
-	\cv@blx@highlightname%
+% --------------------------------------------------------------------------
+% \highlightname{family}{given}{prefix}{suffix}
+% --------------------------------------------------------------------------
+\newcommand\cv@blx@highlightname@hash{}
+\newcommand\cv@blx@highlightname@hash@list{}
+\newcommand\highlightname[4]{%
+  % 1. Normalise the name parts: concatenate and strip spaces
+  \edef\cv@blx@highlightname@raw{\zap@space #1#2#3#4 \@empty}%
+  % 2. Obtain the MD5 *hex* digest of that string, engine-dependently
+  \ifluatex
+    % ---------- LuaTeX branch --------------------------------------------
+    \directlua{%
+      local md5  = require("md5")             -- from lualibs
+      local raw  = "\luaescapestring{\cv@blx@highlightname@raw}"
+      local hash = string.lower(md5.sumhexa(raw))
+      tex.sprint("\\xdef\\cv@blx@highlightname@hash{" .. hash .. "}")%
+    }%
+  \else
+    % ---------- pdfTeX / XeTeX branch (original behaviour) ---------------
+    \ifxetex
+      \edef\cv@blx@highlightname@hash{\mdfivesum   {\cv@blx@highlightname@raw}}%
+    \else
+      \edef\cv@blx@highlightname@hash{\pdfmdfivesum{\cv@blx@highlightname@raw}}%
+    \fi
+    \edef\cv@blx@highlightname@hash{%
+      \lowercase{\cv@blx@highlightname@hash}%
+    }%
+  \fi
+  % 3. Store the hash so later name formatting can consult it
+  \listxadd{\cv@blx@highlightname@hash@list}{\cv@blx@highlightname@hash}%
 }
 
-\ExplSyntaxOn
-	\newcommand{\cv@blx@highlightname}{%
-		\edef\cv@blx@highlightname@hash{%
-			\text_lowercase:n{\cv@blx@highlightname@hash}%
-		}%
-		\listxadd{\cv@blx@highlightname@hash@list}{%
-			\cv@blx@highlightname@hash%
-		}%
-	}
-\ExplSyntaxOff
-
-% Emphasized a name throughout the CV. We patch the name formats and not the underlying bib macros, since this allows us to compare the name hash instead of the name parts. This seems more robust to things like initials and different name ordering schemes 
+% Emphasized a name throughout the CV. We patch the name formats and not the underlying bib macros, since this allows us to compare the name hash instead of the name parts. This seems more robust to things like initials and different name ordering schemes
 \newcommand{\cv@blx@highlightname@format}{\textbf}
 \newcommand{\cv@blx@highlightname@patch}{%
 	\begingroup% Needs to be ended by an \xapptonameformat
@@ -731,7 +734,7 @@
 		\maps[datatype = bibtex]{
 			\map[overwrite]{
 				\pertype{committee}
-				\step[fieldsource = semesters, fieldset = options, 
+				\step[fieldsource = semesters, fieldset = options,
 					fieldvalue = {skipbib = true}]
 			}
 		}
@@ -741,7 +744,7 @@
 		\maps[datatype = bibtex]{
 			\map[overwrite]{
 				\pertype{committee}
-				\step[fieldsource = crossref, fieldset = options, 
+				\step[fieldsource = crossref, fieldset = options,
 					fieldvalue = {skipbib = true}]
 			}
 		}
@@ -752,14 +755,14 @@
 	\maps[datatype = bibtex]{
 		\map[overwrite]{
 			\pertype{teaching}
-			\step[fieldsource = crossref, fieldset = options, 
+			\step[fieldsource = crossref, fieldset = options,
 				fieldvalue = {skipbib = true}]
 		}
 	}
 	\maps[datatype = bibtex]{
 		\map[overwrite]{
 			\pertype{degree}
-			\step[fieldsource = crossref, fieldset = options, 
+			\step[fieldsource = crossref, fieldset = options,
 				fieldvalue = {skipbib = true}]
 		}
 	}

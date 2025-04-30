@@ -392,8 +392,8 @@
 	\entry
 	{\usebibmacro{yearrange}}
 	{\thefield{title}
-		\iffieldundef{url}{}{\quad \href{\thefield{url}}{\OA}}
-		\iffieldundef{note}{}{\ \href{\thefield{note}}{\large \faicon{github}}}
+		\iffieldundef{eprint}{}{\quad \href{\thefield{eprint}}{\OA}}
+		\iffieldundef{url}{}{\ \href{\thefield{url}}{\large \faicon{github}}}
 	}
 	{\begin{minipage}[t]{0.15\textwidth}
 		\iffieldundef{doi}{\thefield{journaltitle}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\thefield{journaltitle}}}}
@@ -415,7 +415,7 @@
 	{\usebibmacro{yearrange}}
 	{\thefield{booktitle}
 		\iffieldundef{journaltitle}{}{\\\bibstring{volume}\ \thefield{volume}, \bibstring{number} \thefield{number}}
-		\iffieldundef{url}{}{\quad \href{\thefield{url}}{\OA}}
+		\iffieldundef{eprint}{}{\quad \href{\thefield{eprint}}{\OA}}
 		% \iffieldundef{note}{}{\ \href{\thefield{note}}{\large \faicon{github}}}
 	}
 	{\iffieldundef{doi}{\thefield{note}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\thefield{note}}}} % The type of paper
@@ -523,10 +523,10 @@
 			{\usebibmacro{yearrange}}
 			{\thefield{title}
 			\iffieldundef{eprint}{}{\quad \href{\thefield{eprint}}{\OA}}
-			\iffieldundef{doi}{}{\quad \href{https://doi.org/\thefield{doi}}{\OA}}
+			\iffieldundef{eprint}{}{\quad \href{\thefield{eprint}}{\OA}}
 			\iffieldundef{url}{}{\ \href{\thefield{url}}{\large \faicon{github}}
 			}}
-			{\printfield{role}}
+			{\iffieldundef{doi}{\thefield{role}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\thefield{role}}}}}
 			{%
 				\chainit{funder}{%
 				\iffieldundef{amount}{\thefield{note}}{
@@ -540,8 +540,8 @@
 			\entry
 			{\usebibmacro{yearrange}}
 			{\thefield{title}
-			\iffieldundef{crossref}{}{\quad \href{\thefield{url}}{\OA}}
-			\iffieldundef{eprint}{}{\ \href{\thefield{eprint}}{\large \faicon{github}}}
+			\iffieldundef{crossref}{}{\quad \href{\thefield{eprint}}{\OA}}
+			\iffieldundef{url}{}{\ \href{\thefield{url}}{\large \faicon{github}}}
 			}
 			{\printfield{role}}
 			{%
@@ -555,8 +555,8 @@
 			\entry
 			{\usebibmacro{yearrange}}
 			{\thefield{title}
-			\iffieldundef{crossref}{}{\quad \href{\thefield{url}}{\OA}}
-			\iffieldundef{eprint}{}{\ \href{\thefield{eprint}}{\large \faicon{github}}}
+			\iffieldundef{crossref}{}{\quad \href{\thefield{eprint}}{\OA}}
+			\iffieldundef{url}{}{\ \href{\thefield{url}}{\large \faicon{github}}}
 			}
 			{\printfield{type}}
 			{%
@@ -637,8 +637,8 @@
 	\begin{entrylist}
 	\entry
 	{\usebibmacro{yearrange}}
-	{\printlist{institution} 
-		\iffieldundef{url}{}{\quad \href{\thefield{url}}{\OA}}
+	{\printlist{institution}
+		\iffieldundef{eprint}{}{\quad \href{\thefield{eprint}}{\OA}}
 	}
 	{\iffieldundef{doi}{\printfield{presentationtype}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\printfield{presentationtype}}}}}
 	{%

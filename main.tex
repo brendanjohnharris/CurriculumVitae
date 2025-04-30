@@ -1,8 +1,9 @@
+% !TEX program = lualatex
 \documentclass[10pt]{curriculumvitae}
 \usepackage{multicol}
 \graphicspath{{./logos/}}
 \setlength{\columnsep}{0mm}
-\usepackage{lipsum}  
+\usepackage{lipsum}
 \usepackage{datetime2}
 \usepackage{setspace}
 \usepackage{xstring}
@@ -21,7 +22,7 @@
 \def\website{brendanjohnharris.github.io}
 \def\location{Sydney, Australia}
 \def\phone{+61 466956165}
-\def\twitter{@brendanjharris}
+\def\bluesky{@brendanjohnharris}
 \def\github{brendanjohnharris}
 \def\software{Julia, Matlab, Python, \LaTeX, Linux, Shell scripts, C/C++, cluster computing, CAD, COMSOL, Javascript, HTML/CSS, Illustrator/Inkscape, Photoshop}
 \def\hardware{EEG headsets, oscilloscopes, signal generators, microcontrollers, digital sensors, electronics breadboarding, optical assembly}
@@ -31,10 +32,10 @@
 %----------------------------------------------------------------------------------------
 \begin{document}
 \nocite{*}
-\begin{minipage}[t]{0.45\textwidth} 
+\begin{minipage}[t]{0.45\textwidth}
     % \begin{flushright}
 	\vspace{-\baselineskip} % Required for vertically aligning minipages
-	
+
 	{ \fontsize{20}{20} \textcolor{black}{\textbf{\MakeUppercase{\me}}}}
 	\\
 	\vspace{6pt}
@@ -43,19 +44,18 @@
     % \end{flushright}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.3\textwidth} % 20% of the page width for the first row of icons
+\begin{minipage}[t]{0.31\textwidth} % 20% of the page width for the first row of icons
 	\vspace{-\baselineskip}~\\ % Required for vertically aligning minipages
 	% The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
-	\icon{Globe}{11}{\href{https://\website}{\website}}\\ 
-    \icon{Envelope}{11}{\href{mailto:\email}{\email}}\\
-    \icon{MapMarker}{11}{\location}\\
-	
+	\icon{\faglobe}{10}{\href{https://\website}{\website}}\\
+    \icon{\faenvelope}{10}{\href{mailto:\email}{\email}}\\
+    \icon{\famapmarker}{10}{\location}\\
 \end{minipage}
-\begin{minipage}[t]{0.2\textwidth} % 27% of the page width for the second row of icons
+\begin{minipage}[t]{0.22\textwidth} % 27% of the page width for the second row of icons
 	\vspace{-\baselineskip}~\\ % Required for vertically aligning minipages
-    \icon{Github}{11}{\href{https://github.com/\github}{\github}}\\
-    \icon{Twitter}{11}{\href{https://www.twitter.com/\twitter}{\twitter}}\\    
-	\icon{Phone}{11}{\phone}\\
+    \icon{\fagithub}{10}{\href{https://github.com/\github}{\github}}\\
+    \icon{\fabluesky}{10}{\href{https://bsky.app/\bluesky.bsky.social}{\bluesky}}\\
+	\icon{\faphone}{10}{\phone}\\
 \end{minipage}
 
 {
@@ -71,7 +71,7 @@
 \begin{minipage}[t]{0.47\textwidth}
     \cvsect{Summary}
 	\vspace{-6pt}
- 
+
     I am a PhD student in the Complex Systems group (School of Physics) at the University of Sydney, interested in understanding the physical mechanisms of computation and communication in the brain, particularly during visual processing. I approach this problem using a combination of new methodologies for analyzing non-stationary time series, along with dynamical systems theory, biophysical neural-circuit models, and the Julia language.
 
 \end{minipage}
@@ -79,7 +79,7 @@
 \begin{minipage}[t]{0.47\textwidth}
     \cvsect{Skills}
     \vspace{-6pt}
-    
+
     \begin{minipage}[t]{0.2\textwidth}
         \textbf{Software:}
     \end{minipage}
@@ -88,7 +88,7 @@
       \software
     \end{minipage}
     \vspace{4mm}
-    
+
     \begin{minipage}[t]{0.2\textwidth}
         \textbf{Hardware:}
     \end{minipage}
@@ -96,7 +96,7 @@
     \begin{minipage}[t]{0.73\textwidth}
       \hardware
     \end{minipage}
-    
+
 \end{minipage}
 
 
@@ -128,7 +128,7 @@
 %----------------------------------------------------------------------------------------
 \vspace{-3.5 em}
 \cvsect{Publications and Preprints}
-\printbibliography[env = unnumbered, resetnumbers = true, notkeyword = Award, notkeyword = Research, notkeyword = Industry, nottype = presentation, nottype = software, nottype=degree, nottype=inproceedings, notkeyword=Teaching]
+% \printbibliography[env = unnumbered, resetnumbers = true, notkeyword = Award, notkeyword = Research, notkeyword = Industry, nottype = presentation, nottype = software, nottype=degree, nottype=inproceedings, notkeyword=Teaching]
 
 %----------------------------------------------------------------------------------------
 %	Research experience
@@ -136,7 +136,7 @@
 \newpage
 \vspace{-3.5 em}
 \cvsect{Research experience}
-\printbibliography[env = unnumbered, resetnumbers = true, keyword = Research]
+% \printbibliography[env = unnumbered, resetnumbers = true, keyword = Research]
 
 %----------------------------------------------------------------------------------------
 %	Teaching experience
@@ -157,7 +157,7 @@
 %----------------------------------------------------------------------------------------
 \vspace{-3.5 em}
 \cvsect{Software packages}
-\printbibliography[env = unnumbered, resetnumbers = true, type = software]
+% \printbibliography[env = unnumbered, resetnumbers = true, type = software]
 
 %----------------------------------------------------------------------------------------
 %	Awards
@@ -195,7 +195,7 @@
 % \vspace{-10 pt}
 % 	\cvsect{Languages}
 %     \vspace{-6pt}
-    
+
 %     \hspace{26mm} \textbf{English} - B2+, \textbf{ Spanish} - native
 
 %----------------------------------------------------------------------------------------
