@@ -15,6 +15,9 @@
 	style = biblatex-cv, sorting = ydnt, maxnames = 999
 }{biblatex}
 \RequirePackage{biblatex}
+\DeclareNameAlias{default}{given-family}
+\DeclareNameAlias{author}{given-family}
+\DeclareNameAlias{editor}{given-family}
 
 \RequirePackage{expl3, xparse}
 \RequirePackage{totcount}
@@ -562,96 +565,80 @@
 	\iffieldequalstr{entrysubtype}{undergraduate}{}{\skipentry}%
 }
 
-% --------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 % \highlightname{family}{given}{prefix}{suffix}
+%   – store the *lower-cased* «family + given» string (spaces stripped)
+%     so later name formatting can see if it should be emphasised.
 % --------------------------------------------------------------------------
-\newcommand\cv@blx@highlightname@hash{}
-\newcommand\cv@blx@highlightname@hash@list{}
-\newcommand\highlightname[4]{%
-  % 1. Normalise the name parts: concatenate and strip spaces
-  \edef\cv@blx@highlightname@raw{\zap@space #1#2#3#4 \@empty}%
-  % 2. Obtain the MD5 *hex* digest of that string, engine-dependently
-  \ifluatex
-    % ---------- LuaTeX branch --------------------------------------------
-    \directlua{%
-      local md5  = require("md5")             -- from lualibs
-      local raw  = "\luaescapestring{\cv@blx@highlightname@raw}"
-      local hash = string.lower(md5.sumhexa(raw))
-      tex.sprint("\\xdef\\cv@blx@highlightname@hash{" .. hash .. "}")%
-    }%
-  \else
-    % ---------- pdfTeX / XeTeX branch (original behaviour) ---------------
-    \ifxetex
-      \edef\cv@blx@highlightname@hash{\mdfivesum   {\cv@blx@highlightname@raw}}%
-    \else
-      \edef\cv@blx@highlightname@hash{\pdfmdfivesum{\cv@blx@highlightname@raw}}%
-    \fi
-    \edef\cv@blx@highlightname@hash{%
-      \lowercase{\cv@blx@highlightname@hash}%
-    }%
-  \fi
-  % 3. Store the hash so later name formatting can consult it
-  \listxadd{\cv@blx@highlightname@hash@list}{\cv@blx@highlightname@hash}%
-}
+% \newcommand\cv@blx@highlightname@hash{}
+% \newcommand\cv@blx@highlightname@hash@list{}
 
-% Emphasized a name throughout the CV. We patch the name formats and not the underlying bib macros, since this allows us to compare the name hash instead of the name parts. This seems more robust to things like initials and different name ordering schemes
-\newcommand{\cv@blx@highlightname@format}{\textbf}
-\newcommand{\cv@blx@highlightname@patch}{%
-	\begingroup% Needs to be ended by an \xapptonameformat
-		\xifinlist{\thefield{hash}}{\cv@blx@highlightname@hash@list}{%
-			\let\mkbibnamegiven=\cv@blx@highlightname@format%
-			\let\mkbibnamefamily=\cv@blx@highlightname@format%
-			\let\mkbibnameprefix=\cv@blx@highlightname@format%
-			\let\mkbibnamesuffix=\cv@blx@highlightname@format%
-		}{}%
-}
-\xpretonameformat{given-family}{\cv@blx@highlightname@patch}{}{}
-\xapptonameformat{given-family}{\endgroup}{}{}
-\xpretonameformat{family-given}{\cv@blx@highlightname@patch}{}{}
-\xapptonameformat{family-given}{\endgroup}{}{}
-\xpretonameformat{family-given/given-family}{\cv@blx@highlightname@patch}{}{}
-\xapptonameformat{family-given/given-family}{\endgroup}{}{}
-\xpretonameformat{initsonly}{\cv@blx@highlightname@patch}{}{}
-\xapptonameformat{initsonly}{\endgroup}{}{}
+% \newcommand\highlightname[4]{%
+%   % 1. build the key locally …
+%   \begingroup
+%     \edef\@@tmp{\zap@space #1#2 \@empty}%   % family+given, no spaces
+%     \lowercase{\xdef\cv@blx@highlightname@hash{\@@tmp}}%  % 2. … and save it *globally*
+%   \endgroup
+%   % 3. remember it for later matching
+%   \listxadd{\cv@blx@highlightname@hash@list}{\cv@blx@highlightname@hash}%
+% }
 
-% Delete a name from a list of names. Unlike the emphasizing the name, the deletion is done on a per type (i.e., author, editor, presenter) basis.
-\newcommand{\cv@blx@deletename}[1]{%
-	\expandafter\forlistloop\expandafter{\expandafter\cv@blx@deletename@do\expandafter{\NewValue}{#1}}{\cv@blx@highlightname@hash@list}%
-}
-\ExplSyntaxOn
-	\NewDocumentCommand{\cv@blx@deletename@do}{mmm}{% Name information, Type, Hash
-		\tl_set:Nn\l_tmpa_tl{#1}%
-		\str_if_in:nnTF{#1}{hash=#3}{%
-			\numdef\NewCount{\NewCount-1}%
-			\regex_replace_all:nnN{\cB\{\cB\{.*?hash=#3.*?\cE\}\cE\}\cE\}}{}\l_tmpa_tl%
-			\regex_replace_all:nnN{\cB\{\cB\{.*?hash=#3.*?\cE\}.*?givenun=0.*?\cE\}\cE\}}{}\l_tmpa_tl%
-			\edef\NewValue{\l_tmpa_tl}%
-			\blx@bbl@addfield{#2deleted}{1}%
-		}{}%
-	}
-\ExplSyntaxOff
+% --------------------------------------------------------------------------
+% Patching the various name formats so that, whenever the current
+% «family + given» pair matches something that was registered with
+% \highlightname, the name parts are wrapped in \cv@blx@highlightname@format
+% (boldface by default, but you can redefine that macro if you like).
+% --------------------------------------------------------------------------
+% \newcommand{\cv@blx@highlightname@format}{\textbf}
 
-\newbibmacro{nameDeleted}{%
-	\iffieldequalstr{\currentname deleted}{1}{%
-		\bibstring{with}\addspace%
-	}{%
-		\bibstring{by}\addspace%
-	}%
-}
-\renewcommand{\cv@blx@tempa}[1]{%
-	\DeclareNameInputHandler{#1}{%
-		\iftoggle{cv@blx:delete:#1}{\cv@blx@deletename{#1}}{}%
-	}%
-	\DeclareNameWrapperFormat{#1}{%
-		\iftoggle{cv@blx:delete:#1}{\usebibmacro{nameDeleted}}{}%
-		##1%
-	}%
-}
-\forcsvlist{\cv@blx@tempa}{afterword, annotator, author, bookauthor, %
-	commentator, editor, editora, editorb, editorc, foreword, holder, %
-	introduction, namea, nameb, namec, translator, shortauthor, %
-	shorteditor, advisor, committee, name, presenter%
-}
+% \newcommand{\cv@blx@highlightname@patch}{%
+%   \begingroup
+%     % Build the key for the *current* name that is being typeset
+%     \def\cv@tmp{\zap@space \namepartfamily\namepartgiven \@empty}%
+%     \edef\cv@tmp{\expandafter\detokenize\expandafter{\cv@tmp}}%
+%     \lowercase{\edef\cv@currname{\cv@tmp}}%
+%     % If that key is in the list, switch the \mkbib… commands to bold
+%     \xifinlist{\cv@currname}{\cv@blx@highlightname@hash@list}{%
+%       \let\mkbibnamegiven  =\cv@blx@highlightname@format
+%       \let\mkbibnamefamily =\cv@blx@highlightname@format
+%       \let\mkbibnameprefix =\cv@blx@highlightname@format
+%       \let\mkbibnamesuffix =\cv@blx@highlightname@format
+%     }{}%
+% }
+
+% % Hook the patch into all name-format aliases you use
+% \xpretonameformat{given-family}{\cv@blx@highlightname@patch}{}{}
+% \xapptonameformat{given-family}{\endgroup}{}{}
+% \xpretonameformat{family-given}{\cv@blx@highlightname@patch}{}{}
+% \xapptonameformat{family-given}{\endgroup}{}{}
+% \xpretonameformat{family-given/given-family}{\cv@blx@highlightname@patch}{}{}
+% \xapptonameformat{family-given/given-family}{\endgroup}{}{}
+% \xpretonameformat{initsonly}{\cv@blx@highlightname@patch}{}{}
+% \xapptonameformat{initsonly}{\endgroup}{}{}
+
+% --------------------------------------
+% \makeatletter
+\newbibmacro*{name:bold}[2]{%
+	\edef\blx@tmp@name{\expandonce#1, \expandonce#2}%
+	\def\do##1{\ifdefstring{\blx@tmp@name}{##1}{\bfseries\listbreak}{}}%
+	\dolistloop{\boldnames}}
+\newcommand*{\boldnames}{}
+% \makeatother
+
+\xpretobibmacro{name:family}{\begingroup\usebibmacro{name:bold}{#1}{#2}}{}{}
+\xpretobibmacro{name:given-family}{\begingroup\usebibmacro{name:bold}{#1}{#2}}{}{}
+\xpretobibmacro{name:family-given}{\begingroup\usebibmacro{name:bold}{#1}{#2}}{}{}
+\xpretobibmacro{name:delim}{\begingroup\normalfont}{}{}
+
+\xapptobibmacro{name:family}{\endgroup}{}{}
+\xapptobibmacro{name:given-family}{\endgroup}{}{}
+\xapptobibmacro{name:family-given}{\endgroup}{}{}
+\xapptobibmacro{name:delim}{\endgroup}{}{}
+
+% ----------------------------------
+
+
+
 
 % Some sections of a CV should have numbered items and some should not. We need to define unnumbered and numbered (with descending labels) bibliography environments. In order for this to work, we need to create a new totcounter every time a new bibliography is started. I think this breaks if there is more than one refsection in the CV, but I am not sure why there would be more than one refsection in a CV.
 \newcounter{cv@blx@bib}

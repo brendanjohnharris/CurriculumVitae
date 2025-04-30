@@ -2,7 +2,7 @@
 \togglefalse{cv@blx:delete:presenter}
 
 % \ProvidesFile{curriculumvitae.bbx}[v0.01 curriculumvitae bibliography style]
-\def\OA{\includegraphics[trim=0 4.7cm 0 0cm, height=1.1em]{open-access-logo-color.pdf}}
+\def\OA{\includegraphics[trim=0 4.7cm 0 0cm, height=1.0em]{open-access-logo-color.pdf}}
 \def\logo#1{%
 \iffieldequalstr{#1}{Julia}{\includegraphics[trim=0 1cm 0 -1cm, height=1.2em]{julia-logo-color.pdf}}{}
 \iffieldequalstr{#1}{MATLAB}{\raisebox{-1em}{\includegraphics[trim=0 1cm 0 -1cm, height=2.6em]{matlab-logo-color.png}}}{}
@@ -263,18 +263,18 @@
 
 \newcommand{\NumToMonth}[1]{%
   \ifcase#1 % case 0, which should not occur
-  \or Jan.% 1
-  \or Feb.% 2
-  \or Mar.% 3
-  \or Apr.% 4
-  \or May % 5
-  \or Jun.% 6
-  \or Jul.% 7
-  \or Aug.% 8
-  \or Sep.% 9
-  \or Oct.% 10
-  \or Nov.% 11
-  \or Dec.% 12
+  \or Jan% 1
+  \or Feb% 2
+  \or Mar% 3
+  \or Apr% 4
+  \or May% 5
+  \or Jun% 6
+  \or Jul% 7
+  \or Aug% 8
+  \or Sep% 9
+  \or Oct% 10
+  \or Nov% 11
+  \or Dec% 12
   \else Invalid% other input
   \fi
 }
@@ -392,15 +392,15 @@
 	\entry
 	{\usebibmacro{yearrange}}
 	{\thefield{title}
-		\iffieldundef{eprint}{}{\quad \href{\thefield{eprint}}{\OA}}
-		\iffieldundef{url}{}{\ \href{\thefield{url}}{\large \faicon{github}}}
+		\iffieldundef{eprint}{}{\href{\thefield{eprint}}{\,\OA}}
+		\iffieldundef{url}{}{\href{\thefield{url}}{\icon{\fagithub}{7}}}
 	}
 	{\begin{minipage}[t]{0.15\textwidth}
 		\iffieldundef{doi}{\thefield{journaltitle}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\thefield{journaltitle}}}}
-		\iffieldundef{journaltitle}{}{\\\bibstring{volume}\ \thefield{volume}, \bibstring{number} \thefield{number}}
+		\iffieldundef{volume}{}{\\\bibstring{volume}\ \thefield{volume}, \bibstring{pp.} \thefield{pages}}
 	\end{minipage}
 	}
-	{\textit{\printnames{author}}
+	{\printnames{author}
 	}\\
 	\end{entrylist}
 }
@@ -415,8 +415,8 @@
 	{\usebibmacro{yearrange}}
 	{\thefield{booktitle}
 		\iffieldundef{journaltitle}{}{\\\bibstring{volume}\ \thefield{volume}, \bibstring{number} \thefield{number}}
-		\iffieldundef{eprint}{}{\quad \href{\thefield{eprint}}{\OA}}
-		% \iffieldundef{note}{}{\ \href{\thefield{note}}{\large \faicon{github}}}
+		\iffieldundef{eprint}{}{\quad \href{\thefield{eprint}}{\,\OA}}
+		% \iffieldundef{note}{}{\ \href{\thefield{note}}{\icon{\fagithub}{7}}}
 	}
 	{\iffieldundef{doi}{\thefield{note}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\thefield{note}}}} % The type of paper
 	}{%
@@ -522,9 +522,8 @@
 			\entry
 			{\usebibmacro{yearrange}}
 			{\thefield{title}
-			\iffieldundef{eprint}{}{\quad \href{\thefield{eprint}}{\OA}}
-			\iffieldundef{eprint}{}{\quad \href{\thefield{eprint}}{\OA}}
-			\iffieldundef{url}{}{\ \href{\thefield{url}}{\large \faicon{github}}
+			\iffieldundef{eprint}{}{\,\href{\thefield{eprint}}{\OA}}
+			\iffieldundef{url}{}{\ \href{\thefield{url}}{\icon{\fagithub}{7}}
 			}}
 			{\iffieldundef{doi}{\thefield{role}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\thefield{role}}}}}
 			{%
@@ -541,7 +540,7 @@
 			{\usebibmacro{yearrange}}
 			{\thefield{title}
 			\iffieldundef{crossref}{}{\quad \href{\thefield{eprint}}{\OA}}
-			\iffieldundef{url}{}{\ \href{\thefield{url}}{\large \faicon{github}}}
+			\iffieldundef{url}{}{\ \href{\thefield{url}}{\icon{\fagithub}{7}}}
 			}
 			{\printfield{role}}
 			{%
@@ -555,8 +554,8 @@
 			\entry
 			{\usebibmacro{yearrange}}
 			{\thefield{title}
-			\iffieldundef{crossref}{}{\quad \href{\thefield{eprint}}{\OA}}
-			\iffieldundef{url}{}{\ \href{\thefield{url}}{\large \faicon{github}}}
+			\iffieldundef{eprint}{}{\,\href{\thefield{eprint}}{\OA}}
+			\iffieldundef{url}{}{\ \href{\thefield{url}}{\icon{\fagithub}{7}}}
 			}
 			{\printfield{type}}
 			{%
@@ -567,14 +566,28 @@
 }
 
 % Software
-\def\githubstars#1{%
-	% \newcommand{\stargazers}{}
-	% \stargazers{}
-	\def\stars{\input{|curl \-\-silent https://api.github.com/repos/\thefield{title} -H 'Accept: application/vnd.github.preview' | jq '.stargazers_count'}}
-	\IfInteger{\string \stars}{%
-		~\\{\tiny \faicon{star}\ \ }{\stars}
-	}{}
+\begin{luacode*}
+	function github_stars(repo, fontsize)
+		-- 1) fetch the repo JSON via curl
+		local cmd = 'curl -s "https://api.github.com/repos/' .. repo .. '"'
+		local pipe = io.popen(cmd)
+		if not pipe then return end
+		local body = pipe:read("*a")
+		pipe:close()
+
+		-- 2) pull out the stargazers_count number
+		local n = body:match('"stargazers_count"%s*:%s*(%d+)')
+		if n then
+				-- 3) typeset the ★ icon + number
+			tex.print("\\icon{\\fastar}{" .. fontsize .. "}{" .. n .. "}")
+		end
+	end
+\end{luacode*}
+
+\newcommand{\githubstars}[2]{%
+\directlua{github_stars([[#1]],[[#2]])}%
 }
+
 \DeclareBibliographyDriver{software}{%
 \usebibmacro{bibindex}%
 \usebibmacro{begentry}%
@@ -584,14 +597,13 @@
 	{\logo{eprint}}
 	{%
 		\thefield{title}
-		\iffieldundef{url}{}{\quad \href{\thefield{url}}{\large \faicon{github}}}
+		\iffieldundef{url}{}{\,\href{\thefield{url}}{\icon{\fagithub}{7}}\githubstars{\thefield{title}}{7}}
 	}
 	{\begin{minipage}{0.1\textwidth}
 		\begin{flushright}
 			\iffieldundef{doi}{\printlist{publisher}}{%
 				\textcolor{blue}{\href{https://doi.org/\thefield{doi}}{\printlist{publisher}}}%
 			}%
-			\githubstars{\thefield{title}}
 		\end{flushright}
 	\end{minipage}}
 	{%
@@ -638,7 +650,7 @@
 	\entry
 	{\usebibmacro{yearrange}}
 	{\printlist{institution}
-		\iffieldundef{eprint}{}{\quad \href{\thefield{eprint}}{\OA}}
+		\iffieldundef{eprint}{}{\,\href{\thefield{eprint}}{\OA}}
 	}
 	{\iffieldundef{doi}{\printfield{presentationtype}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\printfield{presentationtype}}}}}
 	{%

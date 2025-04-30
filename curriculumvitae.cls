@@ -84,7 +84,7 @@
 
 % Command to output an icon in a black square box with text to the right
 \newcommand{\icon}[3]{%
-	\vcenteredhbox{\colorbox{white}{\makebox(#2, #2){\textcolor{black}{\large #1}}}}%
+	\vcenteredhbox{\raisebox{0.6em}{\colorbox{white}{\makebox(#2, #2){\textcolor{black}{\large #1}}}}}%
 	\vcenteredhbox{\textcolor{black}{\ #3}}%
 }
 
@@ -95,6 +95,7 @@
 \def\fabluesky{\selectfont \fabrands \char"E671}
 \def\faphone{\selectfont \fasolid \char"F095}
 \def\fagithub{\selectfont \fabrands \char"F09B}
+\def\fastar{\selectfont \fasolid \char"F005}
 
 %----------------------------------------------------------------------------------------
 %	GRAPHICS DEFINITIONS
