@@ -577,7 +577,7 @@
 
 		-- 2) pull out the stargazers_count number
 		local n = body:match('"stargazers_count"%s*:%s*(%d+)')
-		if n then
+		if (n and n > 1) then
 				-- 3) typeset the ★ icon + number
 			tex.print("\\icon{\\fastar}{" .. fontsize .. "}{" .. n .. "}")
 		end
