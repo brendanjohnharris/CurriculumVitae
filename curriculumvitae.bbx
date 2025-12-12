@@ -577,9 +577,10 @@
 
 		-- 2) pull out the stargazers_count number
 		local n = body:match('"stargazers_count"%s*:%s*(%d+)')
-		if (n and n > 1) then
+		local count = tonumber(n)
+		if (count and count > 1) then
 				-- 3) typeset the ★ icon + number
-			tex.print("\\icon{\\fastar}{" .. fontsize .. "}{" .. n .. "}")
+			tex.print("\\icon{\\fastar}{" .. fontsize .. "}{" .. count .. "}")
 		end
 	end
 \end{luacode*}

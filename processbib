@@ -9,7 +9,7 @@ fi
 # Copy the bibliography file to the current directory
 cp "/home/brendan/Notebook/Papers/theBibliography.bib" "./theBibliography.bib"
 
-# Filter biblatex entries based on the 'group' field, replace 'journaltitle' with 'journal', and remove 'eprint' and 'language'
+# Filter biblatex entries based on the 'group' field, replace 'journaltitle' with 'journal', and remove 'language'
 awk -v group="$1" '
 BEGIN { print_entry=0; }
 {

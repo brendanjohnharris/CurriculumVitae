@@ -32,7 +32,7 @@
 #       rdb_add_generated.
 
 # Load local bibliography, if present
-system("./processbib CurriculumVitae");
+system("cd /home/brendan/Documents/CurriculumVitae && ./processbib CurriculumVitae");
 
 
 #--------------------
