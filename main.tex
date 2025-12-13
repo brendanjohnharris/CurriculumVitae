@@ -1,6 +1,6 @@
 % !TEX program = lualatex
 \documentclass[10pt]{curriculumvitae}
-\usepackage{multicol}
+
 \graphicspath{{./logos/}}
 \setlength{\columnsep}{0mm}
 \usepackage{lipsum}
@@ -38,6 +38,7 @@
 \begin{minipage}[t]{0.45\textwidth}
     % \begin{flushright}
 	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	\vspace{0.3em}
 
 	{ \fontsize{20}{20} \textcolor{black}{\textbf{\MakeUppercase{\me}}}}
 	\\
@@ -61,18 +62,12 @@
 	\icon{\faphone}{10}{\phone}\\
 \end{minipage}
 
-{
-\setlength\columnsep{3em}
-\begin{spacing}{0.01}
-\tableofcontents
-\end{spacing}
-}
-\vspace{1.5em}
 %----------------------------------------------------------------------------------------
 %	INTRODUCTION, SKILLS AND TECHNOLOGIES
 %----------------------------------------------------------------------------------------
+\vspace{3em}
 \begin{minipage}[t]{0.47\textwidth}
-    \cvsect{Summary}
+    \cvsect*{Summary}
 	\vspace{-6pt}
 
     PhD student in the Complex Systems group (School of Physics) at the University of Sydney. Interested in understanding the physical mechanisms of computation and communication in the brain, especially for visual processing. Use a combination of new analytic tools, dynamical systems theory, and biophysical neural-circuit models to develop a multi-level understanding of brain dynamics and function.
@@ -80,7 +75,7 @@
 \end{minipage}
 \hfill % Whitespace between
 \begin{minipage}[t]{0.47\textwidth}
-    \cvsect{Skills}
+    \cvsect*{Skills}
     \vspace{-6pt}
 
     \begin{minipage}[t]{0.2\textwidth}
@@ -101,10 +96,24 @@
     \end{minipage}
 
 \end{minipage}
+\vspace{1.5em}
+
+\vspace{3em}
+\cvsect*{Contents}
+{
+    \noindent\hspace*{5em}
+    \begin{minipage}[t]{1.0\textwidth}
+    \setlength\columnsep{3em}
+    \begin{spacing}{0.01}
+        \vspace{-3em}
+        \tableofcontents
+  \end{spacing}
+\end{minipage}
+}
 
 
 \begin{refcontext}[sorting=nmy]
-\vspace{3em}
+% \vspace{3em}
 
 %----------------------------------------------------------------------------------------
 %	Education
@@ -123,13 +132,15 @@
 %----------------------------------------------------------------------------------------
 %	Conference abstracts
 %----------------------------------------------------------------------------------------
+% \clearpage
 \vspace{-3.5 em}
-\cvsect{Conference abstracts}
+\cvsect{Conferences}
 \printbibliography[env = unnumbered, resetnumbers = true, type = inproceedings]
 
 %----------------------------------------------------------------------------------------
 %	Presentations
 %----------------------------------------------------------------------------------------
+\clearpage
 \vspace{-3.5 em}
 \cvsect{Workshops and talks}
 \printbibliography[env = unnumbered, resetnumbers = true, check = Presentation]
@@ -182,20 +193,20 @@
 \begin{tabular}{lr}
     % Referee 1
     \begin{minipage}[t]{0.5\textwidth}
-    Dr.\ Benjamin Fulcher\\
+    Dr.\ Benjamin D. Fulcher\\
     School of Physics, The University of Sydney\\
     Physics Building, Physics Rd, Camperdown 2006\\
-    Ph: 8627 6708\\
+    Ph: +61 86276708 \\
     \href{mailto:ben.fulcher@sydney.edu.au}{ben.fulcher\textrm{@}sydney.edu.au}
     \end{minipage}
     &
     % Referee 2
     \begin{minipage}[t]{0.5\textwidth}
-    Dr.\ Oliver Cliff\\
+    Dr.\ Pulin Gong\\
     School of Physics, The University of Sydney\\
     Physics Building, Physics Rd, Camperdown 2006\\
-    Ph: 0401519378\\
-    \href{mailto:oliver.cliff@sydney.edu.au}{oliver.cliff\textrm{@}sydney.edu.au}
+    Ph: +61 290369368 \\
+    \href{mailto:pulin.gong@sydney.edu.au}{pulin.gong\textrm{@}sydney.edu.au}
     \end{minipage}
     \end{tabular}
 

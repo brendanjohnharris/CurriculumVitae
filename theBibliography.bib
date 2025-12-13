@@ -67,17 +67,18 @@
 }
 
 
-@inproceedings{Harris2022a,
-    author           = {Brendan Harris and Ben Fulcher},
-    booktitle        = {31st Annual Computational Neuroscience Meeting: CNS*2022},
-    date             = {2022-07},
-    title            = {Summarizing non-stationarity in spatio-temporal neural data},
-    doi              = {10.1007/s10827-022-00841-9},
-    note             = {Poster},
-    organization     = {Organization for Computational Neuroscience},
-    pages            = {P36},
-    publisher        = {Organization for Computational Neuroscience},
-    abstract         = {Uncovering the patterns buried in high-dimensional spatio-temporal data is vital for investigating how environmental parameters translate to complex neuronal activity. Standard methods of dimensionality reduction excel at finding global low-dimensional structure, but do not provide crucial fine-grained information about how the dynamics of individual neural elements change over time. As an alternative, univariate time-series features measure the dynamical properties of local neural elements, but most assume stationary data in which dynamical properties are constant. We present a new method that combines time-series features with dimensionality reduction to produce interpretable, time-resolved summaries of non-stationary data. By exploiting the correspondence between parameters and dynamics [1], we are then able to infer the parametric variation underlying non-stationarity in complex neural dynamics.
+@InProceedings{Harris2022a,
+  author           = {Brendan Harris and Ben Fulcher},
+  booktitle        = {31st Annual Computational Neuroscience Meeting: CNS*2022},
+  date             = {2022-07},
+  title            = {Summarizing non-stationarity in spatio-temporal neural data},
+  doi              = {10.1007/s10827-022-00841-9},
+  location         = {Melbourne, Australia},
+  note             = {Poster},
+  organization     = {Organization for Computational Neuroscience},
+  pages            = {P36},
+  publisher        = {Organization for Computational Neuroscience},
+  abstract         = {Uncovering the patterns buried in high-dimensional spatio-temporal data is vital for investigating how environmental parameters translate to complex neuronal activity. Standard methods of dimensionality reduction excel at finding global low-dimensional structure, but do not provide crucial fine-grained information about how the dynamics of individual neural elements change over time. As an alternative, univariate time-series features measure the dynamical properties of local neural elements, but most assume stationary data in which dynamical properties are constant. We present a new method that combines time-series features with dimensionality reduction to produce interpretable, time-resolved summaries of non-stationary data. By exploiting the correspondence between parameters and dynamics [1], we are then able to infer the parametric variation underlying non-stationarity in complex neural dynamics.
                         Our method (Fig. 1) first applies feature extraction [2] to windows of a time series, yielding a feature matrix that measures dynamical properties across time. We then infer parametric variation by applying dimensionality reduction to the feature matrix, extracting the trajectory of local time-series windows through a low-dimensional feature space. To ensure our feature-space embedding is unbiased with respect to feature–feature dependencies, we also developed an extension to PCA that generates orthonormal features by examining the dependency structure of a controlled, baseline, dataset. We verified our methods are able to accurately track non-stationarity and the underlying variation in ground-truth parameters using an extensive variety of simulated dynamical systems (correlations from 0.9 to 1.0).
                         We then investigated neural responses to visual stimuli by applying our method to the Allen Neuropixels dataset, a spatio-temporal set of electrophysiological recordings from the mouse brain [3]. As a visual stimulus changes over time, our method automatically reveals channels that transition between states with distinct patterns of activity. In a single subject, we are able to temporally resolve the dynamical regimes of regions such as the primary visual cortex and lateral posterior nucleus, which include slow, periodic theta oscillations and higher-frequency broadband fluctuations, without aggregating local readings over imposed anatomical divisions (as required by most conventional methods).
                         Our new method has further advantages over conventional approaches to dimensionality reduction: i) it does not require phase-synchronized time series; ii) it produces an informative low-dimensional representation of complex dynamics, resolved over space and time; and iii) it can be directly interpreted in terms of the dynamical properties encapsulated by each feature, without the need to identify a model for the underlying system. Our approach can be applied to many forms of spatio-temporal neural data to understand how the dynamics of neural components respond to changes in the environment.
@@ -86,10 +87,10 @@
                         [1]    Güttler S, Kantz H, and Olbrich E. Reconstruction of the parameter spaces of dynamical systems. Phys Rev E. 2001, 63, 056215.
                         [2]    Fulcher BD, Little MA, and Jones NS. Highly comparative time-series analysis: the empirical structure of time series and their methods, J R Soc Interface. 2013, 10, 20130048.
                         [3]    Siegle JH, Jia X, Durand S, et al. Survey of spiking in the mouse visual system reveals functional hierarchy, Nature. 2021, 592, pp. 86–92.},
-    creationdate     = {2022-08-23T16:02:09},
-    file             = {:NoSync/Harris2022a.svg:;:NoSync/Harris2022a.pdf:PDF},
-    groups           = {Conferences, Mine, CurriculumVitae},
-    modificationdate = {2025-04-30T23:18:53},
+  creationdate     = {2022-08-23T16:02:09},
+  file             = {:NoSync/Harris2022a.svg:;:NoSync/Harris2022a.pdf:PDF},
+  groups           = {Conferences, Mine, CurriculumVitae},
+  modificationdate = {2025-12-13T13:13:01},
 }
 
 '
@@ -215,7 +216,8 @@
   date             = {2022-07},
   groups           = {Conferences, Mine, CurriculumVitae},
   institution      = {31st Annual Computational Neuroscience Meeting: CNS*2022},
-  modificationdate = {2025-12-13T00:05:58},
+  location         = {Melbourne, Australia},
+  modificationdate = {2025-12-13T13:12:50},
   note             = {In workshop 'Highly comparative analysis of neural dynamics'.},
   organization     = {Organization for Computational Neuroscience},
   pages            = {P36},
@@ -226,18 +228,18 @@
 }
 
 
-@presentation{Harris2022d,
-    author           = {Brendan Harris and Pulin Gong},
-    creationdate     = {2023-11-01T13:13:43},
-    date             = {2023-01},
-    groups           = {CurriculumVitae},
-    institution      = {Complexity, Criticality and Computation Symposium: C3-2023},
-    location         = {Heron Island},
-    modificationdate = {2025-04-30T23:18:53},
-    note             = {Symposium on Heron Island, QLD, held by the Centre for Complex Systems (The University of Sydney).},
-    presentationtype = {Workshop talk},
-    presenter        = {Brendan Harris},
-    title            = {Burst-based inter-areal neural communication},
+@Presentation{Harris2022d,
+  author           = {Brendan Harris and Pulin Gong},
+  creationdate     = {2023-11-01T13:13:43},
+  date             = {2023-01},
+  groups           = {CurriculumVitae},
+  institution      = {Complexity, Criticality and Computation Symposium: C3-2023},
+  location         = {Heron Island},
+  modificationdate = {2025-12-13T13:18:28},
+  note             = {Symposium held by the Centre for Complex Systems (The University of Sydney).},
+  presentationtype = {Workshop talk},
+  presenter        = {Brendan Harris},
+  title            = {Burst-based inter-areal neural communication},
 }
 
 
@@ -255,31 +257,33 @@
 }
 
 
-@presentation{Harris2022f,
-    author           = {Brendan Harris},
-    creationdate     = {2023-11-01T13:24:51},
-    date             = {2022-10},
-    groups           = {CurriculumVitae},
-    institution      = {OpenScope NeuroDataReHack Hackathon},
-    modificationdate = {2025-04-30T23:18:53},
-    note             = {Workshop on re-analyzing open-source neural data, hosted by the Allen Institute (Seattle, USA).},
-    presentationtype = {Workshop attendee},
-    presenter        = {Brendan Harris},
+@Presentation{Harris2022f,
+  author           = {Brendan Harris},
+  creationdate     = {2023-11-01T13:24:51},
+  date             = {2022-10},
+  groups           = {CurriculumVitae},
+  institution      = {OpenScope NeuroDataReHack Hackathon},
+  location         = {Seattle, WA, USA},
+  modificationdate = {2025-12-13T13:20:19},
+  note             = {Workshop on re-analyzing open-source neural data, hosted by the Allen Institute},
+  presentationtype = {Workshop attendee},
+  presenter        = {Brendan Harris},
 }
 
 
-@presentation{Harris2022g,
-    author           = {Brendan Harris},
-    creationdate     = {2023-11-01T13:42:15},
-    date             = {2022-11},
-    groups           = {CurriculumVitae},
-    institution      = {BrainHack Australia 2022},
-    modificationdate = {2025-04-30T23:18:53},
-    note             = {Contributed to a project aiming to synthesize music from neural signals using deep neural networks.},
-    presentationtype = {Workshop attendee},
-    presenter        = {Brendan Harris},
-    title            = {Brainharmonic},
-    url              = {https://github.com/marianocabezas/brainharmonic},
+@Presentation{Harris2022g,
+  author           = {Brendan Harris},
+  creationdate     = {2023-11-01T13:42:15},
+  date             = {2022-11},
+  groups           = {CurriculumVitae},
+  institution      = {BrainHack Australia 2022},
+  location         = {The University of Sydney},
+  modificationdate = {2025-12-13T13:18:48},
+  note             = {Contributed to a project aiming to synthesize music from neural signals using deep neural networks.},
+  presentationtype = {Workshop attendee},
+  presenter        = {Brendan Harris},
+  title            = {Brainharmonic},
+  url              = {https://github.com/marianocabezas/brainharmonic},
 }
 
 
@@ -325,17 +329,17 @@
 }
 
 
-@funding{Harris2019c,
-    author           = {Brendan Harris},
-    creationdate     = {2023-11-02T19:49:30},
-    date             = {2019},
-    funder           = {The University of Sydney},
-    groups           = {CurriculumVitae},
-    keywords         = {Award},
-    modificationdate = {2025-04-30T23:18:53},
-    note             = {To fund a 6-week summer research project with the Quantum Control Laboratory (The University of Sydney)},
-    title            = {Denison Research Scholarship and Denison Relocation Scholarship},
-    type             = {Scholarship},
+@Funding{Harris2019c,
+  author           = {Brendan Harris},
+  creationdate     = {2023-11-02T19:49:30},
+  date             = {2019},
+  funder           = {The University of Sydney},
+  groups           = {CurriculumVitae},
+  keywords         = {Award},
+  modificationdate = {2025-12-13T14:13:19},
+  note             = {To fund a 6-week summer research project with the Quantum Control Laboratory},
+  title            = {Denison Research Scholarship and Denison Relocation Scholarship},
+  type             = {Scholarship},
 }
 
 
@@ -686,63 +690,67 @@
 }
 
 
-@presentation{Harris2023g,
-    author           = {Brendan Harris and Pulin Gong},
-    creationdate     = {2023-11-09T19:18:41},
-    date             = {2023-07},
-    groups           = {CurriculumVitae},
-    institution      = {Cognitive Neuroscience Hub, The University of Melbourne},
-    modificationdate = {2025-04-30T23:18:53},
-    note             = {Presented my PhD work, hosted by Dr. Jacob Paul.},
-    presentationtype = {Talk},
-    presenter        = {Brendan Harris},
-    title            = {Burst-based inter-areal neural communication},
+@Presentation{Harris2023g,
+  author           = {Brendan Harris and Pulin Gong},
+  creationdate     = {2023-11-09T19:18:41},
+  date             = {2023-07},
+  groups           = {CurriculumVitae},
+  institution      = {Cognitive Neuroscience Hub, The University of Melbourne},
+  location         = {Melbourne University},
+  modificationdate = {2025-12-13T13:17:35},
+  note             = {Presented my PhD work, hosted by Dr. Jacob Paul.},
+  presentationtype = {Talk},
+  presenter        = {Brendan Harris},
+  title            = {Burst-based inter-areal neural communication},
 }
 
 
-@presentation{Harris2023h,
-    author           = {Brendan Harris and Pulin Gong},
-    creationdate     = {2023-11-09T19:30:08},
-    date             = {2023-07},
-    groups           = {CurriculumVitae},
-    institution      = {tLab, Monash University},
-    modificationdate = {2025-04-30T23:18:53},
-    note             = {Presented my PhD work to the lab of Professor Nao Tsuchiya.},
-    presentationtype = {Talk},
-    presenter        = {Brendan Harris},
-    title            = {Burst-based inter-areal neural communication},
+@Presentation{Harris2023h,
+  author           = {Brendan Harris and Pulin Gong},
+  creationdate     = {2023-11-09T19:30:08},
+  date             = {2023-07},
+  groups           = {CurriculumVitae},
+  institution      = {tLab},
+  location         = {Monash University},
+  modificationdate = {2025-12-13T13:17:59},
+  note             = {Presented my PhD work to the lab of Professor Nao Tsuchiya.},
+  presentationtype = {Talk},
+  presenter        = {Brendan Harris},
+  title            = {Burst-based inter-areal neural communication},
 }
 
 
-@presentation{Harris2023i,
-    author           = {Brendan Harris and Pulin Gong},
-    creationdate     = {2023-11-09T19:36:23},
-    date             = {2023-10},
-    groups           = {CurriculumVitae},
-    institution      = {MIP:Lab, Geneva Biotech Campus},
-    modificationdate = {2025-04-30T23:18:53},
-    note             = {Presented my PhD work to the MIP:Lab, hosted by Dr. Enrico Amico.},
-    presentationtype = {Talk},
-    presenter        = {Brendan Harris},
-    title            = {Burst-based inter-areal neural communication},
+@Presentation{Harris2023i,
+  author           = {Brendan Harris and Pulin Gong},
+  creationdate     = {2023-11-09T19:36:23},
+  date             = {2023-10},
+  groups           = {CurriculumVitae},
+  institution      = {MIP:Lab, Geneva Biotech Campus},
+  location         = {Geneva, Switzerland},
+  modificationdate = {2025-12-13T13:16:54},
+  note             = {Presented my PhD work to the MIP:Lab, hosted by Dr. Enrico Amico.},
+  presentationtype = {Talk},
+  presenter        = {Brendan Harris},
+  title            = {Burst-based inter-areal neural communication},
 }
 
 
-@inproceedings{Harris2023j,
-    author           = {Harris, Brendan and Gong, Pulin},
-    booktitle        = {IBRO Neuroscience Reports (IBRO World Congress 2023)},
-    date             = {2023-10},
-    title            = {Nested and non-stationary oscillatory bursts underlie flexible inter-areal neural communication},
-    doi              = {10.1016/j.ibneur.2023.08.1612},
-    note             = {Poster},
-    pages            = {S783},
-    publisher        = {Elsevier},
-    volume           = {15},
-    creationdate     = {2023-11-23T12:55:14},
-    file             = {:Harris2023j.bib:bib},
-    groups           = {CurriculumVitae},
-    issn             = {2667-2421},
-    modificationdate = {2025-04-30T23:18:53},
+@InProceedings{Harris2023j,
+  author           = {Harris, Brendan and Gong, Pulin},
+  booktitle        = {IBRO Neuroscience Reports (IBRO World Congress 2023)},
+  date             = {2023-10},
+  title            = {Nested and non-stationary oscillatory bursts underlie flexible inter-areal neural communication},
+  doi              = {10.1016/j.ibneur.2023.08.1612},
+  location         = {Granada, Spain},
+  note             = {Poster},
+  pages            = {S783},
+  publisher        = {Elsevier},
+  volume           = {15},
+  creationdate     = {2023-11-23T12:55:14},
+  file             = {:Harris2023j.bib:bib},
+  groups           = {CurriculumVitae},
+  issn             = {2667-2421},
+  modificationdate = {2025-12-13T13:11:54},
 }
 
 
@@ -839,7 +847,8 @@
   date             = {2024-05},
   groups           = {CurriculumVitae},
   institution      = {School of Physics HDR symposium},
-  modificationdate = {2025-12-12T23:32:22},
+  location         = {The University of Sydney},
+  modificationdate = {2025-12-13T13:15:59},
   note             = {School of Physics, The University of Sydney},
   presentationtype = {Workshop talk},
   presenter        = {Brendan Harris},
@@ -853,7 +862,8 @@
   date             = {2024-08},
   groups           = {CurriculumVitae},
   institution      = {Emerging Aspirations in Complex Systems},
-  modificationdate = {2025-12-12T23:33:27},
+  location         = {The University of Sydney},
+  modificationdate = {2025-12-13T13:16:30},
   note             = {Centre for Complex Systems, The University of Sydney},
   presentationtype = {Workshop talk},
   presenter        = {Brendan Harris},
@@ -880,6 +890,7 @@
   booktitle        = {NeuroEng 2025},
   date             = {2025-02},
   title            = {Nested spatiotemporal theta–gamma waves organize hierarchical visual processing},
+  location         = {The University of Melbourne},
   note             = {Talk},
   organization     = {University of Melbourne},
   publisher        = {NeuroEng},
@@ -913,7 +924,7 @@ coupling [7] and inter-areal phase synchrony [8] into a coherent, nested pattern
 highlighting the crucial role of large-scale dynamics in shaping the fine-grained processes needed to interpret complex natural stimuli.},
   creationdate     = {2025-12-13T00:06:07},
   groups           = {Conferences, Mine, CurriculumVitae},
-  modificationdate = {2025-12-13T00:09:10},
+  modificationdate = {2025-12-13T13:12:16},
 }
 
 
@@ -925,11 +936,11 @@ highlighting the crucial role of large-scale dynamics in shaping the fine-graine
   eprint           = {https://github.com/brendanjohnharris/Cosyne_2025},
   location         = {Montreal, QC, Canada},
   note             = {Poster},
-  organization     = {COSYNE},
+  organization     = {Computational and Systems Neuroscience},
   pages            = {1-117},
   creationdate     = {2025-12-13T00:13:22},
   groups           = {CurriculumVitae},
-  modificationdate = {2025-12-13T00:23:18},
+  modificationdate = {2025-12-13T12:27:22},
 }
 
 
@@ -939,10 +950,115 @@ highlighting the crucial role of large-scale dynamics in shaping the fine-graine
   date             = {2025-03},
   groups           = {CurriculumVitae},
   institution      = {Pre-Cosyne BrainHack 2025},
-  modificationdate = {2025-12-13T00:22:34},
+  location         = {Montreal, QC, Canada},
+  modificationdate = {2025-12-13T13:15:15},
   note             = {Workshop on open science and open-source tools for computational and systems neuroscience.},
   presentationtype = {Workshop attendee},
   presenter        = {Brendan Harris},
+}
+
+
+@InProceedings{Harris2025f,
+  author           = {Harris, Brendan and Gong, Pulin},
+  booktitle        = {OHBM 2025},
+  date             = {2025-06},
+  title            = {Nested spatiotemporal dynamics organize hierarchical processing in the mouse visual cortex},
+  eprint           = {https://github.com/brendanjohnharris/OHBM_2025},
+  location         = {Brisbane, QLD, Australia},
+  note             = {Poster},
+  organization     = {Organization for Human Brain Mapping},
+  pages            = {2072},
+  creationdate     = {2025-12-13T12:24:07},
+  groups           = {CurriculumVitae},
+  modificationdate = {2025-12-13T12:37:48},
+}
+
+
+@Presentation{Harris2025g,
+  author           = {Brendan Harris and Pulin Gong},
+  creationdate     = {2025-12-13T12:47:22},
+  date             = {2025-05},
+  groups           = {CurriculumVitae},
+  institution      = {Center for Neuroscience Imaging Research (CNIR), IBS, Republic of Korea},
+  modificationdate = {2025-12-13T12:49:34},
+  note             = {Invited to give a talk on my PhD research},
+  presentationtype = {Talk},
+  presenter        = {Brendan Harris},
+  title            = {Nested spatiotemporal $\theta$--$\gamma$ waves organize hierarchical visual processing},
+}
+
+
+@InProceedings{Harris2025h,
+  author           = {Harris, Brendan and Gong, Pulin},
+  booktitle        = {EPC/APCV 2025},
+  date             = {2025-06},
+  title            = {Spatiotemporal theta–gamma waves organize hierarchical processing in the mouse visual cortex},
+  location         = {The University of New South Wales},
+  note             = {Talk},
+  organization     = {EPC/APCV},
+  abstract         = {The brain processes visual information across diverse spatial and temporal scales, but the
+dynamics that bridge these scales remain poorly understood. We analyzed mouse Neuropixels data
+to reveal a cross-scale principle of spatiotemporal dynamics involving low-frequency θ, high-
+frequency γ, and neuronal spiking that coordinate translaminar and hierarchical visual processing.
+The slower θ component formed broad traveling waves, which flexibly switched between two
+functional modes during a visual change-detection task. After stimulus onset, top-down θ
+propagated from deep to superficial layers and in a feed-back direction along the anatomical and
+functional hierarchies. By contrast, bottom-up θ emerged at stimulus offset, propagating toward
+deep layers and in a feed-forward hierarchical direction. This nonstationary θ traveling wave carried
+significant functional information, predicting behavioral responses to changes in stimulus content.
+Conversely, higher frequency γ formed short, localized packets that were spatially sharpened
+following stimulus onset. By extending conventional univariate methods for analyzing cross-
+frequency coupling, we found that γ packets were nested within θ traveling waves, alongside
+neuronal spiking. Together, these findings describe a flexible spatiotemporal θ–γ code for
+multiplexing and modulating bottom-up and top-down information, mechanistically linking cross-
+scale dynamics and hierarchical visual processing.},
+  creationdate     = {2025-12-13T12:50:23},
+  groups           = {CurriculumVitae},
+  modificationdate = {2025-12-13T12:52:28},
+}
+
+
+@Presentation{Harris2024i,
+  author           = {Brendan Harris},
+  creationdate     = {2025-12-13T13:21:13},
+  date             = {2024-08},
+  groups           = {CurriculumVitae},
+  institution      = {Strong Compute Chess AI Hackathon},
+  location         = {Sydney, NSW, Australia},
+  modificationdate = {2025-12-13T13:22:54},
+  note             = {Hackathon on transformer models and distributed GPU training for chess},
+  presentationtype = {Workshop attendee},
+  presenter        = {Brendan Harris},
+}
+
+
+@Funding{Harris2025i,
+  author           = {Brendan Harris},
+  creationdate     = {2025-12-13T14:16:04},
+  date             = {2025},
+  entrysubtype     = {Award},
+  funder           = {The University of Sydney},
+  groups           = {CurriculumVitae},
+  keywords         = {Award},
+  modificationdate = {2025-12-13T14:16:55},
+  note             = {To fund travel and accommodation for the COSYNE 2025 conference (Montreal, Canada)},
+  title            = {Postgraduate Research Support Scheme},
+  type             = {Scholarship},
+}
+
+
+@Funding{Harris2025j,
+  author           = {Brendan Harris},
+  creationdate     = {2025-12-13T14:16:59},
+  date             = {2025},
+  entrysubtype     = {Award},
+  funder           = {COSYNE},
+  groups           = {CurriculumVitae},
+  keywords         = {Award},
+  modificationdate = {2025-12-13T14:17:33},
+  note             = {To fund travel and accommodation for the COSYNE 2025 conference (Montreal, Canada)},
+  title            = {Cosyne Presenters Travel Grant},
+  type             = {Scholarship},
 }
 
 

@@ -420,6 +420,7 @@
 	}
 	{\iffieldundef{doi}{\thefield{note}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\thefield{note}}}} % The type of paper
 	}{%
+	\iflistundef{location}{}{\printlist{location}\\}
 	\iffieldundef{pages}{}{\thefield{pages}:\ }\chainit{title}{\printnames{author}}
 	}\\
 	\end{entrylist}
@@ -669,6 +670,7 @@
 	}
 	{\iffieldundef{doi}{\printfield{presentationtype}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\printfield{presentationtype}}}}}
 	{%
+		\iflistundef{location}{}{\printlist{location}\\}
 		\chainit{title}{\thefield{note}}
 	}\\
 	\end{entrylist}

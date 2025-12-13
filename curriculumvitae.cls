@@ -50,12 +50,12 @@
 
 \geometry{
 	paper=a4paper, % Paper size, change to letterpaper for US letter size
-	top=1.6cm, % Top margin
-	bottom=1.6cm, % Bottom margin
-	left=1.6cm, % Left margin
-	right=1.6cm, % Right margin
+	top=2.0cm, % Top margin
+	bottom=1.8cm, % Bottom margin
+	left=1.7cm, % Left margin
+	right=1.7cm, % Right margin
 	headheight=0.75cm, % Header height
-	footskip=1cm, % Space from the bottom margin to the baseline of the footer
+	footskip=0.5cm, % Space from the bottom margin to the baseline of the footer
 	headsep=0.5cm, % Space from the top margin to the baseline of the header
 	%showframe, % Uncomment to show how the type block is set on the page
 }
@@ -122,18 +122,36 @@
 \def\Vhrulefill{\leavevmode\leaders\hrule height 0.7ex depth \dimexpr0.4pt-0.7ex\hfill\kern0pt}
 
 \usepackage[toc]{multitoc}
-\renewcommand*{\multicolumntoc}{2}
+\renewcommand*{\multicolumntoc}{3}
 % \setlength{\columnseprule}{0.5pt}
 \setcounter{secnumdepth}{0}
-\def\contentsname{\textcolor{black}{\normalsize \MakeUppercase{\textbf{Contents}}} \hspace{4pt} \Vhrulefill\vspace{0.5em}}
+\usepackage{tocloft}
+\cftpagenumbersoff{section}
+% \renewcommand{\cftsecfont}{\normalfont}
+\def\contentsname{}
+% \makeatletter
+% \renewcommand\l@section[2]{%
+%   \@tocline{1}{0pt}{1.5em}{#1}{}{0pt}{}%
+% }
+% \makeatother
 
-% Command to output section title headings
-\newcommand{\cvsect}[1]{% The only parameter is the section text
+% Command to output section title headings (with optional star form)
+\makeatletter
+\newcommand{\cvsect}{\@ifstar{\cvsect@star}{\cvsect@nostar}}
+\newcommand{\cvsect@nostar}[1]{% The only parameter is the section text
 	\vspace{\baselineskip} % Whitespace before the section title
 	{\section[#1]{}}
 	\vspace{-3em}
-	\textcolor{black}{ \MakeUppercase{\textbf{#1}}} \hspace{4pt} \Vhrulefill \vspace{2em}% Section title
+		\textcolor{black}{ \MakeUppercase{\textbf{#1}}} \hspace{4pt} \Vhrulefill \vspace{2em}% Section title
 }
+\newcommand{\cvsect@star}[1]{% Starred form uses \section*
+	\vspace{\baselineskip}
+	% {\section*[#1]{}}
+	\par
+	\vspace{-3em}
+		\textcolor{black}{ \MakeUppercase{\textbf{#1}}} \hspace{4pt} \Vhrulefill \vspace{2em}
+}
+\makeatother
 
 %----------------------------------------------------------------------------------------
 %	ENTRY LIST
