@@ -562,6 +562,20 @@
 				\chainit{funder}{\thefield{role}}\\
 			}
 		}\\
+
+		% ? Supervision
+		\IfSubStr{\thefield{keywords}}{Supervision}{%
+			\entry
+			{\usebibmacro{yearrange}}
+			{\thefield{title}
+			\iffieldundef{eprint}{}{\,\href{\thefield{eprint}}{\OA}}
+			\iffieldundef{url}{}{\ \href{\thefield{url}}{\icon{\fagithub}{7}}}
+			}
+			{\printfield{type}}
+			{%
+				\chainit{funder}{\thefield{role}}\\
+			}
+		}\\
 	\end{entrylist}
 }
 

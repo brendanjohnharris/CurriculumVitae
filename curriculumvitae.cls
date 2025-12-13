@@ -64,20 +64,24 @@
 %	FONTS
 %----------------------------------------------------------------------------------------
 
-\usepackage[utf8]{inputenc} % Required for inputting international characters
+% \usepackage[utf8]{inputenc} % Required for inputting international characters
 
 % \usepackage[default]{raleway}
 % \usepackage[defaultsans]{droidsans}
 % \usepackage{cmbright}
 % \usepackage{mathptmx}
-\usepackage{tgpagella,eulervm}
+% \usepackage{tgpagella,eulervm}
 
 % \renewcommand*\familydefault{\sfdefault} % Force the sans-serif version of any font used
+
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes}  % Times clone
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Termes Math}
 
 %------------------------------------------------
 
 % \usepackage{fontawesome} % Required for FontAwesome icons
-\usepackage{fontspec}
 \newfontfamily{\fabrands}[Path=./logos/]{Font Awesome 6 Brands-Regular-400}
 \newfontfamily{\fafree}[Path=./logos/]{Font Awesome 6 Free-Regular-400}
 \newfontfamily{\fasolid}[Path=./logos/]{Font Awesome 6 Free-Solid-900}
