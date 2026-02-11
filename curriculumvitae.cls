@@ -99,6 +99,8 @@
 \def\fabluesky{\selectfont \fabrands \char"E671}
 \def\faphone{\selectfont \fasolid \char"F095}
 \def\fagithub{\selectfont \fabrands \char"F09B}
+\def\fascholar{\selectfont \fabrands \char"E63B}
+\def\faorcid{\selectfont \fabrands \char"F8D2}
 \def\fastar{\selectfont \fasolid \char"F005}
 
 %----------------------------------------------------------------------------------------

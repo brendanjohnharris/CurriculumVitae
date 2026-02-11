@@ -11,7 +11,7 @@
 \usepackage{xcolor}
 \input{curriculumvitae.bbx}
 \addbibresource{./theBibliography.bib}
-
+\DeclareEmphSequence{\bfseries\itshape}
 
 % ---------------------------------------------------------------------------- %
 %                                  Major fields                                %
@@ -20,15 +20,23 @@
   {{Harris, Brendan}}
 
 \def\me{Brendan Harris}
-\def\job{PhD Student}
+\def\job{PhD Candidate}
 \def\email{bhar9988@uni.sydney.edu.au}
 \def\website{brendanjohnharris.github.io}
 \def\location{Sydney, Australia}
-\def\phone{+61 466956165}
+\def\phone{+61 466 956 165}
 \def\bluesky{@brendanjohnharris}
 \def\github{brendanjohnharris}
+\def\scholar{https://scholar.google.com/citations?user=XYfQ92sAAAAJ&hl=en}
+\def\orcid{0000-0003-3412-4186}
 \def\software{Julia, Matlab, Python, \LaTeX, Linux, Shell scripts, C/C++, cluster computing, CAD, COMSOL, Javascript, HTML/CSS, Illustrator/Inkscape}
 \def\hardware{EEG headsets, oscilloscopes, signal generators, microcontrollers, digital sensors}
+\def\interests{
+    \emph{\bfseries Circuit- and systems-level neuroscience}\\Spiking neural circuits; mean-field models; hierarchical processing; oscillations and traveling waves; visual system.\\
+
+    \emph{\bfseries Bridging statistical physics and neural dynamics}\\Time-series analysis; stochastic processes; criticality; cross-scale dynamics; dimensionality reduction; open software.
+
+}
 
 %----------------------------------------------------------------------------------------
 %	TITLE AND CONTACT INFORMATION
@@ -52,12 +60,14 @@
 	\vspace{-\baselineskip}~\\ % Required for vertically aligning minipages
 	% The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
 	\href{https://\website}{\icon{\faglobe}{10}{\website}}\\
+    \href{https://orcid.org/\orcid}{\icon{\faorcid}{10}{\orcid}}\\
     \href{mailto:\email}{\icon{\faenvelope}{10}{\email}}\\
     \icon{\famapmarker}{10}{\location}\\
 \end{minipage}
 \begin{minipage}[t]{0.22\textwidth} % 27% of the page width for the second row of icons
 	\vspace{-\baselineskip}~\\ % Required for vertically aligning minipages
     \href{https://github.com/\github}{\icon{\fagithub}{10}{\github}}\\
+    \href{\scholar}{\icon{\fascholar}{10}{Brendan Harris}}\\
     \href{https://bsky.app/\bluesky.bsky.social}{\icon{\fabluesky}{10}{\bluesky}}\\
 	\icon{\faphone}{10}{\phone}\\
 \end{minipage}
@@ -70,45 +80,49 @@
     \cvsect*{Summary}
 	\vspace{-6pt}
 
-    PhD student in the Complex Systems group (School of Physics) at the University of Sydney. Interested in understanding the physical mechanisms of computation and communication in the brain, especially for visual processing. Use a combination of new analytic tools, dynamical systems theory, and biophysical neural-circuit models to develop a multi-level understanding of brain dynamics and function.
+    PhD candidate (thesis submitted) in the Complex Systems Group at the School of Physics, The University of Sydney. Interested in understanding the dynamical mechanisms of computation and communication in the brain, especially for visual processing. Use new analytic tools, dynamical systems theory, large-scale data, and biophysical neural-circuit models for a multi-level understanding of brain function.
 
 \end{minipage}
 \hfill % Whitespace between
 \begin{minipage}[t]{0.47\textwidth}
-    \cvsect*{Skills}
+    % \cvsect*{Skills}
+    \cvsect*{Research interests}
     \vspace{-6pt}
 
-    \begin{minipage}[t]{0.2\textwidth}
-        \textbf{Software:}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.73\textwidth}
-      \software
-    \end{minipage}
-    \vspace{4mm}
+    \interests
 
-    \begin{minipage}[t]{0.2\textwidth}
-        \textbf{Hardware:}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.73\textwidth}
-      \hardware
-    \end{minipage}
+    % \begin{minipage}[t]{0.2\textwidth}
+    %     \textbf{Software:}
+    % \end{minipage}
+    % \hfill
+    % \begin{minipage}[t]{0.73\textwidth}
+    %   \software
+    % \end{minipage}
+    % \vspace{4mm}
+
+    % \begin{minipage}[t]{0.2\textwidth}
+    %     \textbf{Hardware:}
+    % \end{minipage}
+    % \hfill
+    % \begin{minipage}[t]{0.73\textwidth}
+    %   \hardware
+    % \end{minipage}
 
 \end{minipage}
 \vspace{1.5em}
 
-\vspace{3em}
+\vspace{2.5em}
 \cvsect*{Contents}
 {
     \noindent\hspace*{5em}
     \begin{minipage}[t]{1.0\textwidth}
     \setlength\columnsep{3em}
     \begin{spacing}{0.01}
-        \vspace{-3em}
+        \vspace{-3.5em}
         \tableofcontents
   \end{spacing}
 \end{minipage}
+\vspace{-1em}
 }
 
 
@@ -190,25 +204,39 @@
 
 \vspace{-3.5 em}
 \cvsect{Referees}\\
-\begin{tabular}{lr}
+\begin{tabular}{lcr}
     % Referee 1
-    \begin{minipage}[t]{0.5\textwidth}
-    Dr.\ Benjamin D. Fulcher\\
-    School of Physics, The University of Sydney\\
-    Physics Building, Physics Rd, Camperdown 2006\\
-    Ph: +61 86276708 \\
+    \begin{minipage}[t]{0.333\textwidth}
+    \textbf{Dr.\ Benjamin D. Fulcher}\\[1em]
+    School of Physics\\ The University of Sydney\\[1em]
+    Physics Building, Physics Rd\\
+    Camperdown 2006\\[1em]
+    Ph: +61 481 563 731\\
     \href{mailto:ben.fulcher@sydney.edu.au}{ben.fulcher\textrm{@}sydney.edu.au}
     \end{minipage}
     &
     % Referee 2
-    \begin{minipage}[t]{0.5\textwidth}
-    Dr.\ Pulin Gong\\
-    School of Physics, The University of Sydney\\
-    Physics Building, Physics Rd, Camperdown 2006\\
-    Ph: +61 290369368 \\
+    \begin{minipage}[t]{0.333\textwidth}
+        \centering
+    \textbf{Dr. Pulin Gong}\\[1em]
+    School of Physics\\
+    The University of Sydney\\[1em]
+    Physics Building, Physics Rd\\
+    Camperdown 2006\\[1em]
+    Ph: +61 2 9036 9368 \\
     \href{mailto:pulin.gong@sydney.edu.au}{pulin.gong\textrm{@}sydney.edu.au}
     \end{minipage}
-    \end{tabular}
+    &
+    % Referee 3
+    \begin{minipage}[t]{0.333\textwidth}
+        \raggedleft
+    \textbf{Dr. Cameron Higgins}\\[2.5em]
+    Resonait Medical Technologies\\[1em]
+    Terrigal, NSW\\[2em]
+    Ph: +61 423 344 596\\
+    \href{mailto:cam@resonait.com}{cam\textrm{@}resonait.com}
+    \end{minipage}
+\end{tabular}
 
 % %----------------------------------------------------------------------------------------
 % %	LANGUAGES

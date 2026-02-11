@@ -391,13 +391,15 @@
 \begin{entrylist}
 	\entry
 	{\usebibmacro{yearrange}}
-	{\thefield{title}
+	{\emph{\thefield{title}}
 		\iffieldundef{eprint}{}{\href{\thefield{eprint}}{\,\OA}}
 		\iffieldundef{url}{}{\href{\thefield{url}}{\icon{\fagithub}{7}}}
 	}
 	{\begin{minipage}[t]{0.15\textwidth}
+		\hyphenpenalty=10000
 		\iffieldundef{doi}{\thefield{journaltitle}}{\href{https://www.doi.org/\thefield{doi}}{\textcolor{blue}{\thefield{journaltitle}}}}
 		\iffieldundef{volume}{}{\\\bibstring{volume}\ \thefield{volume}, \bibstring{pp.} \thefield{pages}}
+		\iffieldundef{note}{}{\\\textit{\thefield{note}}}
 	\end{minipage}
 	}
 	{\printnames{author}
