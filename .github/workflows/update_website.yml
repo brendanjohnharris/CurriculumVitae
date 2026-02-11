@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # or whatever your default branch is
+  workflow_dispatch:  # allows manual triggering
 
 jobs:
   update-submodule:
