@@ -1,0 +1,19 @@
+name: Update Website Submodule
+
+on:
+  push:
+    branches:
+      - main  # or whatever your default branch is
+
+jobs:
+  update-submodule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger submodule update in website repo
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.WEBSITE_REPO_PAT }}" \
+            https://api.github.com/repos/${{ secrets.WEBSITE_REPO_OWNER }}/${{ secrets.WEBSITE_REPO_NAME }}/dispatches \
+            -d '{"event_type":"update-cv-submodule"}'
+            
