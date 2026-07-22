@@ -1,0 +1,253 @@
+\documentclass[10pt,a4paper]{article}
+
+% --- Page geometry: tight margins to fit two pages ---
+\usepackage[a4paper,top=10mm,bottom=10mm,left=14mm,right=14mm]{geometry}
+
+% --- Fonts (lualatex + Font Awesome 6, matching the parent CV) ---
+\usepackage{fontspec}
+\usepackage{microtype}
+\setmainfont{STIX Two Text}[
+    Ligatures=TeX,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+    ItalicFont = *-Italic,
+    BoldItalicFont = *-BoldItalic,
+]
+\newfontfamily{\fabrands}[Path=./logos/]{Font Awesome 6 Brands-Regular-400}
+\newfontfamily{\fasolid}[Path=./logos/]{Font Awesome 6 Free-Solid-900}
+
+% Icon macros matching curriculumvitae.cls
+\def\faglobe{{\fasolid \char"F0AC}}
+\def\faenvelope{{\fasolid \char"F0E0}}
+\def\famapmarker{{\fasolid \char"F3C5}}
+\def\fabluesky{{\fabrands \char"E671}}
+\def\faphone{{\fasolid \char"F095}}
+\def\fagithub{{\fabrands \char"F09B}}
+\def\fascholar{{\fabrands \char"E63B}}
+\def\faorcid{{\fabrands \char"F8D2}}
+
+% --- Layout helpers ---
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{parskip}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue,
+    linkcolor=blue,
+}
+
+% --- Section heading: small bold uppercase, with a rule below ---
+\renewcommand{\section}[1]{%
+  \par\vspace{8pt}%
+  {\small\bfseries\MakeUppercase{#1}}\par
+  \vspace{4pt}\hrule height 0.4pt\vspace{2pt}}
+
+% --- Compact list spacing ---
+\setlist[itemize]{leftmargin=*,nosep,topsep=1pt,itemsep=1pt}
+
+% --- A simple icon + text helper ---
+\newcommand{\contact}[2]{\mbox{#1\ \,#2}}
+
+% --- An entry: date on the left, content (heading + right-aligned qualifier) on the right ---
+\newcommand{\entry}[3]{%
+  \noindent\makebox[0.11\textwidth][l]{\footnotesize #1}%
+  \begin{minipage}[t]{0.68\textwidth}\textbf{#2}\end{minipage}\hfill
+  \begin{minipage}[t]{0.21\textwidth}\raggedleft\footnotesize #3\end{minipage}\par\vspace{1pt}}
+
+\newcommand{\entrydesc}[4]{%
+  \noindent\makebox[0.11\textwidth][l]{\footnotesize #1}%
+  \begin{minipage}[t]{0.67\textwidth}\textbf{#2}\end{minipage}\hfill
+  \begin{minipage}[t]{0.21\textwidth}\raggedleft\footnotesize #3\end{minipage}\\[0pt]
+  \makebox[0.11\textwidth][l]{}\begin{minipage}[t]{0.67\textwidth}\small #4\end{minipage}\par\vspace{2pt}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+% ---------------------------------------------------------------------------- %
+%                                    Header                                    %
+% ---------------------------------------------------------------------------- %
+\begin{minipage}[t]{0.45\textwidth}
+    \vspace{0pt}
+    {\fontsize{20}{22}\selectfont\textbf{\MakeUppercase{Brendan Harris}}}\\[6pt]
+    {\fontsize{12}{14}\selectfont Postdoctoral Research Associate (2026--)}\\[3pt]
+    {\small\itshape Complex Systems Group, School of Physics}\\
+    {\small\itshape The University of Sydney}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.43\textwidth}
+    \vspace{0pt}
+    \footnotesize
+    \setlength{\baselineskip}{1.35\baselineskip}
+    \newcommand{\contactrow}[2]{\makebox[0.55\linewidth][l]{#1}\makebox[0.45\linewidth][r]{#2}\par\vspace{2pt}}
+    \contactrow{\contact{\faenvelope}{\href{mailto:brendan.harris@sydney.edu.au}{brendan.harris@sydney.edu.au}}}{\contact{\faphone}{+61 466 956 165}}
+    \contactrow{\contact{\faglobe}{\href{https://brendanjohnharris.github.io}{brendanjohnharris.github.io}}}{\contact{\famapmarker}{Sydney, Australia}}
+    \contactrow{\contact{\fagithub}{\href{https://github.com/brendanjohnharris}{brendanjohnharris}}}{\contact{\faorcid}{\href{https://orcid.org/0000-0003-3412-4186}{0000-0003-3412-4186}}}
+    \contactrow{\contact{\fascholar}{\href{https://scholar.google.com/citations?user=XYfQ92sAAAAJ}{Brendan Harris}}}{\contact{\fabluesky}{\href{https://bsky.app/profile/brendanjohnharris.bsky.social}{brendanjohnharris}}}
+\end{minipage}
+
+\vspace{0pt}
+
+
+% ---------------------------------------------------------------------------- %
+%                              Research themes                                 %
+% ---------------------------------------------------------------------------- %
+\section{Research themes}
+\noindent\begin{minipage}[t]{\textwidth}\small
+I tackle fundamental problems about brain function using statistical physics and dynamical systems analysis. Recent interests include:\\[3pt]
+\hspace*{1.5em}\textbullet\ \ \textbf{Spatiotemporal dynamics}: how nested traveling waves coordinate neural processing.\\[1pt]
+\hspace*{1.5em}\textbullet\ \ \textbf{Criticality}: methods to robustly track the distance to bifurcation in noisy systems.\\[1pt]
+\hspace*{1.5em}\textbullet\ \ \textbf{Stochastic processes}: fractional stochastic processes and dynamical regimes of cortical circuits.
+\end{minipage}\par\vspace{2pt}
+
+\vspace{2pt}
+
+% ---------------------------------------------------------------------------- %
+%                          Publication metrics                                 %
+% ---------------------------------------------------------------------------- %
+\section{Publication record}
+\noindent\begin{minipage}[t]{\textwidth}\small
+\href{https://scholar.google.com/citations?user=XYfQ92sAAAAJ}{6 peer-reviewed publications}, 56 citations, h-index 4. 2 first-author papers in Q1 journals (\emph{Physical Review X}, top 3\% General Physics and Astronomy, Scopus CiteScore; \emph{Nature Communications}, top 3\% Multidisciplinary). All first-author work accompanied by \href{https://github.com/brendanjohnharris}{open-source code}.
+\end{minipage}\par\vspace{2pt}
+
+\vspace{2pt}
+
+% ---------------------------------------------------------------------------- %
+%                                  Education                                   %
+% ---------------------------------------------------------------------------- %
+\section{Education}
+\entrydesc{2022--2026}{Physics PhD}{The University of Sydney}{``Cross-scale dynamics in the working regime of the visual cortex''\\ \emph{Supervisor}: Prof.\ Pulin Gong.\\[6pt]
+\emph{Chapters}:
+\begin{list}{\textbullet}{\setlength{\leftmargin}{2em}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}\setlength{\topsep}{0pt}}
+\item \makebox[\dimexpr\linewidth+1.2cm\relax][l]{``Tracking the distance to criticality in systems with unknown noise'': \href{https://doi.org/10.1103/PhysRevX.14.031021}{\emph{Physical Review X} (2024)}}
+\item ``Nested spatiotemporal theta--gamma waves organize hierarchical processing across the mouse visual cortex'': \href{https://doi.org/10.1038/s41467-026-68893-4}{\emph{Nature Communications} (2026)}
+\item ``Anomalous dynamics in the working regime of the visual cortex'': In preparation (\href{https://brendanjohnharris.github.io/WorkingRegimeSlides}{slides})
+\end{list}}
+\entrydesc{2021}{Physics Honours, Class I and the University Medal}{The University of Sydney}{``Inferring parametric variation across non-stationary time series''\\ \emph{Supervisor}: A/Prof.\ Ben Fulcher.}
+\entrydesc{2018--2020}{Bachelor of Science / Bachelor of Advanced Studies (Dalyell Scholar)}{The University of Sydney}{Majored in Physics and Neuroscience.}
+
+\vspace{2pt}
+
+% ---------------------------------------------------------------------------- %
+%                  Leadership, service and community engagement                %
+% ---------------------------------------------------------------------------- %
+\section{Leadership, service and community engagement}
+\entrydesc{2024--}{Co-organizer, Systems Neuroscience and Complexity seminar series}{The University of Sydney}{Organize a cross-disciplinary seminar series across physics, medicine, and computer science}
+\entrydesc{2018--}{Open-source software developer and maintainer}{\href{https://github.com/brendanjohnharris}{GitHub: brendanjohnharris}}{Develop and maintain Julia packages for time-series analysis and scientific research, enabling reproducible neural-data workflows; released repositories have attracted 80+ GitHub stars.}
+\entrydesc{2022--}{Open-science workshops}{Sydney; Montreal; Seattle}{Pre-COSYNE BrainHack (MILA, 2025); BrainHack Australia 2022; OpenScope NeuroDataReHack (Allen Institute, 2022).}
+\entrydesc{2018--}{Public communication}{Sydney}{Authored a public-facing article in \href{https://theconversation.com/crashes-blackouts-and-climate-tipping-points-how-can-we-tell-when-a-system-is-close-to-the-edge-236683}{\emph{The Conversation}} with an accompanying video summary; ongoing science communication via X, Bluesky, GitHub, and personal website.}
+
+\vspace{2pt}
+
+
+% ---------------------------------------------------------------------------- %
+%                                  Industry                                    %
+% ---------------------------------------------------------------------------- %
+\section{Industry experience}
+\entrydesc{2023}{Neurofeedback software developer}{Resonait Medical Technologies}{Developed software to interface with EEG headsets, infer brain-network activation, and implement neurofeedback for depression monitoring and treatment.}
+
+\vspace{2pt}
+
+% ---------------------------------------------------------------------------- %
+%                                  Supervision                                 %
+% ---------------------------------------------------------------------------- %
+\section{Supervision and teaching}
+\entrydesc{2025--}{Secondary supervision of Physics Honours students}{The University of Sydney}{%
+\hspace*{1.5em}\textbullet\ Jude Metcalf (2026) --- \emph{Adaptive fractional dynamics of visual sampling}\\
+\hspace*{1.5em}\textbullet\ Murray Jones (2026) --- \emph{Spatiotemporal reservoir computing with spiking neural circuits}\\
+\hspace*{1.5em}\textbullet\ Aiden Sloots (2025) --- \emph{Bi-fractional diffusion for decision-making dynamics}}
+\entrydesc{2022--2024}{Lab tutor: interdisciplinary, computational, and statistical physics}{The University of Sydney}{}
+
+\clearpage
+\vspace*{0em}
+
+
+
+% ---------------------------------------------------------------------------- %
+%                          Selected talks & conferences                        %
+% ---------------------------------------------------------------------------- %
+\section{Conference presentations}
+\entry{2025}{OHBM 2025, Brisbane}{Poster}
+\entry{2025}{EPC/APCV 2025, UNSW}{Talk}
+\entry{2025}{COSYNE 2025, Montreal}{Poster}
+\entry{2025}{NeuroEng 2025, The University of Melbourne}{Talk}
+\entry{2023}{IBRO World Congress 2023, Granada}{Poster}
+\entry{2022}{31st Annual Computational Neuroscience Meeting (CNS*2022), Melbourne}{Poster \& workshop talk}
+\entry{2022}{28th Annual Meeting of the Organization for Human Brain Mapping (OHBM)}{Virtual poster}
+
+\vspace{2pt}
+
+% ---------------------------------------------------------------------------- %
+%                                Invited talks                                 %
+% ---------------------------------------------------------------------------- %
+\section{Selected talks}
+\entry{2026}{Maths in the Brain --- ``Best ECR talk'' prize}{Talk}
+\entry{2025}{Center for Neuroscience Imaging Research (CNIR), IBS, South Korea}{Invited talk}
+\entry{2024}{Emerging Aspirations in Complex Systems, The University of Sydney}{Workshop talk}
+\entry{2024}{School of Physics HDR symposium, The University of Sydney}{Workshop talk}
+\entry{2023}{MIP:Lab, Geneva Biotech Campus (host: Dr.\ E.\ Amico)}{Hosted visit}
+\entry{2023}{Cognitive Neuroscience Hub, The University of Melbourne (host: Dr.\ J.\ Paul)}{Hosted visit}
+\entry{2023}{tLab, Monash University (host: Prof.\ N.\ Tsuchiya)}{Hosted visit}
+\entry{2023}{Complexity, Criticality \& Computation Symposium (C3-2023), Heron Island}{Workshop talk}
+\entry{2022}{Yale Medical School (host: Dr.\ E.\ Lake)}{Invited talk}
+\entry{2022}{Emerging Aspirations in Complex Systems, The University of Sydney}{Workshop talk}
+% \entry{2021}{Neuromatch 4.0}{Flash talk}
+
+\vspace{2pt}
+
+% ---------------------------------------------------------------------------- %
+%                          Workshops and hackathons attended                   %
+% ---------------------------------------------------------------------------- %
+\section{Workshops}
+\entry{2025}{Pre-COSYNE BrainHack 2025, Montreal}{Workshop}
+\entry{2024}{Strong Compute Chess AI Hackathon, Sydney}{Workshop}
+\entry{2022}{BrainHack Australia 2022, The University of Sydney}{Workshop}
+\entry{2022}{OpenScope NeuroDataReHack, Allen Institute, Seattle}{Workshop}
+
+
+% ---------------------------------------------------------------------------- %
+%                                  Awards                                      %
+% ---------------------------------------------------------------------------- %
+
+\section{Selected awards}
+\entry{2026}{Best ECR talk prize, Maths in the Brain 2026}{Prize}
+\entry{2025}{COSYNE Presenters Travel Grant}{Travel}
+\entry{2023}{Postgraduate Research Support Scheme}{Travel}
+\entry{2023}{Emerging Aspirations in Complex Systems Award}{Travel}
+\entry{2022}{Research Training Program (fee offset and stipend)}{PhD scholarship}
+\entry{2022}{Travel support for OpenScope NeuroDataReHack (Allen Institute)}{Travel}
+\entry{2022}{University Medal and Honours Class I; Dean's List of Excellence}{Recognition}
+\entry{2021}{Physics Foundation Scholarship No.~III; Academic Merit Prize}{Scholarships}
+
+\vspace{2pt}
+
+% ---------------------------------------------------------------------------- %
+%                                  Referees                                    %
+% ---------------------------------------------------------------------------- %
+\section{Referees}
+\noindent\begin{minipage}[t]{0.32\textwidth}
+\textbf{Dr.\ Benjamin D.\ Fulcher}\\
+\small School of Physics\\
+The University of Sydney\\
++61 481 563 731\\
+\href{mailto:ben.fulcher@sydney.edu.au}{ben.fulcher@sydney.edu.au}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}
+\centering
+\textbf{Dr.\ Pulin Gong}\\
+\small School of Physics\\
+The University of Sydney\\
++61 2 9036 9368\\
+\href{mailto:pulin.gong@sydney.edu.au}{pulin.gong@sydney.edu.au}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}
+\raggedleft
+\textbf{Dr.\ Cameron Higgins}\\
+\small Resonait Medical Technologies\\
+Terrigal NSW\\
++61 423 344 596\\
+\href{mailto:cam@resonait.com}{cam@resonait.com}
+\end{minipage}
+
+\end{document}
