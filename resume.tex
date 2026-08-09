@@ -64,6 +64,19 @@
   \begin{minipage}[t]{0.21\textwidth}\raggedleft\footnotesize #3\end{minipage}\\[0pt]
   \makebox[0.11\textwidth][l]{}\begin{minipage}[t]{0.67\textwidth}\small #4\end{minipage}\par\vspace{2pt}}
 
+% --- As \entrydesc, but with extra space between the heading and the description ---
+\newcommand{\pubdesc}[4]{%
+  \noindent\makebox[0.11\textwidth][l]{\footnotesize #1}%
+  \begin{minipage}[t]{0.67\textwidth}\textbf{#2}\par\vspace{3.5pt}\end{minipage}\hfill
+  \begin{minipage}[t]{0.21\textwidth}\raggedleft\footnotesize #3\end{minipage}\\[0pt]
+  \makebox[0.11\textwidth][l]{}\begin{minipage}[t]{0.67\textwidth}\small #4\end{minipage}\par\vspace{2pt}}
+
+% --- A tight bulleted list for use inside \entrydesc ---
+\newenvironment{tight}%
+  {\begin{list}{\textbullet}{\setlength{\leftmargin}{1.2em}\setlength{\itemsep}{0pt}%
+   \setlength{\parsep}{0pt}\setlength{\topsep}{1pt}\setlength{\partopsep}{0pt}}}%
+  {\end{list}}
+
 \pagestyle{empty}
 
 \begin{document}
@@ -74,9 +87,9 @@
 \begin{minipage}[t]{0.45\textwidth}
     \vspace{0pt}
     {\fontsize{20}{22}\selectfont\textbf{\MakeUppercase{Brendan Harris}}}\\[6pt]
-    {\fontsize{12}{14}\selectfont Postdoctoral Research Associate (2026--)}\\[3pt]
-    {\small\itshape Complex Systems Group, School of Physics}\\
-    {\small\itshape The University of Sydney}
+    {\fontsize{12}{14}\selectfont Computational neuroscientist}\\[3pt]
+    {\small\itshape Postdoctoral Research Associate, Complex Systems Group}\\
+    {\small\itshape School of Physics, The University of Sydney}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.43\textwidth}
     \vspace{0pt}
@@ -98,131 +111,111 @@
 % ---------------------------------------------------------------------------- %
 \section{Research themes}
 \noindent\begin{minipage}[t]{\textwidth}\small
-I study the principles of neural computation using large-scale data, new analytical methods, statistical physics, and dynamical systems:\\[3pt]
-\hspace*{1.5em}\textbullet\ \ \textbf{Spatiotemporal dynamics}: how nested traveling waves coordinate hierarchical neural processing and guide flexible behavior.\\[1pt]
-\hspace*{1.5em}\textbullet\ \ \textbf{Criticality}: robust methods to track the distance to criticality in noisy, poorly sampled systems.\\[1pt]
-\hspace*{1.5em}\textbullet\ \ \textbf{Stochastic processes}: fractional mean-field theory for neural circuits, fractional diffusion for decision-making and visual sampling.\\[1pt]
-\hspace*{1.5em}\textbullet\ \ \textbf{Population geometry}: low-dimensional coding and communication subspaces, new methods for dimensionality reduction.
+I study how collective dynamics in neural populations perform computation, combining large-scale electrophysiology with statistical physics and dynamical systems theory. My methods rely on uncovering structure from noisy, high-dimensional, heavily subsampled recordings.\\[3pt]
+\hspace*{1.5em}\textbullet\ \ \textbf{Criticality and computation}: tracking distance to a critical point when the noise process is unknown and sampling is sparse.\\[1pt]
+\hspace*{1.5em}\textbullet\ \ \textbf{Spatiotemporal dynamics}: nested traveling waves that coordinate hierarchical processing and communication between brain areas.\\[1pt]
+\hspace*{1.5em}\textbullet\ \ \textbf{Stochastic processes}: fractional diffusion for spiking-circuit mean field theory, decision making, and adaptive visual sampling.\\[1pt]
+\hspace*{1.5em}\textbullet\ \ \textbf{Population geometry}: coding and communication subspaces, dimensionality reduction for large-scale electrophysiology data.
 \end{minipage}\par\vspace{2pt}
 
 \vspace{2pt}
 
 % ---------------------------------------------------------------------------- %
-%                          Publication metrics                                 %
+%                        Methods and technical skills                          %
 % ---------------------------------------------------------------------------- %
-\section{Publication record}
+\section{Technical skills}
 \noindent\begin{minipage}[t]{\textwidth}\small
-\href{https://scholar.google.com/citations?user=XYfQ92sAAAAJ}{6 peer-reviewed publications}, 56 citations, h-index 4. 2 first-author papers in Q1 journals (\href{https://doi.org/10.1103/PhysRevX.14.031021}{\emph{Physical Review X}}, top 3\% General Physics and Astronomy, Scopus CiteScore; \href{https://doi.org/10.1038/s41467-026-68893-4}{\emph{Nature Communications}}, top 3\% Multidisciplinary). All first-author work accompanied by \href{https://github.com/brendanjohnharris}{open-source code}.
+\textbf{Neural data}: high-density extracellular electrophysiology (Neuropixels, multi-electrode arrays); spike trains, LFP, and EEG; spectral, phase, and traveling-wave analysis; criticality and phase-transition analysis.\\[4pt]
+\textbf{Statistics and modeling}: dimensionality reduction; stochastic processes and statistical physics; spiking neural networks; mean-field reductions; feature-based time-series analysis (\emph{hctsa}, \emph{catch22}) and machine-learning.\\[4pt]
+\textbf{Engineering}: Julia, Python, MATLAB, C++; real-time and closed-loop systems; hardware interfacing; HPC and large-scale data pipelines; reproducible analysis, package release, and long-term maintenance.
 \end{minipage}\par\vspace{2pt}
 
+
+% ---------------------------------------------------------------------------- %
+%                              Industry experience                             %
+% ---------------------------------------------------------------------------- %
+\section{Industry experience}
+\entrydesc{2023}{Scientific software developer, real-time closed-loop neurofeedback}{Resonait Medical Technologies}{%
+Developed real-time software for Resonait's EEG neurofeedback platform, targeted at monitoring and treating depression; a commercial product built by a small team.\\[-0.75em]
+\begin{tight}
+\item Interfaced with EEG headset hardware and built the online acquisition and signal-processing pipeline.
+\item Analyzed large-scale EEG datasets with online hidden Markov models.
+\item Wrote technical documentation and managed the codebase.
+\item Co-authored peer-reviewed paper, ``Default mode network detection using EEG in real-time'' (IEEE EMBC 2024).
+\end{tight}}
+
 \vspace{2pt}
+
+% ---------------------------------------------------------------------------- %
+%                            Selected publications                             %
+% ---------------------------------------------------------------------------- %
+\section{Selected publications}
+\noindent\begin{minipage}[t]{\textwidth}\small
+\href{https://scholar.google.com/citations?user=XYfQ92sAAAAJ}{6 peer-reviewed publications}, two as first author in Q1 journals (\href{https://doi.org/10.1103/PhysRevX.14.031021}{\emph{Physical Review X}} and \href{https://doi.org/10.1038/s41467-026-68893-4}{\emph{Nature Communications}}, top 3\%). All first-author work is accompanied by \href{https://github.com/brendanjohnharris}{open-source code}.
+\end{minipage}\par\vspace{4pt}
+\pubdesc{2026}{Nested spatiotemporal theta--gamma waves organize hierarchical processing across the mouse visual cortex}{\href{https://doi.org/10.1038/s41467-026-68893-4}{Nature Communications}}{\textbf{Harris, B.}\ \& Gong, P.\\ New analytical methods for high-density multi-electrode recordings.}
+\pubdesc{2025}{Canonical time-series features for characterizing biologically informative dynamical patterns in fMRI}{\href{https://doi.org/10.52294/001c.140433}{Aperture Neuro}}{Alam, I., \textbf{Harris, B.}, Cahill, P., Cliff, O., Markicevic, M., Zerbi, V.\ \& Fulcher, B.\,D.\\ Analyzed mouse cell densities and fMRI recordings.}
+\pubdesc{2024}{Tracking the distance to criticality in systems with unknown noise}{\href{https://doi.org/10.1103/PhysRevX.14.031021}{Physical Review X}}{\textbf{Harris, B.}, Gollo, L.\,L.\ \& Fulcher, B.\,D.\\ New criticality measure robust to unknown noise and sparse sampling.}
+\pubdesc{2024}{Default mode network detection using EEG in real-time}{\href{https://ieeexplore.ieee.org/document/10782631/}{IEEE EMBC}}{Cooray, N., Gohil, C., \textbf{Harris, B.}, Frost, S.\ \& Higgins, C.\\ Real-time HMM inference and hardware interfacing for closed-loop feedback.}
+\pubdesc{2024}{Distributed and dynamical communication: a mechanism for flexible cortico-cortical interactions and its functional roles in visual attention}{\href{https://doi.org/10.1038/s42003-024-06228-z}{Communications Biology}}{Ni, S., \textbf{Harris, B.}\ \& Gong, P.\\ Communication subspace analysis for large-scale electrophysiology.}
+
+\vspace{2pt}
+
+
+\clearpage
+\vspace*{0em}
 
 % ---------------------------------------------------------------------------- %
 %                                  Education                                   %
 % ---------------------------------------------------------------------------- %
 \section{Education}
-\entrydesc{2022--2026}{Physics PhD}{The University of Sydney}{``Cross-scale dynamics in the working regime of the visual cortex''\\ \emph{Supervisor}: Prof.\ Pulin Gong.\\[6pt]
-\emph{Chapters}:
-\begin{list}{\textbullet}{\setlength{\leftmargin}{2em}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}\setlength{\topsep}{0pt}}
-\item \makebox[\dimexpr\linewidth+1.2cm\relax][l]{``Tracking the distance to criticality in systems with unknown noise'': \href{https://doi.org/10.1103/PhysRevX.14.031021}{\emph{Physical Review X} (2024)}}
-\item ``Nested spatiotemporal theta--gamma waves organize hierarchical processing across the mouse visual cortex'': \href{https://doi.org/10.1038/s41467-026-68893-4}{\emph{Nature Communications} (2026)}
-\item ``Anomalous dynamics in the working regime of the visual cortex'': In preparation (\href{https://brendanjohnharris.github.io/WorkingRegimeSlides}{slides})
-\end{list}}
-\entrydesc{2021}{Physics Honours, Class I and the University Medal}{The University of Sydney}{``Inferring parametric variation across non-stationary time series''\\ \emph{Supervisor}: A/Prof.\ Ben Fulcher.}
+\entrydesc{2022--2026}{Physics PhD}{The University of Sydney}{``Cross-scale dynamics in the working regime of the visual cortex''. \emph{Supervisor}: Pulin Gong. Two chapters published in Q1 journals; third is in preparation (\href{https://brendanjohnharris.github.io/WorkingRegimeSlides}{slides}).}
+\entrydesc{2021}{Physics Honours, Class I and the University Medal}{The University of Sydney}{``Inferring parametric variation across non-stationary time series''. \emph{Supervisor}: Ben Fulcher.}
 \entrydesc{2018--2020}{Bachelor of Science / Bachelor of Advanced Studies (Dalyell Scholar)}{The University of Sydney}{Majored in Physics and Neuroscience.}
 
 \vspace{2pt}
 
 % ---------------------------------------------------------------------------- %
-%                  Leadership, service and community engagement                %
+%                  Research leadership and scientific service                  %
 % ---------------------------------------------------------------------------- %
-\section{Leadership, service and community engagement}
-\entrydesc{2024--}{Co-organizer, Systems Neuroscience and Complexity seminar series}{The University of Sydney}{Organize a cross-disciplinary seminar series across physics, medicine, and computer science}
-\entrydesc{2018--}{Open-source software developer and maintainer}{\href{https://github.com/brendanjohnharris}{GitHub: brendanjohnharris}}{Develop and maintain Julia packages for time-series analysis and scientific research, enabling reproducible neural-data workflows; released repositories have attracted 80+ GitHub stars.}
-\entrydesc{2022--}{Open-science workshops}{Sydney; Montreal; Seattle}{Pre-COSYNE BrainHack (Mila, 2025); BrainHack Australia 2022; OpenScope NeuroDataReHack (Allen Institute, 2022).}
-\entrydesc{2018--}{Public communication}{Sydney}{Authored a public-facing article in \href{https://theconversation.com/crashes-blackouts-and-climate-tipping-points-how-can-we-tell-when-a-system-is-close-to-the-edge-236683}{\emph{The Conversation}} with an accompanying video summary; ongoing science communication via X, Bluesky, GitHub, and personal website.}
-
-\vspace{2pt}
-
-
-% ---------------------------------------------------------------------------- %
-%                                  Industry                                    %
-% ---------------------------------------------------------------------------- %
-\section{Industry experience}
-\entrydesc{2023}{Neurofeedback software developer}{Resonait Medical Technologies}{Developed software to interface with EEG headsets, infer brain-network activation, and implement neurofeedback for depression monitoring and treatment.}
+\section{Research leadership and scientific service}
+\entrydesc{2026--}{Co-organizer, Systems Neuroscience and Complexity seminar series}{The University of Sydney}{Convene a cross-disciplinary seminar series spanning physics, medicine, and computer science.}
+\entrydesc{2025--}{Co-supervised Honours research}{The University of Sydney}{%
+\begin{tight}
+\item Jude Metcalf (2026), \emph{Adaptive fractional dynamics of visual sampling}
+\item Aiden Sloots (2025), \emph{Bi-fractional diffusion for decision-making dynamics}
+\end{tight}}
+\entrydesc{2018--}{Author and maintainer of open-source scientific software}{\href{https://github.com/brendanjohnharris}{GitHub: brendanjohnharris}}{%
+\href{https://github.com/brendanjohnharris/AllenNeuropixels.jl}{AllenNeuropixels.jl} (Allen Institute Neuropixels datasets), \href{https://github.com/brendanjohnharris/Catch22.jl}{Catch22.jl}, \href{https://github.com/brendanjohnharris/TimeseriesFeatures.jl}{TimeseriesFeatures.jl} and \href{https://github.com/brendanjohnharris/TimeseriesTools.jl}{TimeseriesTools.jl} (feature-based time-series analysis), \href{https://github.com/brendanjohnharris/SpatiotemporalMotifs.jl}{SpatiotemporalMotifs.jl} (wave analysis of electrophysiology data), and \href{https://github.com/brendanjohnharris/Dewdrop.jl}{Dewdrop.jl} (GPU spiking neural circuits).}
+\entrydesc{2018--}{Public communication}{Sydney}{Authored an article in \href{https://theconversation.com/crashes-blackouts-and-climate-tipping-points-how-can-we-tell-when-a-system-is-close-to-the-edge-236683}{\emph{The Conversation}} with a video summary; ongoing science communication via Bluesky, GitHub, and a personal website.}
 
 \vspace{2pt}
 
 % ---------------------------------------------------------------------------- %
-%                                  Supervision                                 %
+%                 Selected talks, presentations, and workshops                 %
 % ---------------------------------------------------------------------------- %
-\section{Supervision and teaching}
-\entrydesc{2025--}{Secondary supervision of Physics Honours students}{The University of Sydney}{%
-\hspace*{1.5em}\textbullet\ Jude Metcalf (2026) --- \emph{Adaptive fractional dynamics of visual sampling}\\
-\hspace*{1.5em}\textbullet\ Aiden Sloots (2025) --- \emph{Bi-fractional diffusion for decision-making dynamics}}
-\entrydesc{2022--2024}{Lab tutor: interdisciplinary, computational, and statistical physics}{The University of Sydney}{}
-
-\clearpage
-\vspace*{0em}
-
-
-
-% ---------------------------------------------------------------------------- %
-%                          Selected talks & conferences                        %
-% ---------------------------------------------------------------------------- %
-\section{Conference presentations}
-\entry{2025}{OHBM 2025, Brisbane}{Poster}
-\entry{2025}{EPC/APCV 2025, UNSW}{Talk}
-\entry{2025}{COSYNE 2025, Montreal}{Poster}
-\entry{2025}{NeuroEng 2025, The University of Melbourne}{Talk}
-\entry{2023}{IBRO World Congress 2023, Granada}{Poster}
-\entry{2022}{31st Annual Computational Neuroscience Meeting (CNS*2022), Melbourne}{Poster \& workshop talk}
-\entry{2022}{28th Annual Meeting of the Organization for Human Brain Mapping (OHBM)}{Virtual poster}
-
-\vspace{2pt}
-
-% ---------------------------------------------------------------------------- %
-%                                Invited talks                                 %
-% ---------------------------------------------------------------------------- %
-\section{Selected talks}
-\entry{2026}{Sydney -- Tokyo: Neural and Nonlinear Dynamics Workshop}{Talk}
-\entry{2026}{Maths in the Brain (Melbourne)}{Talk}
+\section{Selected talks, presentations, and workshops}
+\entry{2026}{Sydney--Tokyo: Neural and Nonlinear Dynamics Workshop}{Talk}
+\entry{2026}{Maths in the Brain, Melbourne}{Talk (best ECR talk prize)}
 \entry{2025}{Center for Neuroscience Imaging Research (CNIR), IBS, South Korea}{Invited talk}
-\entry{2024}{Emerging Aspirations in Complex Systems, The University of Sydney}{Workshop talk}
-\entry{2024}{School of Physics HDR symposium, The University of Sydney}{Workshop talk}
-\entry{2023}{MIP:Lab, Geneva Biotech Campus (host: Dr.\ E.\ Amico)}{Hosted visit}
-\entry{2023}{Cognitive Neuroscience Hub, The University of Melbourne (host: Dr.\ J.\ Paul)}{Hosted visit}
-\entry{2023}{tLab, Monash University (host: Prof.\ N.\ Tsuchiya)}{Hosted visit}
-\entry{2023}{Complexity, Criticality \& Computation Symposium (C3-2023), Heron Island}{Workshop talk}
+\entry{2025}{OHBM 2025, Brisbane; COSYNE 2025, Montreal}{Posters}
+\entry{2025}{EPC/APCV 2025, UNSW; NeuroEng 2025, The University of Melbourne}{Talks}
+\entry{2025}{Pre-COSYNE BrainHack 2025, Mila, Montreal}{Workshop}
+\entry{2023}{Hosted visits: MIP:Lab Geneva; Univ.\ Melbourne; Monash Univ.}{Talks}
 \entry{2022}{Yale Medical School (host: Dr.\ E.\ Lake)}{Invited talk}
-\entry{2022}{Emerging Aspirations in Complex Systems, The University of Sydney}{Workshop talk}
-% \entry{2021}{Neuromatch 4.0}{Flash talk}
+\entry{2022}{31st Annual Computational Neuroscience Meeting (CNS*2022), Melbourne}{Poster \& workshop talk}
+\entry{2022}{OpenScope NeuroDataReHack (Allen Institute, Seattle); BrainHack Australia}{Workshops}
 
 \vspace{2pt}
-
-% ---------------------------------------------------------------------------- %
-%                          Workshops and hackathons attended                   %
-% ---------------------------------------------------------------------------- %
-\section{Workshops}
-\entry{2025}{Pre-COSYNE BrainHack 2025, Montreal}{Workshop}
-\entry{2024}{Strong Compute Chess AI Hackathon, Sydney}{Workshop}
-\entry{2022}{BrainHack Australia 2022, The University of Sydney}{Workshop}
-\entry{2022}{OpenScope NeuroDataReHack, Allen Institute, Seattle}{Workshop}
-
 
 % ---------------------------------------------------------------------------- %
 %                                  Awards                                      %
 % ---------------------------------------------------------------------------- %
-
 \section{Selected awards}
 \entry{2026}{Best ECR talk prize, Maths in the Brain 2026}{Prize}
-\entry{2025}{COSYNE Presenters Travel Grant}{Travel}
-\entry{2023}{Postgraduate Research Support Scheme}{Travel}
-\entry{2023}{Emerging Aspirations in Complex Systems Award}{Travel}
-\entry{2022}{Research Training Program (fee offset and stipend)}{PhD scholarship}
-\entry{2022}{Travel support for OpenScope NeuroDataReHack (Allen Institute)}{Travel}
-\entry{2022}{University Medal and Honours Class I; Dean's List of Excellence}{Recognition}
-\entry{2021}{Physics Foundation Scholarship No.~III; Academic Merit Prize}{Scholarships}
+\entry{2025}{Presenters travel grant, COSYNE 2025}{Award}
+\entry{2022}{Research Training Program (fee offset and stipend)}{Scholarship}
+\entry{2022}{University Medal (Physics); Dean's List of Excellence}{Recognition}
 
 \vspace{2pt}
 
@@ -231,27 +224,24 @@ I study the principles of neural computation using large-scale data, new analyti
 % ---------------------------------------------------------------------------- %
 \section{Referees}
 \noindent\begin{minipage}[t]{0.32\textwidth}
-\textbf{Dr.\ Benjamin D.\ Fulcher}\\
-\small School of Physics\\
-The University of Sydney\\
-+61 481 563 731\\
-\href{mailto:ben.fulcher@sydney.edu.au}{ben.fulcher@sydney.edu.au}
+\textbf{Dr.\ Cameron Higgins}\\
+\small Resonait Medical Technologies\\
++61 423 344 596\\
+\href{mailto:cam@resonait.com}{cam@resonait.com}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.32\textwidth}
 \centering
 \textbf{Dr.\ Pulin Gong}\\
-\small School of Physics\\
-The University of Sydney\\
+\small School of Physics, The University of Sydney\\
 +61 2 9036 9368\\
 \href{mailto:pulin.gong@sydney.edu.au}{pulin.gong@sydney.edu.au}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.32\textwidth}
 \raggedleft
-\textbf{Dr.\ Cameron Higgins}\\
-\small Resonait Medical Technologies\\
-Terrigal NSW\\
-+61 423 344 596\\
-\href{mailto:cam@resonait.com}{cam@resonait.com}
+\textbf{Dr.\ Benjamin D.\ Fulcher}\\
+\small School of Physics, The University of Sydney\\
++61 481 563 731\\
+\href{mailto:ben.fulcher@sydney.edu.au}{ben.fulcher@sydney.edu.au}
 \end{minipage}
 
 \end{document}
