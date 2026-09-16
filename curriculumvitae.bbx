@@ -578,6 +578,7 @@
 			{\printfield{type}}
 			{%
 				\chainit{funder}{\thefield{role}}\\
+				\iffieldundef{note}{}{``\textit{\thefield{note}}''}% Project title
 			}
 		}\\
 	\end{entrylist}
